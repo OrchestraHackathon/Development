@@ -39,4 +39,8 @@ public class CourseDetail extends BaseTimeEntity {
     // 연관 관계 Mapping
     @OneToMany(mappedBy = "courseDetail")
     private List<TimeTableCourseDetail> timeTableCourseDetails = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private Course course;
 }
