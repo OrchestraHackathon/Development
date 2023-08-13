@@ -6,7 +6,7 @@ import com.example.jonggangtime.databinding.FragmentTimeTableBinding
 class TimeTableFragment : BaseFragment<FragmentTimeTableBinding>(FragmentTimeTableBinding::inflate) {
 
     override fun initAfterBinding() {
-        TODO("Not yet implemented")
+
     }
 
 }

@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.example.jonggangtime.R
 import com.example.jonggangtime.UI.Friends.FriendsFragment
 import com.example.jonggangtime.UI.Lectures.LecturesFragment
-import com.example.jonggangtime.UI.My.MyFragment
+import com.example.jonggangtime.UI.Profile.ProfileFragment
 import com.example.jonggangtime.UI.TimeTable.TimeTableFragment
 import com.example.jonggangtime.Utils.BaseActivity
 import com.example.jonggangtime.databinding.ActivityMainBinding
@@ -50,7 +50,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 }
                 R.id.my_menu -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_fl, MyFragment())
+                        .replace(R.id.main_fl, ProfileFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
