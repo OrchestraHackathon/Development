@@ -1,4 +1,4 @@
-package com.example.jonggangtime.Profile
+package com.example.jonggangtime.UI.Profile
 
 import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.databinding.FragmentProfileBinding

@@ -1,4 +1,4 @@
-package com.example.jonggangtime.Profile
+package com.example.jonggangtime.UI.Profile
 
 import android.graphics.Paint
 import com.example.jonggangtime.Utils.BaseFragment
