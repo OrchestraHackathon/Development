@@ -20,17 +20,11 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setViewUI()
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         apiCaller.fetchData(completion: {[weak self] result in
             switch result {
             case .success(let data):
-                self?.data.append(contentsOf: data)
                 DispatchQueue.main.sync {
+                    self?.data.append(contentsOf: data)
                     self?.courseTableView.reloadData()
                 }
                 
@@ -39,6 +33,12 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
             }
         })
         
+        setViewUI()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
     
