@@ -43,4 +43,18 @@ class MyPageTabViewController: UIViewController {
     
     @IBAction func editSelfIntroduceButtonDidTap(_ sender: Any) {
     }
+    
+    
+    @IBAction func myPageButtonDidTap(_ sender: Any) {
+        self.completedCourseButton.setTitleColor(.opaqueSeparator, for: .normal)
+        self.myPageButton.setTitleColor(.black, for: .normal)
+    }
+    
+    
+    @IBAction func completedCourseButtonDidTap(_ sender: Any) {
+        self.myPageButton.setTitleColor(.opaqueSeparator, for: .normal)
+        self.completedCourseButton.setTitleColor(.black, for: .normal)
+    }
+    
+    
 }

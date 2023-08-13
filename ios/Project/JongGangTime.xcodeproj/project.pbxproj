@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A1EA7652A87659C0044CE89 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1EA7642A87659C0044CE89 /* ViewControllerExtension.swift */; };
+		0AD19A632A88CF9800949315 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD19A622A88CF9800949315 /* APICaller.swift */; };
+		0AD19A662A88D1B200949315 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */; };
 		0AEECC452A84740A003370A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC442A84740A003370A2 /* AppDelegate.swift */; };
 		0AEECC472A84740A003370A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC462A84740A003370A2 /* SceneDelegate.swift */; };
 		0AEECC4C2A84740A003370A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEECC4A2A84740A003370A2 /* Main.storyboard */; };
@@ -16,7 +18,7 @@
 		0AEECC5C2A847775003370A2 /* TapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC5B2A847775003370A2 /* TapBarController.swift */; };
 		0AEECC622A85BAFA003370A2 /* FriendsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC612A85BAFA003370A2 /* FriendsTabViewController.swift */; };
 		0AEECC642A85BB24003370A2 /* CalendarTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC632A85BB24003370A2 /* CalendarTabViewController.swift */; };
-		0AEECC662A85BB38003370A2 /* CourseTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC652A85BB38003370A2 /* CourseTabViewController.swift */; };
+		0AEECC662A85BB38003370A2 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC652A85BB38003370A2 /* CourseTableViewController.swift */; };
 		0AEECC682A85BB48003370A2 /* MyPageTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC672A85BB48003370A2 /* MyPageTabViewController.swift */; };
 		0AEECC6A2A85BF4E003370A2 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC692A85BF4E003370A2 /* UIImageExtension.swift */; };
 		0AEECC6C2A85E100003370A2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC6B2A85E100003370A2 /* LoginViewController.swift */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		0A1EA7642A87659C0044CE89 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		0AD19A622A88CF9800949315 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		0AEECC412A84740A003370A2 /* JongGangTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JongGangTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEECC442A84740A003370A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AEECC462A84740A003370A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,7 +40,7 @@
 		0AEECC5B2A847775003370A2 /* TapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarController.swift; sourceTree = "<group>"; };
 		0AEECC612A85BAFA003370A2 /* FriendsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabViewController.swift; sourceTree = "<group>"; };
 		0AEECC632A85BB24003370A2 /* CalendarTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTabViewController.swift; sourceTree = "<group>"; };
-		0AEECC652A85BB38003370A2 /* CourseTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTabViewController.swift; sourceTree = "<group>"; };
+		0AEECC652A85BB38003370A2 /* CourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewController.swift; sourceTree = "<group>"; };
 		0AEECC672A85BB48003370A2 /* MyPageTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTabViewController.swift; sourceTree = "<group>"; };
 		0AEECC692A85BF4E003370A2 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		0AEECC6B2A85E100003370A2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +59,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AD19A612A88CF6100949315 /* APICallers */ = {
+			isa = PBXGroup;
+			children = (
+				0AD19A622A88CF9800949315 /* APICaller.swift */,
+			);
+			path = APICallers;
+			sourceTree = "<group>";
+		};
+		0AD19A642A88D18D00949315 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		0AEECC382A847409003370A2 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +94,8 @@
 		0AEECC432A84740A003370A2 /* JongGangTime */ = {
 			isa = PBXGroup;
 			children = (
+				0AD19A642A88D18D00949315 /* TableViewCells */,
+				0AD19A612A88CF6100949315 /* APICallers */,
 				0AEECC5A2A8476B9003370A2 /* CustomViews */,
 				0AEECC592A8476A5003370A2 /* ExtensionAndProtocols */,
 				0AEECC582A847698003370A2 /* ViewControllers */,
@@ -92,7 +114,7 @@
 			children = (
 				0AEECC5B2A847775003370A2 /* TapBarController.swift */,
 				0AEECC632A85BB24003370A2 /* CalendarTabViewController.swift */,
-				0AEECC652A85BB38003370A2 /* CourseTabViewController.swift */,
+				0AEECC652A85BB38003370A2 /* CourseTableViewController.swift */,
 				0AEECC612A85BAFA003370A2 /* FriendsTabViewController.swift */,
 				0AEECC672A85BB48003370A2 /* MyPageTabViewController.swift */,
 				0AEECC6B2A85E100003370A2 /* LoginViewController.swift */,
@@ -191,9 +213,11 @@
 			files = (
 				0AEECC6C2A85E100003370A2 /* LoginViewController.swift in Sources */,
 				0AEECC6E2A85E880003370A2 /* PaddingtextField.swift in Sources */,
+				0AD19A632A88CF9800949315 /* APICaller.swift in Sources */,
 				0AEECC622A85BAFA003370A2 /* FriendsTabViewController.swift in Sources */,
-				0AEECC662A85BB38003370A2 /* CourseTabViewController.swift in Sources */,
+				0AEECC662A85BB38003370A2 /* CourseTableViewController.swift in Sources */,
 				0AEECC452A84740A003370A2 /* AppDelegate.swift in Sources */,
+				0AD19A662A88D1B200949315 /* CourseTableViewCell.swift in Sources */,
 				0AEECC5C2A847775003370A2 /* TapBarController.swift in Sources */,
 				0AEECC702A85E99D003370A2 /* registerViewController.swift in Sources */,
 				0AEECC682A85BB48003370A2 /* MyPageTabViewController.swift in Sources */,
