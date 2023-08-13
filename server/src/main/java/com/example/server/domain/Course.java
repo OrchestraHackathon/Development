@@ -33,4 +33,7 @@ public class Course extends BaseTimeEntity {
     // 연관 관계 Mapping
     @OneToMany(mappedBy = "course")
     private List<CourseDetail> courseDetails = new ArrayList<>();
+
+    @OneToMany(mappedBy = "course")
+    private List<Category> categories = new ArrayList<>();
 }
