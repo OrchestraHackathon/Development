@@ -33,4 +33,7 @@ public class Users extends BaseTimeEntity {
     // 연관 관계 Mapping
     @OneToMany(mappedBy = "users")
     private List<Friend> friends = new ArrayList<>();
+
+    @OneToMany(mappedBy = "users")
+    private List<TimeTable> timeTables = new ArrayList<>();
 }
