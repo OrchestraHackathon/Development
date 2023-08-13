@@ -12,12 +12,12 @@ class registerViewController: UIViewController {
     
     @IBOutlet weak var registerScrollView: UIScrollView!
     
-    
-    @IBOutlet weak var profileImageButton: UIButton!
-    
+        
     @IBOutlet weak var registerEmailTextField: PaddingtextField!
     
     @IBOutlet weak var registerPasswordTextField: PaddingtextField!
+    
+    @IBOutlet weak var confirmPasswordTextField: PaddingtextField!
     
     @IBOutlet weak var registerNameTextField: PaddingtextField!
     
@@ -41,6 +41,7 @@ class registerViewController: UIViewController {
         registerPasswordTextField.layer.borderColor = UIColor.systemGray5.cgColor
         registerNameTextField.layer.borderColor = UIColor.systemGray5.cgColor
         registerNicknameTextField.layer.borderColor = UIColor.systemGray5.cgColor
+        confirmPasswordTextField.layer.borderColor = UIColor.systemGray5.cgColor
     }
     
     
@@ -71,7 +72,8 @@ class registerViewController: UIViewController {
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
         // Move the view only when the emailTextField or the passwordTextField are being edited
-        if registerEmailTextField.isEditing || registerPasswordTextField.isEditing || registerNameTextField.isEditing || registerNicknameTextField.isEditing {
+        if registerEmailTextField.isEditing || registerPasswordTextField.isEditing || registerNameTextField.isEditing || registerNicknameTextField.isEditing ||
+            confirmPasswordTextField.isEditing{
             moveViewWithKeyboard(notification: notification, viewBottomConstraint: self.registerViewButtomConstraint, keyboardWillShow: true)
         }
         
