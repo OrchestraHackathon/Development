@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,4 +35,8 @@ public class CourseDetail extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Status status;
+
+    // 연관 관계 Mapping
+    @OneToMany(mappedBy = "courseDetail")
+    private List<TimeTableCourseDetail> timeTableCourseDetails = new ArrayList<>();
 }
