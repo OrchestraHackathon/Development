@@ -9,4 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray_1">#D8D8D8</color>
     <color name="gray_2">#A0A0A0</color>
+
+    <color name="category_study">#FFD1DC</color>
+    <color name="category_certificate">#5CB4F3</color>
+    <color name="category_routine">#FFCB7D</color>
+    <color name="category_exercies">#8DF35C</color>
+    <color name="category_parttime">#FFA2A2</color>
+    <color name="category_hobby">#D6A2FF    </color>
 </resources>
