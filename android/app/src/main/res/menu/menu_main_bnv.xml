@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/timeTable_menu"
+        android:icon="@drawable/icon_timetable"
+        android:title=""
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/lecture_menu"
+        android:icon="@drawable/icon_lecture"
+        android:title=""
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/friend_menu"
+        android:icon="@drawable/icon_friend"
+        android:title=""
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/my_menu"
+        android:icon="@drawable/icon_my"
+        android:title=""
+        app:showAsAction="always"/>
+
+</menu>
