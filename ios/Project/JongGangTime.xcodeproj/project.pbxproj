@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0A1EA7652A87659C0044CE89 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1EA7642A87659C0044CE89 /* ViewControllerExtension.swift */; };
+		0A6115A32A89E6540065CFEC /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6115A22A89E6540065CFEC /* PaddingLabel.swift */; };
+		0A6115A62A89F0500065CFEC /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6115A52A89F0500065CFEC /* Course.swift */; };
+		0A6115A82A89F87F0065CFEC /* CourseRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6115A72A89F87F0065CFEC /* CourseRegisterViewController.swift */; };
+		0A9130E12A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9130E02A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift */; };
 		0AD19A632A88CF9800949315 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD19A622A88CF9800949315 /* APICaller.swift */; };
 		0AD19A662A88D1B200949315 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */; };
 		0AEECC452A84740A003370A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC442A84740A003370A2 /* AppDelegate.swift */; };
@@ -28,6 +32,10 @@
 
 /* Begin PBXFileReference section */
 		0A1EA7642A87659C0044CE89 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		0A6115A22A89E6540065CFEC /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		0A6115A52A89F0500065CFEC /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		0A6115A72A89F87F0065CFEC /* CourseRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRegisterViewController.swift; sourceTree = "<group>"; };
+		0A9130E02A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AD19A622A88CF9800949315 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		0AEECC412A84740A003370A2 /* JongGangTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JongGangTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A6115A42A89F02D0065CFEC /* DataClasses */ = {
+			isa = PBXGroup;
+			children = (
+				0A6115A52A89F0500065CFEC /* Course.swift */,
+			);
+			path = DataClasses;
+			sourceTree = "<group>";
+		};
 		0AD19A612A88CF6100949315 /* APICallers */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */,
+				0A9130E02A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -94,6 +111,7 @@
 		0AEECC432A84740A003370A2 /* JongGangTime */ = {
 			isa = PBXGroup;
 			children = (
+				0A6115A42A89F02D0065CFEC /* DataClasses */,
 				0AD19A642A88D18D00949315 /* TableViewCells */,
 				0AD19A612A88CF6100949315 /* APICallers */,
 				0AEECC5A2A8476B9003370A2 /* CustomViews */,
@@ -119,6 +137,7 @@
 				0AEECC672A85BB48003370A2 /* MyPageTabViewController.swift */,
 				0AEECC6B2A85E100003370A2 /* LoginViewController.swift */,
 				0AEECC6F2A85E99D003370A2 /* registerViewController.swift */,
+				0A6115A72A89F87F0065CFEC /* CourseRegisterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -136,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				0AEECC6D2A85E880003370A2 /* PaddingtextField.swift */,
+				0A6115A22A89E6540065CFEC /* PaddingLabel.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -215,14 +235,18 @@
 				0AEECC6E2A85E880003370A2 /* PaddingtextField.swift in Sources */,
 				0AD19A632A88CF9800949315 /* APICaller.swift in Sources */,
 				0AEECC622A85BAFA003370A2 /* FriendsTabViewController.swift in Sources */,
+				0A9130E12A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift in Sources */,
 				0AEECC662A85BB38003370A2 /* CourseTableViewController.swift in Sources */,
 				0AEECC452A84740A003370A2 /* AppDelegate.swift in Sources */,
+				0A6115A32A89E6540065CFEC /* PaddingLabel.swift in Sources */,
 				0AD19A662A88D1B200949315 /* CourseTableViewCell.swift in Sources */,
+				0A6115A62A89F0500065CFEC /* Course.swift in Sources */,
 				0AEECC5C2A847775003370A2 /* TapBarController.swift in Sources */,
 				0AEECC702A85E99D003370A2 /* registerViewController.swift in Sources */,
 				0AEECC682A85BB48003370A2 /* MyPageTabViewController.swift in Sources */,
 				0A1EA7652A87659C0044CE89 /* ViewControllerExtension.swift in Sources */,
 				0AEECC642A85BB24003370A2 /* CalendarTabViewController.swift in Sources */,
+				0A6115A82A89F87F0065CFEC /* CourseRegisterViewController.swift in Sources */,
 				0AEECC472A84740A003370A2 /* SceneDelegate.swift in Sources */,
 				0AEECC6A2A85BF4E003370A2 /* UIImageExtension.swift in Sources */,
 			);

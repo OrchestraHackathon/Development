@@ -7,7 +7,7 @@
 
 import UIKit
 
-class registerViewController: UIViewController {
+class registerViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var registerScrollView: UIScrollView!
@@ -25,14 +25,23 @@ class registerViewController: UIViewController {
     
     @IBOutlet weak var registerViewButtomConstraint: NSLayoutConstraint!
     
+    private var initialRegisterViewButtomConstraint: CGFloat!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialRegisterViewButtomConstraint = registerViewButtomConstraint.constant
         
         setKeyboardInteraction()
         setViewUI()
 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setViewUI() {
@@ -51,6 +60,12 @@ class registerViewController: UIViewController {
     }
     
     @IBAction func doneButtonDidTap(_ sender: Any) {
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let textFieldFrame = textField.convert(textField.bounds, to: registerScrollView)
+        let offset = CGPoint(x: 0, y: textFieldFrame.origin.y - (view.bounds.height / 2) + (textFieldFrame.height / 2) + 100)
+        registerScrollView.setContentOffset(offset, animated: true)
     }
     
     func setKeyboardInteraction() {
@@ -100,13 +115,12 @@ class registerViewController: UIViewController {
         
         // Change the constant
         if keyboardWillShow {
-            
-            let newOffset = CGPoint(x: registerScrollView.contentOffset.x, y: registerScrollView.contentOffset.y + 150)
-            registerScrollView.setContentOffset(newOffset, animated: true)
 
-            viewBottomConstraint.constant = keyboardHeight + (safeAreaExists ? 0 : viewBottomConstraint.constant)
+//            viewBottomConstraint.constant = keyboardHeight + (safeAreaExists ? 0 : viewBottomConstraint.constant)
+            viewBottomConstraint.constant = initialRegisterViewButtomConstraint + keyboardHeight
         }else {
-            viewBottomConstraint.constant = viewBottomConstraint.constant - (safeAreaExists ? keyboardHeight : keyboardHeight)
+//            viewBottomConstraint.constant = viewBottomConstraint.constant - (safeAreaExists ? keyboardHeight : keyboardHeight)
+            viewBottomConstraint.constant = initialRegisterViewButtomConstraint
         }
         
         // Animate the view the same way the keyboard animates
