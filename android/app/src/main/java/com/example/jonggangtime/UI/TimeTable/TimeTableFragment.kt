@@ -1,8 +1,11 @@
 package com.example.jonggangtime.UI.TimeTable
 
+import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.jonggangtime.UI.Friends.FriendsRVAdapter
+import com.example.jonggangtime.UI.Friends.Retrofit.Friend
 import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.databinding.FragmentTimeTableBinding
-import com.islandparadise14.mintable.MinTimeTableView
 import com.islandparadise14.mintable.model.ScheduleDay
 import com.islandparadise14.mintable.model.ScheduleEntity
 
@@ -11,8 +14,41 @@ class TimeTableFragment : BaseFragment<FragmentTimeTableBinding>(FragmentTimeTab
     private val day = arrayOf("Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat")
     private val scheduleList: ArrayList<ScheduleEntity> = ArrayList()
 
+    private lateinit var friendsRVAdapter: FriendsRVAdapter
+    private var friendsArray = java.util.ArrayList<Friend>()
+
     override fun initAfterBinding() {
+        initAdapter()
         initTimeTable()
+        initFriends()
+    }
+
+    private fun initAdapter() {
+        friendsRVAdapter = FriendsRVAdapter(friendsArray)
+        binding.timeTableFriendsRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        friendsRVAdapter.setOnItemClickListener(object : FriendsRVAdapter.OnItemClickListener{
+            override fun onItemClick(data: Friend) {
+                //TODO: 클릭했을 때 무슨 행동을 할지
+                Log.d("timetable", data.friendName + "클릭됨")
+            }
+        })
+        binding.timeTableFriendsRv.adapter = friendsRVAdapter
+
+    }
+
+    private fun initFriends() {
+        // TEST용 더미 데이터
+        friendsArray.apply {
+            add(Friend(1, "이준영"))
+            add(Friend(2, "박지원"))
+            add(Friend(3, "이주언"))
+            add(Friend(4, "남보우"))
+            add(Friend(5, "정재연"))
+            add(Friend(6, "홍길동1"))
+            add(Friend(7, "홍길동2"))
+            add(Friend(8, "홍길동3"))
+            add(Friend(9, "홍길동4"))
+        }
     }
 
     private fun initTimeTable() {
