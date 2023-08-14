@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -19,11 +19,20 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
+    private var initialViewButtomConstraint: CGFloat!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialViewButtomConstraint = viewButtomConstraint.constant
         
         setKeyboardInteraction()
         setViewUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func setViewUI() {
@@ -56,6 +65,12 @@ class LoginViewController: UIViewController {
     @IBAction func registerButtonDidTap(_ sender: Any) {
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+           let textFieldFrame = textField.convert(textField.bounds, to: scrollView)
+           let offset = CGPoint(x: 0, y: textFieldFrame.origin.y - (view.bounds.height / 2) + (textFieldFrame.height / 2) + 100)
+           scrollView.setContentOffset(offset, animated: true)
+       }
+    
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
         // Move the view only when the emailTextField or the passwordTextField are being edited
@@ -67,7 +82,6 @@ class LoginViewController: UIViewController {
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
         moveViewWithKeyboard(notification: notification, viewBottomConstraint: self.viewButtomConstraint, keyboardWillShow: false)
-        
     }
     
     
@@ -86,13 +100,12 @@ class LoginViewController: UIViewController {
         
         // Change the constant
         if keyboardWillShow {
-            
-            let newOffset = CGPoint(x: scrollView.contentOffset.x, y: scrollView.contentOffset.y + 150)
-            scrollView.setContentOffset(newOffset, animated: true)
 
-            viewBottomConstraint.constant = keyboardHeight + (safeAreaExists ? 0 : viewBottomConstraint.constant)
+//            viewBottomConstraint.constant = keyboardHeight + (safeAreaExists ? 0 : viewBottomConstraint.constant)
+            viewBottomConstraint.constant = initialViewButtomConstraint + keyboardHeight
         }else {
-            viewBottomConstraint.constant = viewBottomConstraint.constant - (safeAreaExists ? keyboardHeight : keyboardHeight)
+//            viewBottomConstraint.constant = viewBottomConstraint.constant - (safeAreaExists ? keyboardHeight : keyboardHeight)
+            viewBottomConstraint.constant = initialViewButtomConstraint
         }
         
         // Animate the view the same way the keyboard animates

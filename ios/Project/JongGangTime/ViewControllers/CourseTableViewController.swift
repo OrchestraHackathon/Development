@@ -8,8 +8,13 @@
 import UIKit
 
 class CourseTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+   
+    
+    @IBOutlet weak var registerCourseButton: UIButton!
     
     private let apiCaller = APICaller()
+    
+    
     
     @IBOutlet weak var searchCourseTextField: PaddingtextField!
     
@@ -41,10 +46,26 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLayoutSubviews()
     }
     
-    
     private func setViewUI() {
+        self.registerCourseButton.layer.cornerRadius = self.registerCourseButton.layer.bounds.height / 2
         self.searchCourseTextField.layer.cornerRadius = searchCourseTextField.layer.bounds.height / 2
     }
+    
+    
+    
+    
+    @IBAction func registerCourseButtonDidTap(_ sender: Any) {
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -52,20 +73,30 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = courseTableView.dequeueReusableCell(withIdentifier: "courseThumbnailCell", for: indexPath) as! CourseTableViewCell
+//        cell.courseTypeLabel.layer.cornerRadius = cell.courseTypeLabel.layer.bounds.height / 2
+//        cell.courseTypeLabel.clipsToBounds = true
+//        cell.courseTypeLabel.layer.masksToBounds = true
+        
         cell.courseTitleLabel?.text = data[indexPath.row].courseName
         cell.courseProfessorLabel?.text = data[indexPath.row].professor
         cell.courseExplainationLabel?.text = data[indexPath.row].courseDetails
         cell.courseRegisterPeopleLabel?.text = "수강: \(data[indexPath.row].registerPeople)명"
         cell.courseTypeLabel?.text = data[indexPath.row].categoryName
         
-        cell.courseTypeLabel.layer.cornerRadius = cell.courseTypeLabel.layer.bounds.height / 2
-        cell.courseTypeLabel.clipsToBounds = true
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
+    
+    
+    
+    
+    
+    
     
     private func createSpinnerFooter() -> UIView {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
