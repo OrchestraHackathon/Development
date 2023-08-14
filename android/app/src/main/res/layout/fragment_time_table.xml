@@ -23,7 +23,7 @@
             android:layout_marginTop="25dp"
             app:widthPadding="15"/>
 
-        <!-- MaterialCardView 추가 -->
+        <!-- 내 친구 시간표 -->
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/time_table_friends_layout"
@@ -64,7 +64,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     app:layout_constraintTop_toBottomOf="@id/time_table_friends_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:overScrollMode="never"
                     android:nestedScrollingEnabled="false"
                     />
