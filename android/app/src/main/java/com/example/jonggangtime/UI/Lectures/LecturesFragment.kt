@@ -10,7 +10,7 @@ import com.example.jonggangtime.databinding.FragmentLecturesBinding
 class LecturesFragment : BaseFragment<FragmentLecturesBinding>(FragmentLecturesBinding::inflate) {
 
     override fun initAfterBinding() {
-        TODO("Not yet implemented")
+
     }
 
     override fun onCreateView(
