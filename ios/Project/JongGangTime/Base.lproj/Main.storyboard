@@ -62,27 +62,81 @@
                                 <rect key="frame" x="0.0" y="120" width="393" height="682"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="courseThumbnailCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="courseThumbnailCell" id="gxa-CL-iJv" customClass="CourseTableViewCell" customModule="JongGangTime" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="courseThumbnailCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="courseThumbnailCell" rowHeight="80" id="gxa-CL-iJv" customClass="CourseTableViewCell" customModule="JongGangTime" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gxa-CL-iJv" id="bhG-zV-4wl">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3M-NS-BJP">
-                                                    <rect key="frame" x="30" y="11.333333333333336" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알바" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3M-NS-BJP">
+                                                    <rect key="frame" x="30" y="10" width="24.333333333333329" height="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정재연" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UuN-Mc-XD9">
+                                                    <rect key="frame" x="30" y="32" width="34" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아르바이트 시간 관리를 위한 과목 입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcb-0f-s3s">
+                                                    <rect key="frame" x="30" y="53" width="213" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수강: 104명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnJ-54-nBA">
+                                                    <rect key="frame" x="312.33333333333331" y="16" width="70.666666666666686" height="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아르바이트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuG-sg-1hq" customClass="PaddingLabel" customModule="JongGangTime" customModuleProvider="target">
+                                                    <rect key="frame" x="220.00000000000003" y="11.666666666666666" width="72.333333333333343" height="25.666666666666671"/>
+                                                    <color key="backgroundColor" red="0.56479970674508295" green="0.7803921568627451" blue="0.14735374275389687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="d3M-NS-BJP" firstAttribute="centerY" secondItem="bhG-zV-4wl" secondAttribute="centerY" id="pQS-QM-dny"/>
+                                                <constraint firstItem="wcb-0f-s3s" firstAttribute="top" secondItem="UuN-Mc-XD9" secondAttribute="bottom" constant="5" id="4S1-1F-c6g"/>
+                                                <constraint firstItem="TnJ-54-nBA" firstAttribute="leading" secondItem="WuG-sg-1hq" secondAttribute="trailing" constant="20" id="9Ss-gg-RzU"/>
+                                                <constraint firstAttribute="trailing" secondItem="TnJ-54-nBA" secondAttribute="trailing" constant="10" id="IgI-Vo-Ryz"/>
+                                                <constraint firstItem="wcb-0f-s3s" firstAttribute="leading" secondItem="d3M-NS-BJP" secondAttribute="leading" id="KqH-Pf-C2d"/>
+                                                <constraint firstItem="UuN-Mc-XD9" firstAttribute="top" secondItem="d3M-NS-BJP" secondAttribute="bottom" constant="5" id="ToA-B5-dFa"/>
+                                                <constraint firstItem="WuG-sg-1hq" firstAttribute="centerY" secondItem="TnJ-54-nBA" secondAttribute="centerY" id="Wys-gS-Aso"/>
+                                                <constraint firstItem="d3M-NS-BJP" firstAttribute="top" secondItem="bhG-zV-4wl" secondAttribute="top" constant="10" id="fW0-hv-RN1"/>
+                                                <constraint firstItem="wcb-0f-s3s" firstAttribute="top" secondItem="TnJ-54-nBA" secondAttribute="bottom" constant="20" id="kG2-9l-t7l"/>
+                                                <constraint firstItem="UuN-Mc-XD9" firstAttribute="leading" secondItem="d3M-NS-BJP" secondAttribute="leading" id="mLe-37-siw"/>
                                                 <constraint firstItem="d3M-NS-BJP" firstAttribute="leading" secondItem="bhG-zV-4wl" secondAttribute="leadingMargin" constant="10" id="wsH-eD-nzT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="courseExplainationLabel" destination="wcb-0f-s3s" id="jE0-fQ-BvR"/>
+                                            <outlet property="courseProfessorLabel" destination="UuN-Mc-XD9" id="IbN-m5-Bt9"/>
+                                            <outlet property="courseRegisterPeopleLabel" destination="TnJ-54-nBA" id="wyB-sq-ckI"/>
                                             <outlet property="courseTitleLabel" destination="d3M-NS-BJP" id="XVx-Ch-ET6"/>
+                                            <outlet property="courseTypeLabel" destination="WuG-sg-1hq" id="SB5-uu-Ppm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -115,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ERB-hL-otj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="949" y="-621"/>
+            <point key="canvasLocation" x="948.85496183206101" y="-621.12676056338034"/>
         </scene>
         <!--친구-->
         <scene sceneID="fzC-Ty-YGc">
@@ -748,6 +802,11 @@
             <point key="canvasLocation" x="-943" y="-237"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="WuG-sg-1hq">
+            <size key="intrinsicContentSize" width="72.333333333333343" height="25.666666666666664"/>
+        </designable>
+    </designables>
     <resources>
         <image name="arrow.up.and.down.text.horizontal" catalog="system" width="128" height="87"/>
         <image name="book.closed" catalog="system" width="115" height="128"/>
@@ -773,6 +832,9 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

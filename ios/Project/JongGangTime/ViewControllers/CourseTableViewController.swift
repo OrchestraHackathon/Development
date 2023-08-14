@@ -15,7 +15,7 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var courseTableView: UITableView!
     
-    private var data = [String]()
+    private var data = [Course]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +52,19 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = courseTableView.dequeueReusableCell(withIdentifier: "courseThumbnailCell", for: indexPath) as! CourseTableViewCell
-        cell.courseTitleLabel?.text = data[indexPath.row]
+        cell.courseTitleLabel?.text = data[indexPath.row].courseName
+        cell.courseProfessorLabel?.text = data[indexPath.row].professor
+        cell.courseExplainationLabel?.text = data[indexPath.row].courseDetails
+        cell.courseRegisterPeopleLabel?.text = "수강: \(data[indexPath.row].registerPeople)명"
+        cell.courseTypeLabel?.text = data[indexPath.row].categoryName
+        
+        cell.courseTypeLabel.layer.cornerRadius = cell.courseTypeLabel.layer.bounds.height / 2
+        cell.courseTypeLabel.clipsToBounds = true
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
     
     private func createSpinnerFooter() -> UIView {

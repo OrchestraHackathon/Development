@@ -11,6 +11,14 @@ class CourseTableViewCell: UITableViewCell {
     
     @IBOutlet weak var courseTitleLabel: UILabel!
     
+    @IBOutlet weak var courseProfessorLabel: UILabel!
+    
+    @IBOutlet weak var courseExplainationLabel: UILabel!
+    
+    @IBOutlet weak var courseTypeLabel: PaddingLabel!
+    
+    @IBOutlet weak var courseRegisterPeopleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
