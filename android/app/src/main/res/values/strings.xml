@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">jonggangtime</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="lecture_regist">과목 등록</string>
+    <string name="lecture_name">과목 이름</string>
+    <string name="lecture_category">카테고리</string>
+    <string name="lecture_mini_content">한 줄 설명</string>
+    <string name="lecture_content">과목 상세 설명</string>
+
+    <string name="regist">등록하기</string>
+    
+    <string name="input_my_timetable">내 시간표에 추가하기</string>
+    <string name="already_in_my_timetable">이미 추가한 과목입니다</string>
+    
+    <string name="ask_input_my_timetable">내 시간표에 바로 추가하시겠습니까?</string>
+    <string name="setting_my_timetable">과목 시간 설정</string>
+
+    <string name="regist_lecture_cancel">등록취소</string>
+    <string name="finish">완료</string>
 </resources>

@@ -19,7 +19,12 @@ class ListFriendsFragment : BaseFragment<FragmentListFriendsBinding>(FragmentLis
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        initNavigation()
     }
 
+    private fun initNavigation() {
+        childFragmentManager.beginTransaction()
+            .replace(R.id.friend_list_fl, AlreadyListFiendsFragment())
+            .commitAllowingStateLoss()
+    }
 }
