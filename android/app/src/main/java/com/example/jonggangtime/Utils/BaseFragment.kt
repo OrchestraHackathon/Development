@@ -18,9 +18,13 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initAfterBinding()
+    }
+
     override fun onStart() {
         super.onStart()
-        initAfterBinding()
     }
 
     override fun onDestroyView() {

@@ -53,6 +53,7 @@
         app:cardCornerRadius="20dp">
 
         <TextView
+            android:id="@+id/completed_lecture_category_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="아르바이트"
