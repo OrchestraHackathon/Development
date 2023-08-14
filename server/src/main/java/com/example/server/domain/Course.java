@@ -36,4 +36,8 @@ public class Course extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "course")
     private List<Category> categories = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "users_id")
+    private Users users;
 }
