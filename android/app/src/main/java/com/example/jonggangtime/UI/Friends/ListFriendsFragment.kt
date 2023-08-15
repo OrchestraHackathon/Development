@@ -21,6 +21,7 @@ class ListFriendsFragment : BaseFragment<FragmentListFriendsBinding>(FragmentLis
         binding.friendsSearchEt.setOnFocusChangeListener { v, hasFocus ->
             if(hasFocus){
                 childFragmentManager.beginTransaction()
+                    .addToBackStack("friend")
                     .replace(R.id.friend_list_fl, SeekListFriendsFragment())
                     .commitAllowingStateLoss()
             }

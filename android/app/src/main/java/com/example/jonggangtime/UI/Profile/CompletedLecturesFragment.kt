@@ -34,6 +34,8 @@ class CompletedLecturesFragment : BaseFragment<FragmentCompletedLecturesBinding>
             ) {
                 if (holder.binding.completedLectureScoreTv.text == "성적 평가"){
                     // 성적평가 다이얼로그
+                    val dialogScoreEvaluation = DialogScoreEvaluation()
+                    dialogScoreEvaluation.show(parentFragmentManager, "CustomDialog")
                 } else{
                     val intent = Intent(activity, CertificateActivity::class.java)
                     startActivity(intent)
