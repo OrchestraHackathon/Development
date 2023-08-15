@@ -1,3 +1,4 @@
+/*
 package com.example.jonggangtime.UI.Friends
 
 import android.view.LayoutInflater
@@ -71,4 +72,4 @@ class FriendAdapter(private val itemList: ArrayList<String>, val option: Int): R
             }
         }
     }
-}
+}*/

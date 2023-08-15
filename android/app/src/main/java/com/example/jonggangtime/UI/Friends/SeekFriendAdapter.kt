@@ -1,3 +1,4 @@
+/*
 package com.example.jonggangtime.UI.Friends
 
 import android.view.LayoutInflater
@@ -33,4 +34,4 @@ class SeekFriendAdapter (private val itemList: ArrayList<SeekFriendData>): Recyc
 //            TODO 이전 화면에 알려서 서버에 친구 추가 요청을 하기!
         }
     }
-}
+}*/

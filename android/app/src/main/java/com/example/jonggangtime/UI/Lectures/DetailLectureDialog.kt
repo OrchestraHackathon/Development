@@ -16,7 +16,7 @@ class DetailLectureDialog: BottomSheetDialogFragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DialogBottomSheetDetailLectureBinding.inflate(inflater, container, false)
         return binding.root

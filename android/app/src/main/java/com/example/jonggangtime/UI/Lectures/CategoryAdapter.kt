@@ -14,8 +14,8 @@ import com.example.jonggangtime.databinding.ItemCategoryBinding
 class CategoryAdapter(private val itemList: ArrayList<LectureCategoryData>, private val option: Int): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
 //    opton -> 0 - DetailLectureFragment, 1 - ContentRegistLectureFragment
-    val categoryState: ArrayList<Boolean> = arrayListOf(false, false, false, false, false, false)
-    val categoryColor = arrayListOf(R.color.category_study, R.color.category_certificate, R.color.category_routine, R.color.category_exercies, R.color.category_parttime, R.color.category_hobby)
+    private val categoryState: ArrayList<Boolean> = arrayListOf(false, false, false, false, false, false)
+    private val categoryColor = arrayListOf(R.color.category_study, R.color.category_certificate, R.color.category_routine, R.color.category_exercies, R.color.category_parttime, R.color.category_hobby)
 
 
     private var listener: OnItemClickListener? = null

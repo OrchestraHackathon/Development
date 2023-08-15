@@ -1,3 +1,4 @@
+/*
 package com.example.jonggangtime.UI.Friends
 
 import android.content.Context
@@ -42,4 +43,4 @@ class ListFriendsFragment : BaseFragment<FragmentListFriendsBinding>(FragmentLis
             .replace(R.id.friend_list_fl, AlreadyListFiendsFragment())
             .commitAllowingStateLoss()
     }
-}
+}*/

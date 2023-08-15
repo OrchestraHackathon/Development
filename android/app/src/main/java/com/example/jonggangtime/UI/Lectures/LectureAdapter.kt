@@ -20,7 +20,7 @@ class LectureAdapter(private val itemList: ArrayList<LectureData>): RecyclerView
 
     inner class ViewHolder(val binding: ItemLectureBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(item: LectureData) {
-            binding.lectureNameTv.text = item.lectureName
+            binding.lectureTitleTv.text = item.lectureName
             binding.lectureProfessorTv.text = item.professorName
             when(item.category){
 //                TODO 정해진 카테고리의 숫자에 따라서 결정

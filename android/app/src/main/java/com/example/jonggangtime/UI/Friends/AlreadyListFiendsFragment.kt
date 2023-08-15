@@ -1,3 +1,4 @@
+/*
 package com.example.jonggangtime.UI.Friends
 
 import android.os.Bundle
@@ -56,4 +57,4 @@ class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>
         }
     }
 
-}
+}*/

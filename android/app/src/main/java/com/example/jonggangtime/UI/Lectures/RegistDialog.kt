@@ -25,7 +25,7 @@ class RegistDialog: DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DialogRegistBinding.inflate(inflater, container, false)
         return binding.root

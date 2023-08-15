@@ -1,8 +1,6 @@
 package com.example.jonggangtime.UI.Signin
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import com.example.jonggangtime.Data.SigninInfo
 import com.example.jonggangtime.Network.ResponseSignin
