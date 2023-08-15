@@ -1,5 +1,6 @@
-package com.example.server.domain;
+package com.example.server.domain.users;
 
+import com.example.server.domain.*;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
