@@ -15,7 +15,7 @@ class CompletedLecturesRVAdapter(private val completedLectureList : ArrayList<Co
 
     // 클릭 리스너 구현 위한 인터페이스
     interface OnItemClickListener {
-        fun onItemClick(data: CompletedLecture)
+        fun onItemClick(data: CompletedLecture, holder: ViewHolder)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -30,8 +30,8 @@ class CompletedLecturesRVAdapter(private val completedLectureList : ArrayList<Co
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(completedLectureList[position])
-        holder.itemView.setOnClickListener {
-            mItemClickListener.onItemClick(completedLectureList[position])
+        holder.binding.completedLectureScoreCv.setOnClickListener {
+            mItemClickListener.onItemClick(completedLectureList[position], holder)
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.jonggangtime.UI.Profile
 
+import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jonggangtime.UI.Profile.Retrofit.CompletedLecture
 import com.example.jonggangtime.Utils.BaseFragment
@@ -27,9 +28,18 @@ class CompletedLecturesFragment : BaseFragment<FragmentCompletedLecturesBinding>
         completedLecturesAdapter = CompletedLecturesRVAdapter(completedLectureArray)
         binding.completedLecturesRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         completedLecturesAdapter.setOnItemClickListener(object : CompletedLecturesRVAdapter.OnItemClickListener{
-            override fun onItemClick(data: CompletedLecture) {
-                //TODO: 클릭했을 때 무슨 행동을 할지
+            override fun onItemClick(
+                data: CompletedLecture,
+                holder: CompletedLecturesRVAdapter.ViewHolder
+            ) {
+                if (holder.binding.completedLectureScoreTv.text == "성적 평가"){
+                    // 성적평가 다이얼로그
+                } else{
+                    val intent = Intent(activity, CertificateActivity::class.java)
+                    startActivity(intent)
+                }
             }
+
         })
         binding.completedLecturesRv.adapter = completedLecturesAdapter
 
