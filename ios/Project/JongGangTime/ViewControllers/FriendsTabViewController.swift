@@ -10,8 +10,6 @@ import UIKit
 class FriendsTabViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
     
-    
-    
     @IBOutlet weak var backToRequestViewButton: UIButton!
     
     @IBOutlet weak var findByNicknameTextField: PaddingtextField!
@@ -30,13 +28,43 @@ class FriendsTabViewController: UIViewController,UITableViewDelegate, UITableVie
         
         friendRequests = [sendedRequests, receivedRequests]
         setViewUI()
+        
 
     }
     
     func setViewUI() {
+        
+        setupTextField()
+        
         friendRequestTableView.layer.borderWidth = 1
         friendRequestTableView.layer.cornerRadius = 10
         friendRequestTableView.layer.borderColor = UIColor.systemGray5.cgColor
+        
+        findByNicknameTextField.layer.cornerRadius = findByNicknameTextField.layer.bounds.height / 2
+    }
+    
+    private func setupTextField() {
+        findByNicknameTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .touchDown)
+    }
+    
+    @objc func textFieldDidBeginEditing(_ textField: PaddingtextField) {
+        UIView.animate(withDuration: 0.2) {
+            self.backToRequestViewButton.isHidden = false
+        }
+    }
+    
+    
+    
+    @IBAction func backToRequestViewButtonDidTap(_ sender: Any) {
+        UIView.animate(withDuration: 0.2) {
+            self.backToRequestViewButton.isHidden = true
+        }
+    }
+
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
