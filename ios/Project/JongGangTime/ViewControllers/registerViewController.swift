@@ -12,7 +12,6 @@ class registerViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var registerScrollView: UIScrollView!
     
-        
     @IBOutlet weak var registerEmailTextField: PaddingtextField!
     
     @IBOutlet weak var registerPasswordTextField: PaddingtextField!
@@ -23,19 +22,38 @@ class registerViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var registerNicknameTextField: PaddingtextField!
     
+    
+    var textFields: [UITextField] {
+        [registerEmailTextField, registerPasswordTextField, confirmPasswordTextField, registerNameTextField, registerNicknameTextField]
+    }
+    
+    
     @IBOutlet weak var registerViewButtomConstraint: NSLayoutConstraint!
     
     private var initialRegisterViewButtomConstraint: CGFloat!
     
     
+    var registerEmail: String = ""
+    var registerNickname: String = ""
+    var registerPassword: String = ""
+    var registerName: String = ""
+    
+    var registerUserInfo: ((RegisterUserInfo) -> Void)?
+    
+    var isValidConfirmPwd : Bool?
+    
+    
+    
+    
+    //MARK: - view Lifecycle function
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialRegisterViewButtomConstraint = registerViewButtomConstraint.constant
         
         setKeyboardInteraction()
         setViewUI()
-
+        setupTextField()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -44,15 +62,61 @@ class registerViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    
+    
+    //MARK: - initial setting function
+    
     private func setViewUI() {
-        
+            
         registerEmailTextField.layer.borderColor = UIColor.systemGray5.cgColor
         registerPasswordTextField.layer.borderColor = UIColor.systemGray5.cgColor
         registerNameTextField.layer.borderColor = UIColor.systemGray5.cgColor
         registerNicknameTextField.layer.borderColor = UIColor.systemGray5.cgColor
         confirmPasswordTextField.layer.borderColor = UIColor.systemGray5.cgColor
+        
     }
     
+    private func setupTextField() {
+        textFields.forEach{tf in
+            tf.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        }
+    }
+    
+    
+    
+    
+    //MARK: - mainer Function
+    @objc func textFieldEditingChanged(_ sender: UITextField) {
+        
+        let text = sender.text ?? ""
+        
+        switch sender{
+        case registerEmailTextField:
+//            self.isValidEmail = text.isValidEmail()
+            self.registerEmail = text
+            
+        case registerNicknameTextField:
+//            self.isValidNickname = text.count > 2
+            self.registerNickname = text
+            
+        case registerPasswordTextField:
+//            self.isValidPassword = text.isValidPassword()
+            self.registerPassword = text
+            
+        case confirmPasswordTextField:
+            self.isValidConfirmPwd = (self.registerPassword == text)
+            
+        case registerNameTextField:
+//            self.isValidName = text.count > 1
+            self.registerName = text
+            
+        default:
+            fatalError("Missing TextField...")
+        }
+    
+    }
+    
+    //MARK: - Button Action function
     
     
     @IBAction func dismissButtonDidTap(_ sender: Any) {
@@ -60,6 +124,14 @@ class registerViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func doneButtonDidTap(_ sender: Any) {
+        
+        let data = RegisterUserInfo(userEmail: self.registerEmail, userNickname: self.registerNickname, userPassword: self.registerPassword, userName: self.registerName)
+        
+        //print(data.userEmail)
+
+        postRegisterInfo(data: data)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -68,9 +140,59 @@ class registerViewController: UIViewController, UITextFieldDelegate {
         registerScrollView.setContentOffset(offset, animated: true)
     }
     
+    
+    //MARK: - API manegement function
+    
+    func postRegisterInfo(data: RegisterUserInfo) {
+        
+        guard let serverUrl = Bundle.main.object(forInfoDictionaryKey: "ServerUrl") as? String else {
+            print("Error: serverUrl not found in Info.plist")
+            return
+        }
+        
+        let postData = PostRegisterInfo(email: data.userEmail, password: data.userPassword, name: data.userName
+                                        , nickname: data.userNickname)
+        
+        guard let uploadData = try? JSONEncoder().encode(postData)
+        else {return}
+                
+        let url = URL(string: "\(serverUrl)/users/sign-up")
+        
+        var request = URLRequest(url: url!)
+        
+        request.httpMethod = "POST"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.uploadTask(with: request, from: uploadData) { (data, response, error) in
+            
+            if let e = error {
+                NSLog("An error has occured: \(e.localizedDescription)")
+                return
+            }
+            
+            print("userRegisterInfo Post success")
+            print("\n\(postData)")
+        }
+        
+        task.resume()
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    //MARK: - keyboard manegement function
+    
     func setKeyboardInteraction() {
         
         self.hideKeyboardWhenTappedAround()
+        
+        initialRegisterViewButtomConstraint = registerViewButtomConstraint.constant
+
         
         NotificationCenter.default.addObserver(
             self,
@@ -115,11 +237,11 @@ class registerViewController: UIViewController, UITextFieldDelegate {
         
         // Change the constant
         if keyboardWillShow {
-
-//            viewBottomConstraint.constant = keyboardHeight + (safeAreaExists ? 0 : viewBottomConstraint.constant)
+            
+            //            viewBottomConstraint.constant = keyboardHeight + (safeAreaExists ? 0 : viewBottomConstraint.constant)
             viewBottomConstraint.constant = initialRegisterViewButtomConstraint + keyboardHeight
         }else {
-//            viewBottomConstraint.constant = viewBottomConstraint.constant - (safeAreaExists ? keyboardHeight : keyboardHeight)
+            //            viewBottomConstraint.constant = viewBottomConstraint.constant - (safeAreaExists ? keyboardHeight : keyboardHeight)
             viewBottomConstraint.constant = initialRegisterViewButtomConstraint
         }
         
@@ -134,7 +256,7 @@ class registerViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-
     
-
+    
+    
 }
