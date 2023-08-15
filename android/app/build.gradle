@@ -51,7 +51,9 @@ dependencies {
     //recyclerview
     implementation "androidx.recyclerview:recyclerview:1.2.1"
 
-
-//    timeTable
+    //timeTable
     implementation 'com.github.islandparadise14:Mintable:1.5.1'
+    //material cardview
+    implementation 'com.google.android.material:material:1.4.0'
+
 }
