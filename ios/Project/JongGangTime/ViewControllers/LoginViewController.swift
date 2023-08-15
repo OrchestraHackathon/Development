@@ -21,9 +21,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private var initialViewButtomConstraint: CGFloat!
     
+    
+    var loginEmail : String = ""
+    var loginPassword: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialViewButtomConstraint = viewButtomConstraint.constant
         
         setKeyboardInteraction()
         setViewUI()
@@ -36,13 +39,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setViewUI() {
+        
         emailTextField.layer.borderColor = UIColor.systemGray5.cgColor
         passwordTextField.layer.borderColor = UIColor.systemGray5.cgColor
+        passwordTextField.isSecureTextEntry = true
+
     }
     
     func setKeyboardInteraction() {
         
         self.hideKeyboardWhenTappedAround()
+        
+        initialViewButtomConstraint = viewButtomConstraint.constant
+
         
         NotificationCenter.default.addObserver(
             self,
@@ -58,7 +67,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginButtonDidTap(_ sender: Any) {
-        performSegue(withIdentifier: "loginSuccessSG", sender: (Any).self)
+        postLoginInfo(email: loginEmail, password: loginPassword) {success in
+            if success {
+                self.performSegue(withIdentifier: "loginSuccessSG", sender: (Any).self)
+            }else {
+                DispatchQueue.main.async {
+                    self.shakeButton(self.loginButton, originalTitle: "로그인", newTitle: "로그인 정보를 다시확인해 주세요")
+                }
+            }
+        }
     }
     
     
@@ -69,7 +86,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
            let textFieldFrame = textField.convert(textField.bounds, to: scrollView)
            let offset = CGPoint(x: 0, y: textFieldFrame.origin.y - (view.bounds.height / 2) + (textFieldFrame.height / 2) + 100)
            scrollView.setContentOffset(offset, animated: true)
-       }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let text = textField.text ?? ""
+        
+        switch textField {
+            
+        case emailTextField:
+            self.loginEmail = text
+        case passwordTextField:
+            self.loginPassword = text
+            
+        default:
+            fatalError("Missing TextField")
+            
+        }
+    }
     
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
@@ -120,8 +153,105 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    func postLoginInfo(email: String, password: String, completion: @escaping (Bool) -> Void) {
+        guard let serverUrl = Bundle.main.object(forInfoDictionaryKey: "ServerUrl") as? String else {
+            print("Error: serverUrl not found in Info.plist")
+            completion(false)
+            return
+        }
+        
+        let postLoginInfo = PostLoginInfo(email: loginEmail, password: loginPassword)
+        
+        guard let uploadData = try? JSONEncoder().encode(postLoginInfo)
+        else {
+            completion(false)
+            return
+        }
+        
+        let url = URL(string: "\(serverUrl)/users/signin")
+        
+        var request = URLRequest(url: url!)
+        
+        request.httpMethod = "POST"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.uploadTask(with: request, from: uploadData) { (data, response, error) in
+            
+            if let e = error {
+                NSLog("An error has occured: \(e.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                print("Login failed")
+                completion(false)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                guard let data = data,
+                      let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                      let result = jsonObject["result"] as? [String: Any],
+                      let userId = result["userId"] as? Int,
+                      let accessToken = result["accessToken"] as? String,
+                      let refreshToken = result["refreshToken"] as? String else {
+                    print("Invalid data received from the server")
+                    completion(false)
+                    return
+                }
+                
+                UserDefaults.standard.set(userId, forKey: "userId")
+                UserDefaults.standard.set(accessToken, forKey: "accessToken")
+                UserDefaults.standard.set(refreshToken, forKey: "refreshToken")
+                
+                completion(true)  // Assuming you have a completion handler that returns a boolean.
+            }
+            
+        }
+        
+        task.resume()
+        return
+        
+    }
     
     
-    
-    
+    func shakeButton(_ button: UIButton, duration: TimeInterval = 0.5, originalTitle: String, newTitle: String) {
+
+        let animationKey = "shake"
+        button.layer.removeAnimation(forKey: animationKey)
+
+        let kAnimation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        kAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        kAnimation.duration = duration
+
+        var needOffset = button.frame.width * 0.15,
+        values = [CGFloat]()
+
+        let minOffset = needOffset * 0.1
+
+        repeat {
+
+            values.append(-needOffset)
+            values.append(needOffset)
+            needOffset *= 0.5
+        } while needOffset > minOffset
+
+        values.append(0)
+        kAnimation.values = values
+        button.layer.add(kAnimation, forKey: animationKey)
+        
+        // Change the title of the button
+        button.setTitle(newTitle, for: .normal)
+
+        // Change the title back to the original title after the duration of the shake animation
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration + 0.5) {
+            button.setTitle(originalTitle, for: .normal)
+        }
+    }
+
+  
 }
+

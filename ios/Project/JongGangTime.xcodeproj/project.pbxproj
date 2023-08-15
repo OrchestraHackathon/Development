@@ -18,6 +18,8 @@
 		0A9130E12A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9130E02A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift */; };
 		0AB0796D2A8B432E0066968B /* RegisterUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0796C2A8B432E0066968B /* RegisterUserInfo.swift */; };
 		0AB079702A8B44440066968B /* PostRegisterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0796F2A8B44440066968B /* PostRegisterInfo.swift */; };
+		0AB079722A8B4D210066968B /* LoginUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB079712A8B4D210066968B /* LoginUserInfo.swift */; };
+		0AB079742A8B4DCC0066968B /* PostLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB079732A8B4DCC0066968B /* PostLoginInfo.swift */; };
 		0AD19A632A88CF9800949315 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD19A622A88CF9800949315 /* APICaller.swift */; };
 		0AD19A662A88D1B200949315 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */; };
 		0AEECC452A84740A003370A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC442A84740A003370A2 /* AppDelegate.swift */; };
@@ -48,6 +50,8 @@
 		0A9130E02A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AB0796C2A8B432E0066968B /* RegisterUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserInfo.swift; sourceTree = "<group>"; };
 		0AB0796F2A8B44440066968B /* PostRegisterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterInfo.swift; sourceTree = "<group>"; };
+		0AB079712A8B4D210066968B /* LoginUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserInfo.swift; sourceTree = "<group>"; };
+		0AB079732A8B4DCC0066968B /* PostLoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLoginInfo.swift; sourceTree = "<group>"; };
 		0AD19A622A88CF9800949315 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		0AEECC412A84740A003370A2 /* JongGangTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JongGangTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +90,7 @@
 				0A0D051B2A8B17CB00DC11D7 /* CourseDetail.swift */,
 				0A0D051D2A8B223E00DC11D7 /* Category.swift */,
 				0AB0796C2A8B432E0066968B /* RegisterUserInfo.swift */,
+				0AB079712A8B4D210066968B /* LoginUserInfo.swift */,
 			);
 			path = DataClasses;
 			sourceTree = "<group>";
@@ -94,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				0AB0796F2A8B44440066968B /* PostRegisterInfo.swift */,
+				0AB079732A8B4DCC0066968B /* PostLoginInfo.swift */,
 			);
 			path = APIData;
 			sourceTree = "<group>";
@@ -274,9 +280,11 @@
 				0A0D051C2A8B17CB00DC11D7 /* CourseDetail.swift in Sources */,
 				0A1EA7652A87659C0044CE89 /* ViewControllerExtension.swift in Sources */,
 				0AB079702A8B44440066968B /* PostRegisterInfo.swift in Sources */,
+				0AB079722A8B4D210066968B /* LoginUserInfo.swift in Sources */,
 				0A530FC42A8A2DC400B66D0E /* DetailCourseViewController.swift in Sources */,
 				0AEECC642A85BB24003370A2 /* CalendarTabViewController.swift in Sources */,
 				0AB0796D2A8B432E0066968B /* RegisterUserInfo.swift in Sources */,
+				0AB079742A8B4DCC0066968B /* PostLoginInfo.swift in Sources */,
 				0A6115A82A89F87F0065CFEC /* CourseRegisterViewController.swift in Sources */,
 				0AEECC472A84740A003370A2 /* SceneDelegate.swift in Sources */,
 				0AEECC6A2A85BF4E003370A2 /* UIImageExtension.swift in Sources */,
