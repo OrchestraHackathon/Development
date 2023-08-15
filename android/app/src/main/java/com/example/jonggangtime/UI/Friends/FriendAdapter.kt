@@ -4,11 +4,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jonggangtime.Data.LectureData
 import com.example.jonggangtime.databinding.ItemFriendBinding
 
 class FriendAdapter(private val itemList: ArrayList<String>, val option: Int): RecyclerView.Adapter<FriendAdapter.ViewHolder>(){
 
 //    option : 0 - 수락 대기중 요청, 1 - 내가 보낸 요청, 2 - 내 친구
+
+    private var listener: OnItemClickListener? = null
+
+    interface OnItemClickListener {
+        fun onItemClicked(option: Int)
+    }
+
+    fun setBottomSheetListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
 
     inner class ViewHolder(val binding: ItemFriendBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(item: String){
@@ -44,16 +55,19 @@ class FriendAdapter(private val itemList: ArrayList<String>, val option: Int): R
         binding.checkIv.setOnClickListener {
             if(option == 0){
 //                TODO 친구 요청을 수락!
+                listener!!.onItemClicked(option)
             }
         }
         binding.cancelIv.setOnClickListener {
             if(option == 0 || option == 1){
 //                TODO 받거나 준 친구 요청을 삭제
+                listener!!.onItemClicked(option)
             }
         }
         binding.friendItemCl.setOnClickListener {
             if(option == 2){
 //                TODO 이전 화면에 알려서 DetailFriendFragment로 이동
+                listener!!.onItemClicked(option)
             }
         }
     }

@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jonggangtime.Data.SeekFriendData
 import com.example.jonggangtime.R
+import com.example.jonggangtime.UI.Lectures.SeekLecturesFragment
 import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.databinding.FragmentAlreadyListFiendsBinding
 import com.example.jonggangtime.databinding.FragmentFriendsBinding
 
 
-class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>(FragmentAlreadyListFiendsBinding::inflate) {
+class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>(FragmentAlreadyListFiendsBinding::inflate), FriendAdapter.OnItemClickListener {
 
     override fun initAfterBinding() {
 
@@ -28,6 +29,7 @@ class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>
         }
 
         val receiveAdapter = FriendAdapter(itemList, 0)
+        receiveAdapter.setBottomSheetListener(this)
         binding.receiveListRv.adapter = receiveAdapter
         binding.receiveListRv.layoutManager = LinearLayoutManager(requireContext())
 
@@ -38,6 +40,20 @@ class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>
         val myFriendAdapter = FriendAdapter(itemList, 2)
         binding.myFriendsRv.adapter = myFriendAdapter
         binding.myFriendsRv.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    override fun onItemClicked(option: Int) {
+        when(option){
+            0 -> {
+
+            }
+            1 ->{
+
+            }
+            else -> {
+
+            }
+        }
     }
 
 }

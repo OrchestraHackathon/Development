@@ -15,5 +15,8 @@
     <color name="category_routine">#FFCB7D</color>
     <color name="category_exercies">#8DF35C</color>
     <color name="category_parttime">#FFA2A2</color>
-    <color name="category_hobby">#D6A2FF    </color>
+    <color name="category_hobby">#D6A2FF</color>
+    <color name="category_unactive">#DCDCDC</color>
+
+
 </resources>
