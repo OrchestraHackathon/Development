@@ -8,6 +8,16 @@ import com.example.jonggangtime.databinding.ItemLectureBinding
 
 class LectureAdapter(private val itemList: ArrayList<LectureData>): RecyclerView.Adapter<LectureAdapter.ViewHolder>() {
 
+    private var listener: OnItemClickListener? = null
+
+    interface OnItemClickListener {
+        fun onItemClicked(info: LectureData)
+    }
+
+    fun setBottomSheetListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
+
     inner class ViewHolder(val binding: ItemLectureBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(item: LectureData) {
             binding.lectureNameTv.text = item.lectureName
@@ -30,6 +40,9 @@ class LectureAdapter(private val itemList: ArrayList<LectureData>): RecyclerView
         val binding = holder.binding
 
 //        TODO onClickListener에 대한 것들
+        binding.lectureItemCv.setOnClickListener {
+            listener!!.onItemClicked(itemList[position])
+        }
     }
 
     override fun getItemCount(): Int = itemList.size

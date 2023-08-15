@@ -16,3 +16,8 @@ data class DetailLectureData(
     val shortContent: String,
     val Content: String
 )
+
+data class SeekFriendData(
+    val nickname: String,
+    val name: String
+)
