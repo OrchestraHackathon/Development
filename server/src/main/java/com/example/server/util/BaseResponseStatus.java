@@ -10,12 +10,12 @@ public enum BaseResponseStatus {
     /**
      * 1000 : 요청 성공
      */
-    SUCCESS(true, 1000, "요청에 성공하였습니다.");
+    SUCCESS(true, 1000, "요청에 성공하였습니다."),
 
     /**
      * 2000 : Request 오류
      */
-
+    NONE_USER(false, 2010, "존재하지 않는 회원입니다.")
     /**
      * 3000 : Response 오류
      */
