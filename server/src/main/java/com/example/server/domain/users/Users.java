@@ -31,7 +31,11 @@ public class Users extends BaseTimeEntity {
     @Column(nullable = false)
     private Status status;
 
+    @Column(nullable = false)
     private String role;
+
+    @Column(nullable = false)
+    private String name;
 
     // 연관 관계 Mapping
     @OneToMany(mappedBy = "users")
