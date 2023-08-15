@@ -2,7 +2,7 @@ package com.example.server.service;
 
 import com.example.server.domain.users.Users;
 import com.example.server.dto.users.UsersResponseDto;
-import com.example.server.dto.users.UsersSignInRequestDto;
+import com.example.server.dto.users.UsersSignUpRequestDto;
 import com.example.server.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ public class UsersService {
     private final PasswordEncoder passwordEncoder;
     private final UsersRepository usersRepository;
 
-    public UsersResponseDto signIn(UsersSignInRequestDto requestDto) {
+    public UsersResponseDto signUp(UsersSignUpRequestDto requestDto) {
 
 
         Users users = requestDto.toEntity();
