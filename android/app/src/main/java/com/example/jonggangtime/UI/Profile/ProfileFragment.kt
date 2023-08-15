@@ -1,10 +1,6 @@
 package com.example.jonggangtime.UI.Profile
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.Dimension
 import androidx.core.content.ContextCompat
 import com.example.jonggangtime.R

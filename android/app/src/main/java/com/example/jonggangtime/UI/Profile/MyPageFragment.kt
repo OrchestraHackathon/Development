@@ -1,6 +1,5 @@
 package com.example.jonggangtime.UI.Profile
 
-import android.graphics.Paint
 import android.util.Log
 import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.databinding.FragmentMyPageBinding

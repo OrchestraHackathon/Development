@@ -11,8 +11,19 @@
     <color name="gray_0">#E7E7E7</color>
     <color name="gray_1">#D8D8D8</color>
     <color name="gray_2">#A0A0A0</color>
+
+<!--    jiwon-->
+    <color name="category_study">#FFD1DC</color>
+    <color name="category_certificate">#5CB4F3</color>
+    <color name="category_routine">#FFCB7D</color>
+    <color name="category_exercies">#8DF35C</color>
+    <color name="category_parttime">#FFA2A2</color>
+    <color name="category_hobby">#D6A2FF</color>
+    <color name="category_unactive">#DCDCDC</color>
+<!--    junyoung-->
     <color name="category_1">#D5F35C</color>
     <color name="category_2">#5CB4F3</color>
     <color name="blue">#B1D1EF</color>
     <color name="red_0">#FFF3F3</color>
+
 </resources>

@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jonggangtime.UI.Friends.Retrofit.Friend
-import com.example.jonggangtime.databinding.ItemFriendBinding
 import com.example.jonggangtime.databinding.ItemFriendRequestBinding
 
 class FriendsRequestRVAdapter(private val requestList : ArrayList<Friend>, val type: Int) : RecyclerView.Adapter<FriendsRequestRVAdapter.ViewHolder>() {

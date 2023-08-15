@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jonggangtime.UI.Friends.Retrofit.Friend
-import com.example.jonggangtime.UI.Profile.Retrofit.CompletedLecture
-import com.example.jonggangtime.databinding.ItemCompletedLectureBinding
 import com.example.jonggangtime.databinding.ItemFriendBinding
 
 class FriendsRVAdapter(private val friendList : ArrayList<Friend>) : RecyclerView.Adapter<FriendsRVAdapter.ViewHolder>() {

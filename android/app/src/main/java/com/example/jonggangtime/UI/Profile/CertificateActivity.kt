@@ -1,7 +1,5 @@
 package com.example.jonggangtime.UI.Profile
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.example.jonggangtime.Utils.BaseActivity
 import com.example.jonggangtime.databinding.ActivityCertificateBinding
 
