@@ -1,10 +1,8 @@
-package com.example.server.domain;
+package com.example.server.domain.users;
 
+import com.example.server.domain.*;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Where;
 
 import java.util.ArrayList;
@@ -30,6 +28,12 @@ public class Users extends BaseTimeEntity {
     @Column(nullable = false)
     private Status status;
 
+    @Column(nullable = false)
+    private String role;
+
+    @Column(nullable = false)
+    private String name;
+
     // 연관 관계 Mapping
     @OneToMany(mappedBy = "users")
     private List<Friend> friends = new ArrayList<>();
@@ -39,4 +43,18 @@ public class Users extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "users")
     private List<Course> courses = new ArrayList<>();
+
+    @Builder
+    public Users(String email, String name, String nickname, String password, Status status, String role) {
+        this.email = email;
+        this.name = name;
+        this.nickname = nickname;
+        this.password = password;
+        this.status = status;
+        this.role = role;
+    }
+
+    public void encodePassword(String encodedPassword) {
+        this.password = encodedPassword;
+    }
 }
