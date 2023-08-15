@@ -91,6 +91,21 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
         return 80
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDetailCourseSG", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailCourseSG",
+           let destinationVC = segue.destination as? DetailCourseViewController,
+           let indexPath = sender as? IndexPath {
+            let selectedCourse = data[indexPath.row] // coursesArray는 해당 아이템들의 배열이라고 가정합니다.
+            destinationVC.courseId = selectedCourse.courseId
+        }
+    }
+
+
+    
     
     
     

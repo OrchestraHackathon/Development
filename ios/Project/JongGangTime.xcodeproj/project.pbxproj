@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0D051C2A8B17CB00DC11D7 /* CourseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0D051B2A8B17CB00DC11D7 /* CourseDetail.swift */; };
+		0A0D051E2A8B223E00DC11D7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0D051D2A8B223E00DC11D7 /* Category.swift */; };
+		0A0D05202A8B25DC00DC11D7 /* DetailCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0D051F2A8B25DC00DC11D7 /* DetailCategoryCollectionViewCell.swift */; };
 		0A1EA7652A87659C0044CE89 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1EA7642A87659C0044CE89 /* ViewControllerExtension.swift */; };
+		0A530FC42A8A2DC400B66D0E /* DetailCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A530FC32A8A2DC400B66D0E /* DetailCourseViewController.swift */; };
 		0A6115A32A89E6540065CFEC /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6115A22A89E6540065CFEC /* PaddingLabel.swift */; };
 		0A6115A62A89F0500065CFEC /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6115A52A89F0500065CFEC /* Course.swift */; };
 		0A6115A82A89F87F0065CFEC /* CourseRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6115A72A89F87F0065CFEC /* CourseRegisterViewController.swift */; };
@@ -31,7 +35,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0D051B2A8B17CB00DC11D7 /* CourseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetail.swift; sourceTree = "<group>"; };
+		0A0D051D2A8B223E00DC11D7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0A0D051F2A8B25DC00DC11D7 /* DetailCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A1EA7642A87659C0044CE89 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		0A530FC32A8A2DC400B66D0E /* DetailCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCourseViewController.swift; sourceTree = "<group>"; };
 		0A6115A22A89E6540065CFEC /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		0A6115A52A89F0500065CFEC /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		0A6115A72A89F87F0065CFEC /* CourseRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRegisterViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				0A6115A52A89F0500065CFEC /* Course.swift */,
+				0A0D051B2A8B17CB00DC11D7 /* CourseDetail.swift */,
+				0A0D051D2A8B223E00DC11D7 /* Category.swift */,
 			);
 			path = DataClasses;
 			sourceTree = "<group>";
@@ -88,6 +98,7 @@
 			children = (
 				0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */,
 				0A9130E02A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift */,
+				0A0D051F2A8B25DC00DC11D7 /* DetailCategoryCollectionViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -138,6 +149,7 @@
 				0AEECC6B2A85E100003370A2 /* LoginViewController.swift */,
 				0AEECC6F2A85E99D003370A2 /* registerViewController.swift */,
 				0A6115A72A89F87F0065CFEC /* CourseRegisterViewController.swift */,
+				0A530FC32A8A2DC400B66D0E /* DetailCourseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -244,11 +256,15 @@
 				0AEECC5C2A847775003370A2 /* TapBarController.swift in Sources */,
 				0AEECC702A85E99D003370A2 /* registerViewController.swift in Sources */,
 				0AEECC682A85BB48003370A2 /* MyPageTabViewController.swift in Sources */,
+				0A0D05202A8B25DC00DC11D7 /* DetailCategoryCollectionViewCell.swift in Sources */,
+				0A0D051C2A8B17CB00DC11D7 /* CourseDetail.swift in Sources */,
 				0A1EA7652A87659C0044CE89 /* ViewControllerExtension.swift in Sources */,
+				0A530FC42A8A2DC400B66D0E /* DetailCourseViewController.swift in Sources */,
 				0AEECC642A85BB24003370A2 /* CalendarTabViewController.swift in Sources */,
 				0A6115A82A89F87F0065CFEC /* CourseRegisterViewController.swift in Sources */,
 				0AEECC472A84740A003370A2 /* SceneDelegate.swift in Sources */,
 				0AEECC6A2A85BF4E003370A2 /* UIImageExtension.swift in Sources */,
+				0A0D051E2A8B223E00DC11D7 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
