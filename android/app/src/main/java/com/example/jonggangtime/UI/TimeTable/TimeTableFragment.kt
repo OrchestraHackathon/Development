@@ -2,6 +2,8 @@ package com.example.jonggangtime.UI.TimeTable
 
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.jonggangtime.R
+import com.example.jonggangtime.UI.Friends.FriendTimeTableFragment
 import com.example.jonggangtime.UI.Friends.FriendsRVAdapter
 import com.example.jonggangtime.UI.Friends.Retrofit.Friend
 import com.example.jonggangtime.Utils.BaseFragment
@@ -28,8 +30,11 @@ class TimeTableFragment : BaseFragment<FragmentTimeTableBinding>(FragmentTimeTab
         binding.timeTableFriendsRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         friendsRVAdapter.setOnItemClickListener(object : FriendsRVAdapter.OnItemClickListener{
             override fun onItemClick(data: Friend) {
-                //TODO: 클릭했을 때 무슨 행동을 할지
                 Log.d("timetable", data.friendName + "클릭됨")
+                requireActivity().supportFragmentManager.beginTransaction().addToBackStack("friends").replace(
+                    R.id.main_fl,
+                    FriendTimeTableFragment()
+                ).commit()
             }
         })
         binding.timeTableFriendsRv.adapter = friendsRVAdapter

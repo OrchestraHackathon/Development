@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.jonggangtime.R
 import com.example.jonggangtime.UI.Friends.Retrofit.Friend
 import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.databinding.FragmentFriendsBinding
@@ -51,6 +52,7 @@ class FriendsFragment : BaseFragment<FragmentFriendsBinding>(FragmentFriendsBind
             override fun onItemClick(data: Friend) {
                 //TODO: 클릭했을 때 무슨 행동을 할지
                 Log.d("timetable", data.friendName + "클릭됨")
+                requireActivity().supportFragmentManager.beginTransaction().addToBackStack("friends").replace(R.id.main_fl,FriendTimeTableFragment()).commit()
             }
         })
         binding.friendsMyFriendRv.adapter = friendsRVAdapter
