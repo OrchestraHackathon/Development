@@ -15,7 +15,7 @@ public enum BaseResponseStatus {
     /**
      * 2000 : Request 오류
      */
-    NONE_USER(false, 2010, "존재하지 않는 회원입니다.")
+    NONE_USER(false, 2010, "존재하지 않는 회원입니다.");
     /**
      * 3000 : Response 오류
      */
