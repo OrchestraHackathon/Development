@@ -20,6 +20,8 @@
 		0AB079702A8B44440066968B /* PostRegisterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0796F2A8B44440066968B /* PostRegisterInfo.swift */; };
 		0AB079722A8B4D210066968B /* LoginUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB079712A8B4D210066968B /* LoginUserInfo.swift */; };
 		0AB079742A8B4DCC0066968B /* PostLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB079732A8B4DCC0066968B /* PostLoginInfo.swift */; };
+		0AB079762A8BB7380066968B /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB079752A8BB7380066968B /* FriendTableViewCell.swift */; };
+		0AB079782A8BC27D0066968B /* FriendRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB079772A8BC27D0066968B /* FriendRequestTableViewCell.swift */; };
 		0AD19A632A88CF9800949315 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD19A622A88CF9800949315 /* APICaller.swift */; };
 		0AD19A662A88D1B200949315 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */; };
 		0AEECC452A84740A003370A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC442A84740A003370A2 /* AppDelegate.swift */; };
@@ -53,6 +55,8 @@
 		0AB0796F2A8B44440066968B /* PostRegisterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterInfo.swift; sourceTree = "<group>"; };
 		0AB079712A8B4D210066968B /* LoginUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserInfo.swift; sourceTree = "<group>"; };
 		0AB079732A8B4DCC0066968B /* PostLoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLoginInfo.swift; sourceTree = "<group>"; };
+		0AB079752A8BB7380066968B /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		0AB079772A8BC27D0066968B /* FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
 		0AD19A622A88CF9800949315 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		0AEECC412A84740A003370A2 /* JongGangTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JongGangTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +127,8 @@
 				0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */,
 				0A9130E02A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift */,
 				0A0D051F2A8B25DC00DC11D7 /* DetailCategoryCollectionViewCell.swift */,
+				0AB079752A8BB7380066968B /* FriendTableViewCell.swift */,
+				0AB079772A8BC27D0066968B /* FriendRequestTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -205,7 +211,6 @@
 				2D955AA1CCC50F3AB293A27D /* Pods-JongGangTime.debug.xcconfig */,
 				80CE2A5C1D57F178BFED0809 /* Pods-JongGangTime.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -332,9 +337,11 @@
 				0A1EA7652A87659C0044CE89 /* ViewControllerExtension.swift in Sources */,
 				0AB079702A8B44440066968B /* PostRegisterInfo.swift in Sources */,
 				0AB079722A8B4D210066968B /* LoginUserInfo.swift in Sources */,
+				0AB079762A8BB7380066968B /* FriendTableViewCell.swift in Sources */,
 				0A530FC42A8A2DC400B66D0E /* DetailCourseViewController.swift in Sources */,
 				0AEECC642A85BB24003370A2 /* CalendarTabViewController.swift in Sources */,
 				0AB0796D2A8B432E0066968B /* RegisterUserInfo.swift in Sources */,
+				0AB079782A8BC27D0066968B /* FriendRequestTableViewCell.swift in Sources */,
 				0AB079742A8B4DCC0066968B /* PostLoginInfo.swift in Sources */,
 				0A6115A82A89F87F0065CFEC /* CourseRegisterViewController.swift in Sources */,
 				0AEECC472A84740A003370A2 /* SceneDelegate.swift in Sources */,
