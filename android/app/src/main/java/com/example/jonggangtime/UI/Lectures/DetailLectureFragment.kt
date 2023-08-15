@@ -19,6 +19,16 @@ class DetailLectureFragment : BaseFragment<FragmentDetailLectureBinding>(Fragmen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.registBtn.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.lecture_fl, TimeRegistLectureFragment())
+                .commitAllowingStateLoss()
+        }
+        binding.closeIv.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.lecture_fl, SeekLecturesFragment())
+                .commitAllowingStateLoss()
+        }
     }
 
 }

@@ -12,7 +12,7 @@ import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.databinding.FragmentLecturesBinding
 import com.example.jonggangtime.databinding.FragmentSeekLecturesBinding
 
-class SeekLecturesFragment : BaseFragment<FragmentSeekLecturesBinding>(FragmentSeekLecturesBinding::inflate), View.OnClickListener {
+class SeekLecturesFragment : BaseFragment<FragmentSeekLecturesBinding>(FragmentSeekLecturesBinding::inflate), View.OnClickListener, LectureAdapter.OnItemClickListener {
 
     override fun initAfterBinding() {
         TODO("Not yet implemented")
@@ -30,6 +30,7 @@ class SeekLecturesFragment : BaseFragment<FragmentSeekLecturesBinding>(FragmentS
         }
 
         val lectureAdapter = LectureAdapter(lectureList)
+        lectureAdapter.setBottomSheetListener(this)
         binding.lectureListRv.adapter = lectureAdapter
         binding.lectureListRv.layoutManager = LinearLayoutManager(requireContext())
     }
@@ -38,10 +39,16 @@ class SeekLecturesFragment : BaseFragment<FragmentSeekLecturesBinding>(FragmentS
         when(v!!.id){
             R.id.lecture_plus_fab -> {
                 parentFragmentManager.beginTransaction()
-                    .replace(R.id.lecture_fl, SeekLecturesFragment())
+                    .replace(R.id.lecture_fl, ContentRegistLectureFragment())
                     .commitAllowingStateLoss()
             }
         }
+    }
+
+    override fun onItemClicked(info: LectureData) {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.lecture_fl, DetailLectureFragment())
+            .commitAllowingStateLoss()
     }
 
 }
