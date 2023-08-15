@@ -72,7 +72,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.performSegue(withIdentifier: "loginSuccessSG", sender: (Any).self)
             }else {
                 DispatchQueue.main.async {
-                    self.shakeButton(self.loginButton, originalTitle: "로그인", newTitle: "로그인 정보를 다시확인해 주세요")
+                    self.shakeButton(self.loginButton, originalTitle: "로그인", newTitle: "로그인 실패")
                 }
             }
         }
@@ -184,12 +184,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else {
-                print("Login failed")
-                completion(false)
-                return
-            }
+//            guard let httpResponse = response as? HTTPURLResponse,
+//                  (200...299).contains(httpResponse.statusCode) else {
+//                print("Login failed")
+//                completion(false)
+//                return
+//            }
             
             DispatchQueue.main.async {
                 guard let data = data,

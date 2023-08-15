@@ -156,7 +156,7 @@ class registerViewController: UIViewController, UITextFieldDelegate {
         guard let uploadData = try? JSONEncoder().encode(postData)
         else {return}
                 
-        let url = URL(string: "\(serverUrl)/users/signup")
+        let url = URL(string: "\(serverUrl)/users/sign-up")
         
         var request = URLRequest(url: url!)
         

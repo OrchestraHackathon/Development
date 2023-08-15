@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>ServerUrl</key>
-	<string></string>
+	<string>https://9b0f-121-130-156-219.ngrok.io</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

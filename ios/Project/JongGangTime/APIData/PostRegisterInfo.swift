@@ -19,7 +19,7 @@ class PostRegisterInfo : Codable {
         case email = "email"
         case password = "password"
         case name = "userName"
-        case nickname = "userNickname"
+        case nickname = "userNickName"
     }
     
     init(email: String, password: String, name: String, nickname: String) {
