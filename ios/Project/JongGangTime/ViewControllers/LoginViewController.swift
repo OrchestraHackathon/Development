@@ -67,15 +67,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginButtonDidTap(_ sender: Any) {
-        postLoginInfo(email: loginEmail, password: loginPassword) {success in
-            if success {
+        
+//        postLoginInfo(email: loginEmail, password: loginPassword) {success in
+//            if success {
                 self.performSegue(withIdentifier: "loginSuccessSG", sender: (Any).self)
-            }else {
-                DispatchQueue.main.async {
-                    self.shakeButton(self.loginButton, originalTitle: "로그인", newTitle: "로그인 실패")
-                }
-            }
-        }
+//            }else {
+//                DispatchQueue.main.async {
+//                    self.shakeButton(self.loginButton, originalTitle: "로그인", newTitle: "로그인 실패")
+//                }
+//            }
+//        }
     }
     
     
