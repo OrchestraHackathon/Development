@@ -1,4 +1,3 @@
-/*
 package com.example.jonggangtime.UI.Friends
 
 import android.os.Bundle
@@ -33,4 +32,4 @@ class SeekListFriendsFragment : BaseFragment<FragmentSeekListFriendsBinding>(Fra
         binding.friendsListRv.layoutManager = LinearLayoutManager(requireContext())
     }
 
-}*/
+}
