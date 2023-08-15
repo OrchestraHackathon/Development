@@ -31,6 +31,8 @@ public class Users extends BaseTimeEntity {
     @Column(nullable = false)
     private Status status;
 
+    private String role;
+
     // 연관 관계 Mapping
     @OneToMany(mappedBy = "users")
     private List<Friend> friends = new ArrayList<>();
