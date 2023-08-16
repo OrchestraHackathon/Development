@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UI.Lectures.TimeRegistLectureFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,37 +12,48 @@
 
         <TextView
             android:id="@+id/title_tv"
+            style="@style/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:text="@string/setting_my_timetable"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/regist_lecture_cancel_tv"
+            style="@style/negative_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/regist_lecture_cancel"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="normal"
             app:layout_constraintStart_toStartOf="@id/title_tv"
-            app:layout_constraintTop_toBottomOf="@id/title_tv"
-            android:textColor="@android:color/holo_red_dark"/>
+            app:layout_constraintTop_toBottomOf="@id/title_tv" />
 
         <TextView
             android:id="@+id/finish_tv"
+            style="@style/positive_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/regist_lecture_cancel_tv"
+            android:layout_marginEnd="20dp"
+            android:text="@string/finish"
+            android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="@id/regist_lecture_cancel_tv"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/finish"/>
+            app:layout_constraintTop_toTopOf="@id/regist_lecture_cancel_tv" />
 
         <com.islandparadise14.mintable.MinTimeTableView
-            android:id="@+id/table"
+            android:id="@+id/timeTable_mttv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            app:isFullWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/regist_lecture_cancel_tv"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regist_lecture_cancel_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
