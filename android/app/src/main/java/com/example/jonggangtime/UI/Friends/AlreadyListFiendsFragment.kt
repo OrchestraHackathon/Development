@@ -24,6 +24,7 @@ class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>
     private var friendsSendArray = java.util.ArrayList<Friend>()
 
     override fun initAfterBinding() {
+        binding.friendsMainLayout.requestFocus()
         initAdapter()
         initDummy()
     }

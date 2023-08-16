@@ -11,9 +11,7 @@ import com.example.jonggangtime.databinding.FragmentListFriendsBinding
 
 class ListFriendsFragment : BaseFragment<FragmentListFriendsBinding>(FragmentListFriendsBinding::inflate), MainActivity.onBackPressedListener {
 
-    override fun initAfterBinding() {
-
-    }
+    override fun initAfterBinding() {   }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,4 +58,6 @@ class ListFriendsFragment : BaseFragment<FragmentListFriendsBinding>(FragmentLis
             binding.friendsSearchEt.clearFocus()
         }
     }
+
 }
+
