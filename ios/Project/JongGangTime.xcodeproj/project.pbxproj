@@ -24,6 +24,8 @@
 		0AB079782A8BC27D0066968B /* FriendRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB079772A8BC27D0066968B /* FriendRequestTableViewCell.swift */; };
 		0AD19A632A88CF9800949315 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD19A622A88CF9800949315 /* APICaller.swift */; };
 		0AD19A662A88D1B200949315 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */; };
+		0AEA3BF82A8C59100002D70D /* MyFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA3BF72A8C59100002D70D /* MyFriendTableViewCell.swift */; };
+		0AEA3BFA2A8C5E100002D70D /* ScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA3BF92A8C5E100002D70D /* ScrollViewExtension.swift */; };
 		0AEECC452A84740A003370A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC442A84740A003370A2 /* AppDelegate.swift */; };
 		0AEECC472A84740A003370A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEECC462A84740A003370A2 /* SceneDelegate.swift */; };
 		0AEECC4C2A84740A003370A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEECC4A2A84740A003370A2 /* Main.storyboard */; };
@@ -59,6 +61,8 @@
 		0AB079772A8BC27D0066968B /* FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
 		0AD19A622A88CF9800949315 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
+		0AEA3BF72A8C59100002D70D /* MyFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendTableViewCell.swift; sourceTree = "<group>"; };
+		0AEA3BF92A8C5E100002D70D /* ScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewExtension.swift; sourceTree = "<group>"; };
 		0AEECC412A84740A003370A2 /* JongGangTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JongGangTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEECC442A84740A003370A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AEECC462A84740A003370A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				0A0D051F2A8B25DC00DC11D7 /* DetailCategoryCollectionViewCell.swift */,
 				0AB079752A8BB7380066968B /* FriendTableViewCell.swift */,
 				0AB079772A8BC27D0066968B /* FriendRequestTableViewCell.swift */,
+				0AEA3BF72A8C59100002D70D /* MyFriendTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 			children = (
 				0AEECC692A85BF4E003370A2 /* UIImageExtension.swift */,
 				0A1EA7642A87659C0044CE89 /* ViewControllerExtension.swift */,
+				0AEA3BF92A8C5E100002D70D /* ScrollViewExtension.swift */,
 			);
 			path = ExtensionAndProtocols;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 				0A9130E12A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift in Sources */,
 				0AEECC662A85BB38003370A2 /* CourseTableViewController.swift in Sources */,
 				0AEECC452A84740A003370A2 /* AppDelegate.swift in Sources */,
+				0AEA3BF82A8C59100002D70D /* MyFriendTableViewCell.swift in Sources */,
 				0A6115A32A89E6540065CFEC /* PaddingLabel.swift in Sources */,
 				0AD19A662A88D1B200949315 /* CourseTableViewCell.swift in Sources */,
 				0A6115A62A89F0500065CFEC /* Course.swift in Sources */,
@@ -337,6 +344,7 @@
 				0A1EA7652A87659C0044CE89 /* ViewControllerExtension.swift in Sources */,
 				0AB079702A8B44440066968B /* PostRegisterInfo.swift in Sources */,
 				0AB079722A8B4D210066968B /* LoginUserInfo.swift in Sources */,
+				0AEA3BFA2A8C5E100002D70D /* ScrollViewExtension.swift in Sources */,
 				0AB079762A8BB7380066968B /* FriendTableViewCell.swift in Sources */,
 				0A530FC42A8A2DC400B66D0E /* DetailCourseViewController.swift in Sources */,
 				0AEECC642A85BB24003370A2 /* CalendarTabViewController.swift in Sources */,
