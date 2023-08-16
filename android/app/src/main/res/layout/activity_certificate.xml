@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/back_arrow"
+        android:padding="10dp"
         app:layout_constraintTop_toTopOf="@id/certificate_tv"
         app:layout_constraintBottom_toBottomOf="@id/certificate_tv"
         app:layout_constraintStart_toStartOf="parent"

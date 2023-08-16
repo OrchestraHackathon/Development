@@ -53,6 +53,7 @@
             android:id="@+id/password_input_tf"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="textPassword"
             android:hint="@string/password"
             style="@style/textfieldEditText" />
 
@@ -73,10 +74,24 @@
             android:id="@+id/password_check_tf"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="textPassword"
             android:hint="@string/passowrd_check"
             style="@style/textfieldEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/password_check_msg_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@id/password_check_til"
+        android:text="비밀번호 확인 안내창"
+        android:textColor="@color/negative_red"
+        app:layout_constraintStart_toStartOf="@id/password_check_til"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name_input_til"
@@ -85,9 +100,10 @@
         app:boxBackgroundMode="outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_check_til"
+        app:layout_constraintTop_toBottomOf="@id/password_check_msg_tv"
         style="@style/textfieldLayout"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="5dp"
+        app:layout_goneMarginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name_input_tf"

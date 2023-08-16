@@ -1,14 +1,19 @@
 package com.example.jonggangtime.UI.Friends
 
 import android.util.Log
+import android.widget.Toast
+import android.widget.Toast.makeText
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jonggangtime.R
 import com.example.jonggangtime.UI.Friends.Retrofit.Friend
+import com.example.jonggangtime.UI.MainActivity
 import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.databinding.FragmentAlreadyListFiendsBinding
 
 
-class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>(FragmentAlreadyListFiendsBinding::inflate)/*, FriendAdapter.OnItemClickListener */{
+class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>(FragmentAlreadyListFiendsBinding::inflate), MainActivity.onBackPressedListener/*, FriendAdapter.OnItemClickListener */{
+
+    private var backPressedTime: Long = 0
 
     private lateinit var friendsRVAdapter: FriendsRVAdapter
     private lateinit var friendRecievedRVAdapter: FriendsRequestRVAdapter
@@ -19,6 +24,7 @@ class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>
     private var friendsSendArray = java.util.ArrayList<Friend>()
 
     override fun initAfterBinding() {
+        binding.friendsMainLayout.requestFocus()
         initAdapter()
         initDummy()
     }
@@ -60,8 +66,13 @@ class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>
         friendRecievedRVAdapter = FriendsRequestRVAdapter(friendsRecievedArray, 1)
         binding.friendsRecievedRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         friendRecievedRVAdapter.setOnItemClickListener(object : FriendsRequestRVAdapter.OnItemClickListener{
-            override fun onItemClick(data: Friend) {
-
+            override fun onCheckClick(data: Friend, position: Int) {
+                friendsRecievedArray.remove(data)
+                friendRecievedRVAdapter.notifyDataSetChanged()
+            }
+            override fun onCloseClick(data: Friend, position: Int) {
+                friendsRecievedArray.remove(data)
+                friendRecievedRVAdapter.notifyDataSetChanged()
             }
 
         })
@@ -71,12 +82,27 @@ class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>
         friendSendRVAdapter = FriendsRequestRVAdapter(friendsSendArray, 2)
         binding.friendsSendRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         friendSendRVAdapter.setOnItemClickListener(object : FriendsRequestRVAdapter.OnItemClickListener{
-            override fun onItemClick(data: Friend) {
-
+            override fun onCheckClick(data: Friend, position: Int) { }
+            override fun onCloseClick(data: Friend, position: Int) {
+                friendsSendArray.remove(data)
+                friendSendRVAdapter.notifyDataSetChanged()
             }
         })
         binding.friendsSendRv.adapter = friendSendRVAdapter
 
+    }
+
+    override fun onBackPressed() {
+        Log.d("frag", "요청 fragment" + this.isVisible.toString())
+        if (this.isVisible){
+            // 2초안에 뒤로가기 2번 누르면 종료
+            if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                requireActivity().finish()
+            } else {
+                showToast( "한번 더 누르면 종료됩니다.")
+            }
+            backPressedTime = System.currentTimeMillis()
+        }
     }
 
     /*override fun initAfterBinding() {

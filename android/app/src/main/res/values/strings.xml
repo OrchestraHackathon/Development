@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">jonggangtime</string>
+    <string name="app_name">종강타임</string>
 
     <string name="lecture_regist">과목 등록</string>
     <string name="lecture_name">과목 이름</string>

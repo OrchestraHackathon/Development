@@ -1,14 +1,16 @@
 package com.example.jonggangtime.UI.Lectures
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jonggangtime.Data.LectureCategoryData
 import com.example.jonggangtime.R
+import com.example.jonggangtime.UI.MainActivity
 import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.databinding.FragmentDetailLectureBinding
 
-class DetailLectureFragment : BaseFragment<FragmentDetailLectureBinding>(FragmentDetailLectureBinding::inflate) {
+class DetailLectureFragment : BaseFragment<FragmentDetailLectureBinding>(FragmentDetailLectureBinding::inflate), MainActivity.onBackPressedListener {
 
     override fun initAfterBinding() {}
 
@@ -35,6 +37,12 @@ class DetailLectureFragment : BaseFragment<FragmentDetailLectureBinding>(Fragmen
                 .replace(R.id.lecture_fl, SeekLecturesFragment())
                 .commitAllowingStateLoss()
         }
+    }
+
+    override fun onBackPressed() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.lecture_fl, SeekLecturesFragment())
+            .commitAllowingStateLoss()
     }
 
 }
