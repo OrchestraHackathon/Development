@@ -5,10 +5,11 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jonggangtime.Data.LectureCategoryData
 import com.example.jonggangtime.R
+import com.example.jonggangtime.UI.MainActivity
 import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.databinding.FragmentContentRegistLectureBinding
 
-class ContentRegistLectureFragment : BaseFragment<FragmentContentRegistLectureBinding>(FragmentContentRegistLectureBinding::inflate), RegistDialog.OnItemClickListener, CategoryAdapter.OnItemClickListener {
+class ContentRegistLectureFragment : BaseFragment<FragmentContentRegistLectureBinding>(FragmentContentRegistLectureBinding::inflate), RegistDialog.OnItemClickListener, CategoryAdapter.OnItemClickListener, MainActivity.onBackPressedListener {
 
     lateinit var categoryState: ArrayList<Boolean>
 
@@ -56,6 +57,12 @@ class ContentRegistLectureFragment : BaseFragment<FragmentContentRegistLectureBi
 
     override fun onItemClicked(info: ArrayList<Boolean>) {
         categoryState = info
+    }
+
+    override fun onBackPressed() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.lecture_fl, SeekLecturesFragment())
+            .commitAllowingStateLoss()
     }
 
 }
