@@ -5,9 +5,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import com.example.jonggangtime.Data.SigninInfo
+import com.example.jonggangtime.Network.ResponseCreateDefaultTimeTable
 import com.example.jonggangtime.Network.ResponseSignin
 import com.example.jonggangtime.Network.RetrofitClient
 import com.example.jonggangtime.R
@@ -15,6 +15,7 @@ import com.example.jonggangtime.Utils.BaseActivity
 import com.example.jonggangtime.Utils.TAG
 import com.example.jonggangtime.databinding.ActivitySigninBinding
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class SigninActivity : BaseActivity<ActivitySigninBinding>(ActivitySigninBinding::inflate) {
@@ -37,7 +38,27 @@ class SigninActivity : BaseActivity<ActivitySigninBinding>(ActivitySigninBinding
                         Log.d(TAG, "SigninActivity - Retrofit signin() 실행결과 - 성공\n" +
                                 "body : ${response.body()}")
 
-                        finish()
+                        RetrofitClient.instance.createDefaultTimeTable(response.body()!!.result.id.toLong()).enqueue(object : Callback<ResponseCreateDefaultTimeTable>{
+                            override fun onResponse(
+                                call: Call<ResponseCreateDefaultTimeTable>,
+                                response: Response<ResponseCreateDefaultTimeTable>
+                            ) {
+                                if(response.isSuccessful){
+                                    Log.d(TAG, "SigninActivity - Retrofit timetable 실행 결과 - 성공")
+                                    finish()
+                                } else{
+                                    Log.d(TAG, "SigninActivity - Retrofit timetable 실행 결과 - 안좋음")
+                                }
+                            }
+
+                            override fun onFailure(
+                                call: Call<ResponseCreateDefaultTimeTable>,
+                                t: Throwable
+                            ) {
+                                Log.d(TAG, "SigninActivity - Retrofit timetable 실행 결과 - 실패")
+                            }
+                        })
+
                     } else {
                         Log.d(TAG, "SigninActivity - Retrofit signin() 실행결과 - 안좋음\n" +
                                 "body : ${response.body()}")
