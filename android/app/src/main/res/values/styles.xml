@@ -34,6 +34,11 @@
         <item name="android:textSize">15dp</item>
     </style>
 
+    <style name="text_side" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/hint</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
     <style name="button_text" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
