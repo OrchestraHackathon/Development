@@ -32,4 +32,8 @@ public class TimeTable extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "timeTable")
     private List<TimeTableCourseDetail> timeTableCourseDetails = new ArrayList<>();
+
+    public void addTimeTableCourseDetail(TimeTableCourseDetail timeTableCourseDetail) {
+        this.timeTableCourseDetails.add(timeTableCourseDetail);
+    }
 }

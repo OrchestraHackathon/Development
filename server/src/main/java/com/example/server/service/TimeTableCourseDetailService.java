@@ -68,6 +68,7 @@ public class TimeTableCourseDetailService {
         for(TimeTableCourseDetail timeTableCourseDetail : timeTableCourseDetails) {
             for (CourseDetail courseDetail : courseDetails) {
                 courseDetail.addTimeTableCourseDetail(timeTableCourseDetail);
+                timeTable.addTimeTableCourseDetail(timeTableCourseDetail);
             }
         }
 
