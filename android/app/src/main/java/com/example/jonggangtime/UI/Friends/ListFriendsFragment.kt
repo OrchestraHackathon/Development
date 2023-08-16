@@ -18,7 +18,7 @@ class ListFriendsFragment : BaseFragment<FragmentListFriendsBinding>(FragmentLis
 
         initNavigation()
 
-        binding.friendsSearchEt.setOnFocusChangeListener { v, hasFocus ->
+        binding.friendsSearchEt.setOnFocusChangeListener { _, hasFocus ->
             if(hasFocus){
                 childFragmentManager.beginTransaction()
                     .replace(R.id.friend_list_fl, SeekListFriendsFragment())
