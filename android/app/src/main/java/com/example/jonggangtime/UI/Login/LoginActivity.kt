@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.example.jonggangtime.Data.LoginInfo
+import com.example.jonggangtime.MyApplication
 import com.example.jonggangtime.Network.ResponseLogin
 import com.example.jonggangtime.Network.RetrofitClient
 import com.example.jonggangtime.UI.MainActivity
@@ -34,6 +35,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                         Log.d(TAG, "LoginActivity - Retrofit login() 실행결과 - 성공\n" +
                                     "body : ${response.body()}")
 
+                        MyApplication.prefs.setString("accessToken", response.body()!!.result.accessToken)
+                        MyApplication.prefs.setString("refreshToken", response.body()!!.result.refreshToken)
+
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     } else {
                         Log.d(
@@ -48,9 +52,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                                 "t : $t")
                 }
 
-            })*/
+            })
 
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))*/
         }
 
         binding.signinTv.setOnClickListener {
