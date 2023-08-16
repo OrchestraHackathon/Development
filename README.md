@@ -69,21 +69,29 @@
 
 ### `시간표 설정`
 + `Android`
-  + 오픈소스 : MinTimeTable(https://github.com/islandparadise14/MinTimetable)
-    + 사용자 맞춤형으로 시간표 관리가 가능한 오픈소스를 이용.
-
+  + 오픈소스 : MinTimeTable (https://github.com/islandparadise14/MinTimetable)
++ `iOS`
+  + 오픈소스 : Elliotable (https://github.com/della-padula/Elliotable)
+    + 오픈소스를 이용하여 사용자 맞춤형 시간표 구현.
 
 ### `인기 과목 및 카테고리`
++ 수강인원이 많은 순으로 정렬하여 **종강타임**을 이용하는 유저들에게 등록된 과목들을 보여줌.
++ 마음에 드는 과목이 있을 경우, 사용자는 해당 과목을 자신의 시간표에 추가할 수 있음.
 + `Android`
   + BaseActivity, BaseFragment
     + Activity와 Fragment에서 Data Binding을 선언하다보면 중복되는 보일러플레이트 코드를 제거하여, 구현시간을 단축시키고 코드 가독성을 높임.
++ `iOS`
+  + Extension과 Protocol의 적절한 활용을 통해 코드를 더욱 간결하게 작성하였으며, 이로 인해 개발 속도를 향상시키고 코드의 명료성도 강화하였다.
 
       
 ### `마이페이지`
++ 사용자가 직접 자신의 프로필 이미지, 한줄 자기소개 변경 가능.
++ 사용자와 친구 관계인 타 유저는 사용자의 프로필 열람 가능.
 
 
 ### `학점 부여 및 수료증 발급`
-
++ 수강 완료된 과목들에 대하여 사용자가 직접 자신의 학점을 매길 수 있고 수료증을 발급받을 수 있음.
++ **종강타임** 인증서가 찍힌 수료증을 발급하여 다른 시간표 관리 어플들과의 차별화 구현.
 
 ## 💡 기대효과
 + 자기주도적 학습 촉진
