@@ -1,5 +1,6 @@
 package com.example.server.config;
 
+import com.example.server.config.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +21,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Slf4j
 public class SecurityConfig {
 
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
     @Bean
     public PasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -35,9 +38,10 @@ public class SecurityConfig {
                 .sessionManagement(sessionManagement ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorizeRequest -> {
-                    authorizeRequest.requestMatchers("/**", "/users/sign-up", "/users/login", "/sign-up", "/login").permitAll();
-                });
-
+                    authorizeRequest.requestMatchers("/**", "/users/sign-up", "/users/login", "/sign-up", "/login", "/time-table/**").permitAll();
+                })
+                .authorizeHttpRequests(authorizeRequest -> authorizeRequest.anyRequest().authenticated())
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 }
