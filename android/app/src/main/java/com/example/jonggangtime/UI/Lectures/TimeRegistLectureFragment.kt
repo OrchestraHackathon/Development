@@ -3,16 +3,22 @@ package com.example.jonggangtime.UI.Lectures
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.jonggangtime.Data.TimeData
 import com.example.jonggangtime.R
 import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.Utils.TAG
 import com.example.jonggangtime.databinding.FragmentTimeRegistLectureBinding
 import com.islandparadise14.mintable.model.ScheduleEntity
 
-class TimeRegistLectureFragment : BaseFragment<FragmentTimeRegistLectureBinding>(FragmentTimeRegistLectureBinding::inflate), View.OnClickListener {
+class TimeRegistLectureFragment : BaseFragment<FragmentTimeRegistLectureBinding>(FragmentTimeRegistLectureBinding::inflate), View.OnClickListener, LectureTimeAdapter.OnItemClickListener {
 
     private val day = arrayOf("Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat")
     private val scheduleList: ArrayList<ScheduleEntity> = ArrayList()
+
+    private var itemList : ArrayList<TimeData> = arrayListOf()
+
+    lateinit var lectureTimeAdapter: LectureTimeAdapter
 
     override fun initAfterBinding() {
         initTimeTable()
@@ -28,6 +34,12 @@ class TimeRegistLectureFragment : BaseFragment<FragmentTimeRegistLectureBinding>
 
         binding.registLectureCancelTv.setOnClickListener(this)
         binding.finishTv.setOnClickListener(this)
+        binding.lectureTimePlusIv.setOnClickListener(this)
+
+        lectureTimeAdapter = LectureTimeAdapter()
+        lectureTimeAdapter.setBottomSheetListener(this)
+        binding.lectureTimeRv.adapter = lectureTimeAdapter
+        binding.lectureTimeRv.layoutManager = LinearLayoutManager(requireContext())
 
         val bottomSheetFragment = DetailLectureDialog()
         bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
@@ -47,7 +59,16 @@ class TimeRegistLectureFragment : BaseFragment<FragmentTimeRegistLectureBinding>
                     .replace(R.id.lecture_fl, SeekLecturesFragment())
                     .commitAllowingStateLoss()
             }
+            R.id.lecture_time_plus_iv -> {
+                val item = TimeData("월요일", "13:00~15:00")
+                itemList.add(item)
+                lectureTimeAdapter.setData(item)
+            }
         }
+    }
+
+    override fun onItemClicked(info: ArrayList<TimeData>) {
+        itemList = info
     }
 
 }
