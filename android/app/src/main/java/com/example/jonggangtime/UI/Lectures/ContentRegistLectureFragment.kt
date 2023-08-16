@@ -9,7 +9,7 @@ import com.example.jonggangtime.UI.MainActivity
 import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.databinding.FragmentContentRegistLectureBinding
 
-class ContentRegistLectureFragment : BaseFragment<FragmentContentRegistLectureBinding>(FragmentContentRegistLectureBinding::inflate), RegistDialog.OnItemClickListener, CategoryAdapter.OnItemClickListener, MainActivity.onBackPressedListener {
+class ContentRegistLectureFragment : BaseFragment<FragmentContentRegistLectureBinding>(FragmentContentRegistLectureBinding::inflate), RegistDialog.OnAnswerClickListener, CategoryAdapter.OnItemClickListener, MainActivity.onBackPressedListener {
 
     lateinit var categoryState: ArrayList<Boolean>
 
@@ -24,14 +24,14 @@ class ContentRegistLectureFragment : BaseFragment<FragmentContentRegistLectureBi
             itemList.add(LectureCategoryData(i, nameList[i]))
         }
 
-        val categoryAdapter = CategoryAdapter(itemList, 1)
+        val categoryAdapter = CategoryAdapter(requireContext(), itemList, 1)
         categoryAdapter.setBottomSheetListener(this)
         binding.lectureCategoryRv.adapter = categoryAdapter
         binding.lectureCategoryRv.layoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
 
 
         binding.registBtn.setOnClickListener {
-            val dialog = RegistDialog()
+            val dialog = RegistDialog(0)
             dialog.setBottomSheetListener(this)
             dialog.isCancelable = false
             dialog.show(parentFragmentManager, "registDialog")
@@ -43,7 +43,7 @@ class ContentRegistLectureFragment : BaseFragment<FragmentContentRegistLectureBi
         }
     }
 
-    override fun onItemClicked(result: Boolean) {
+    override fun onAnswerClicked(result: Boolean) {
         if(result){ //yes 일 경우 -> Time정하는 곳으로 이동
             parentFragmentManager.beginTransaction()
                 .replace(R.id.lecture_fl, TimeRegistLectureFragment())

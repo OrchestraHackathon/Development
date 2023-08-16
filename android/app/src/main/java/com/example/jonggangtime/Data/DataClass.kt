@@ -40,3 +40,8 @@ data class LectureCategoryData(
     val categoryId : Int,
     val categoryName : String
 )
+
+data class TimeData(
+    val day : String,
+    val time : String
+)

@@ -23,7 +23,7 @@ class DetailLectureFragment : BaseFragment<FragmentDetailLectureBinding>(Fragmen
             itemList.add(LectureCategoryData(i, nameList[i]))
         }
 
-        val categoryAdapter = CategoryAdapter(itemList, 0)
+        val categoryAdapter = CategoryAdapter(requireContext(), itemList, 0)
         binding.lectureCategoryRv.adapter = categoryAdapter
         binding.lectureCategoryRv.layoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
 

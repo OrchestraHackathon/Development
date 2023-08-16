@@ -20,7 +20,7 @@ class ListFriendsFragment : BaseFragment<FragmentListFriendsBinding>(FragmentLis
 
         initNavigation()
 
-        binding.friendsSearchEt.setOnFocusChangeListener { v, hasFocus ->
+        binding.friendsSearchEt.setOnFocusChangeListener { _, hasFocus ->
             if(hasFocus){
                 childFragmentManager.beginTransaction()
                     .addToBackStack("friend")
