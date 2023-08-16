@@ -26,7 +26,13 @@ public enum BaseResponseStatus {
 
     // User 관련 Exception
     NONE_USER(false, 2010, "존재하지 않는 회원입니다."),
-    INVALID_EMAIL_OR_PASSWORD(false, 2011, "이메일 혹은 비밀번호가 잘못되었습니다.");
+    INVALID_EMAIL_OR_PASSWORD(false, 2011, "이메일 혹은 비밀번호가 잘못되었습니다."),
+
+    // Course 관련 Exception
+    NONE_COURSE(false, 2020, "존재하지 않는 강의입니다."),
+
+    // TimeTable 관련 Exception
+    NONE_TIMETABLE(false, 2030, "시간표가 존재하지 않습니다.");
     /**
      * 3000 : Response 오류
      */

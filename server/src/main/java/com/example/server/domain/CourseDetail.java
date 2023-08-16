@@ -1,16 +1,15 @@
 package com.example.server.domain;
 
+import com.example.server.domain.users.Users;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class CourseDetail extends BaseTimeEntity {
@@ -30,7 +29,7 @@ public class CourseDetail extends BaseTimeEntity {
      * 0 ~ 6 에 대응
       */
     @Column(nullable = false)
-    private List<Integer> days;
+    private int day;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -38,9 +37,19 @@ public class CourseDetail extends BaseTimeEntity {
 
     // 연관 관계 Mapping
     @OneToMany(mappedBy = "courseDetail")
+    @Builder.Default
     private List<TimeTableCourseDetail> timeTableCourseDetails = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     private Course course;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "users_id")
+    private Users users;
+
+    // 연관 관계 편의 메서드
+    public void addTimeTableCourseDetail(TimeTableCourseDetail timeTableCourseDetail) {
+        this.timeTableCourseDetails.add(timeTableCourseDetail);
+    }
 }

@@ -44,6 +44,9 @@ public class Users extends BaseTimeEntity {
     @OneToMany(mappedBy = "users")
     private List<Course> courses = new ArrayList<>();
 
+    @OneToMany(mappedBy = "users")
+    private List<CourseDetail> courseDetails = new ArrayList<>();
+
     @Builder
     public Users(String email, String name, String nickname, String password, Status status, String role) {
         this.email = email;
@@ -56,5 +59,9 @@ public class Users extends BaseTimeEntity {
 
     public void encodePassword(String encodedPassword) {
         this.password = encodedPassword;
+    }
+
+    public void addCourseDetail(CourseDetail courseDetail) {
+        this.courseDetails.add(courseDetail);
     }
 }

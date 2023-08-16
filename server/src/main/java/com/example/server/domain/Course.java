@@ -49,4 +49,8 @@ public class Course extends BaseTimeEntity {
         this.status = status;
         this.categories = categories;
     }
+
+    public void addCourseDetail(CourseDetail courseDetail) {
+        this.courseDetails.add(courseDetail);
+    }
 }
