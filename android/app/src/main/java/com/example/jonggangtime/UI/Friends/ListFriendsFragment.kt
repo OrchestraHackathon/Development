@@ -45,6 +45,16 @@ class ListFriendsFragment : BaseFragment<FragmentListFriendsBinding>(FragmentLis
     }
 
     override fun onBackPressed() {
+
+        val fragmentList = childFragmentManager.fragments
+        Log.d("frag", "ListfriendsFrag" + fragmentList.toString())
+        for (fragment in fragmentList) {
+            if (fragment is MainActivity.onBackPressedListener) {
+                (fragment as MainActivity.onBackPressedListener).onBackPressed()
+                return
+            }
+        }
+
         if(this.childFragmentManager.backStackEntryCount>=1){
             this.childFragmentManager.popBackStackImmediate()
             binding.friendsSearchEt.clearFocus()

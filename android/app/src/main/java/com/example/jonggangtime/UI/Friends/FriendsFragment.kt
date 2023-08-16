@@ -27,6 +27,7 @@ class FriendsFragment : BaseFragment<FragmentFriendsBinding>(FragmentFriendsBind
 
     override fun onBackPressed() {
         val fragmentList = childFragmentManager.fragments
+        Log.d("frag", "friendsFrag" + fragmentList.toString())
         for (fragment in fragmentList) {
             if (fragment is MainActivity.onBackPressedListener) {
                 (fragment as MainActivity.onBackPressedListener).onBackPressed()
