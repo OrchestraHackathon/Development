@@ -18,7 +18,7 @@ public class UsersSignUpRequestDto {
     private String userNickName;
 
     // dto -> entity
-    public Users toEntity() {
+    public Users toEntity(String defaultProfileImageUrl) {
         return Users.builder()
                 .email(email)
                 .password(password)
@@ -26,6 +26,7 @@ public class UsersSignUpRequestDto {
                 .nickname(userNickName)
                 .status(Status.ACTIVE)
                 .role("USER")
+                .profileImageUrl(defaultProfileImageUrl)
                 .build();
     }
 }
