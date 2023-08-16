@@ -2,6 +2,7 @@ package com.example.server.service;
 
 import com.example.server.domain.users.Users;
 import com.example.server.dto.auth.LoginTokenResponseDto;
+import com.example.server.dto.users.UsersDetailResponseDto;
 import com.example.server.dto.users.UsersLoginRequestDto;
 import com.example.server.dto.users.UsersResponseDto;
 import com.example.server.dto.users.UsersSignUpRequestDto;
@@ -11,11 +12,13 @@ import com.example.server.util.jwt.JwtProvider;
 import com.example.server.util.jwt.Token;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.example.server.util.BaseResponseStatus.INVALID_EMAIL_OR_PASSWORD;
+import static com.example.server.util.BaseResponseStatus.NONE_USER;
 
 @Service
 @Transactional
@@ -27,11 +30,14 @@ public class UsersService {
     private final UsersRepository usersRepository;
     private final JwtProvider jwtProvider;
 
+    @Value("${default.image.url}")
+    private String defaultProfileImageUrl;
+
     public UsersResponseDto signUp(UsersSignUpRequestDto requestDto) {
 
 
         log.info("user service 진입");
-        Users users = requestDto.toEntity();
+        Users users = requestDto.toEntity(defaultProfileImageUrl);
         String encodedPassword = passwordEncoder.encode(users.getPassword());
         users.encodePassword(encodedPassword);
         usersRepository.save(users);
@@ -58,5 +64,11 @@ public class UsersService {
                 .accessToken(token.getAccessToken())
                 .refreshToken(token.getRefreshToken())
                 .build();
+    }
+
+    public UsersDetailResponseDto userInfo(Long usersId) {
+        Users user = usersRepository.findById(usersId)
+                .orElseThrow(() -> new UsersException(NONE_USER));
+        return UsersDetailResponseDto.of(user);
     }
 }
