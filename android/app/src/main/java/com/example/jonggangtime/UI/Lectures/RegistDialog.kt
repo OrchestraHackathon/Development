@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.jonggangtime.R
 import com.example.jonggangtime.databinding.DialogRegistBinding
 
 class RegistDialog: DialogFragment() {
@@ -29,6 +30,14 @@ class RegistDialog: DialogFragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DialogRegistBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle( // Background -> Transparent.
+            STYLE_NORMAL,
+            R.style.TransparentBottomSheetDialogFragment
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
