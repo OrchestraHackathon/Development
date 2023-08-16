@@ -145,7 +145,7 @@ class TimeTableFragment : BaseFragment<FragmentTimeTableBinding>(FragmentTimeTab
     }
 
     override fun myTimeTableFailure(code: Int, message: String) {
-
+        Log.d("timeTable", "failure진입함")
     }
 
 }
