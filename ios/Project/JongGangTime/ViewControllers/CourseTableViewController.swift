@@ -39,6 +39,7 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
         })
         
         setViewUI()
+        setKeyboard()
         
     }
     
@@ -51,6 +52,9 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
         self.searchCourseTextField.layer.cornerRadius = searchCourseTextField.layer.bounds.height / 2
     }
     
+    func setKeyboard() {
+        self.hideKeyboardWhenTappedAround()
+    }
     
     
     

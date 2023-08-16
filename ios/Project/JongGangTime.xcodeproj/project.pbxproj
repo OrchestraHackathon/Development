@@ -16,6 +16,14 @@
 		0A6115A62A89F0500065CFEC /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6115A52A89F0500065CFEC /* Course.swift */; };
 		0A6115A82A89F87F0065CFEC /* CourseRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6115A72A89F87F0065CFEC /* CourseRegisterViewController.swift */; };
 		0A9130E12A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9130E02A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift */; };
+		0AAAD3C62A8C8ADF006DF9FB /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3C52A8C8ADE006DF9FB /* LogoView.swift */; };
+		0AAAD3C82A8C9517006DF9FB /* FriendTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3C72A8C9517006DF9FB /* FriendTimeTableViewController.swift */; };
+		0AAAD3CA2A8CA768006DF9FB /* FindFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3C92A8CA768006DF9FB /* FindFriendTableViewCell.swift */; };
+		0AAAD3CC2A8CB0D8006DF9FB /* SettingCourseTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3CB2A8CB0D8006DF9FB /* SettingCourseTimeViewController.swift */; };
+		0AAAD3CE2A8CC1DE006DF9FB /* TimeComponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3CD2A8CC1DE006DF9FB /* TimeComponentTableViewCell.swift */; };
+		0AAAD3D02A8CF2A0006DF9FB /* BottomSheetUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3CF2A8CF2A0006DF9FB /* BottomSheetUIView.swift */; };
+		0AAAD3D32A8D0A32006DF9FB /* SetTimeCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3D22A8D0A32006DF9FB /* SetTimeCategoryCollectionViewCell.swift */; };
+		0AAAD3D52A8D17EA006DF9FB /* ExtenStionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3D42A8D17EA006DF9FB /* ExtenStionUIColor.swift */; };
 		0AB0796D2A8B432E0066968B /* RegisterUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0796C2A8B432E0066968B /* RegisterUserInfo.swift */; };
 		0AB079702A8B44440066968B /* PostRegisterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0796F2A8B44440066968B /* PostRegisterInfo.swift */; };
 		0AB079722A8B4D210066968B /* LoginUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB079712A8B4D210066968B /* LoginUserInfo.swift */; };
@@ -53,6 +61,14 @@
 		0A6115A52A89F0500065CFEC /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		0A6115A72A89F87F0065CFEC /* CourseRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRegisterViewController.swift; sourceTree = "<group>"; };
 		0A9130E02A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		0AAAD3C52A8C8ADE006DF9FB /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		0AAAD3C72A8C9517006DF9FB /* FriendTimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTimeTableViewController.swift; sourceTree = "<group>"; };
+		0AAAD3C92A8CA768006DF9FB /* FindFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendTableViewCell.swift; sourceTree = "<group>"; };
+		0AAAD3CB2A8CB0D8006DF9FB /* SettingCourseTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCourseTimeViewController.swift; sourceTree = "<group>"; };
+		0AAAD3CD2A8CC1DE006DF9FB /* TimeComponentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeComponentTableViewCell.swift; sourceTree = "<group>"; };
+		0AAAD3CF2A8CF2A0006DF9FB /* BottomSheetUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetUIView.swift; sourceTree = "<group>"; };
+		0AAAD3D22A8D0A32006DF9FB /* SetTimeCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		0AAAD3D42A8D17EA006DF9FB /* ExtenStionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtenStionUIColor.swift; sourceTree = "<group>"; };
 		0AB0796C2A8B432E0066968B /* RegisterUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserInfo.swift; sourceTree = "<group>"; };
 		0AB0796F2A8B44440066968B /* PostRegisterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterInfo.swift; sourceTree = "<group>"; };
 		0AB079712A8B4D210066968B /* LoginUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserInfo.swift; sourceTree = "<group>"; };
@@ -108,6 +124,23 @@
 			path = DataClasses;
 			sourceTree = "<group>";
 		};
+		0AAAD3C42A8C8AC0006DF9FB /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				0AAAD3C52A8C8ADE006DF9FB /* LogoView.swift */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		0AAAD3D12A8D09DE006DF9FB /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				0A9130E02A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift */,
+				0AAAD3D22A8D0A32006DF9FB /* SetTimeCategoryCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		0AB0796E2A8B44110066968B /* APIData */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,11 +162,12 @@
 			isa = PBXGroup;
 			children = (
 				0AD19A652A88D1B200949315 /* CourseTableViewCell.swift */,
-				0A9130E02A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift */,
 				0A0D051F2A8B25DC00DC11D7 /* DetailCategoryCollectionViewCell.swift */,
 				0AB079752A8BB7380066968B /* FriendTableViewCell.swift */,
 				0AB079772A8BC27D0066968B /* FriendRequestTableViewCell.swift */,
 				0AEA3BF72A8C59100002D70D /* MyFriendTableViewCell.swift */,
+				0AAAD3C92A8CA768006DF9FB /* FindFriendTableViewCell.swift */,
+				0AAAD3CD2A8CC1DE006DF9FB /* TimeComponentTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -159,8 +193,10 @@
 		0AEECC432A84740A003370A2 /* JongGangTime */ = {
 			isa = PBXGroup;
 			children = (
+				0AAAD3C42A8C8AC0006DF9FB /* Others */,
 				0AB0796E2A8B44110066968B /* APIData */,
 				0A6115A42A89F02D0065CFEC /* DataClasses */,
+				0AAAD3D12A8D09DE006DF9FB /* CollectionViewCells */,
 				0AD19A642A88D18D00949315 /* TableViewCells */,
 				0AD19A612A88CF6100949315 /* APICallers */,
 				0AEECC5A2A8476B9003370A2 /* CustomViews */,
@@ -188,6 +224,8 @@
 				0AEECC6F2A85E99D003370A2 /* registerViewController.swift */,
 				0A6115A72A89F87F0065CFEC /* CourseRegisterViewController.swift */,
 				0A530FC32A8A2DC400B66D0E /* DetailCourseViewController.swift */,
+				0AAAD3C72A8C9517006DF9FB /* FriendTimeTableViewController.swift */,
+				0AAAD3CB2A8CB0D8006DF9FB /* SettingCourseTimeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -198,6 +236,7 @@
 				0AEECC692A85BF4E003370A2 /* UIImageExtension.swift */,
 				0A1EA7642A87659C0044CE89 /* ViewControllerExtension.swift */,
 				0AEA3BF92A8C5E100002D70D /* ScrollViewExtension.swift */,
+				0AAAD3D42A8D17EA006DF9FB /* ExtenStionUIColor.swift */,
 			);
 			path = ExtensionAndProtocols;
 			sourceTree = "<group>";
@@ -207,6 +246,7 @@
 			children = (
 				0AEECC6D2A85E880003370A2 /* PaddingtextField.swift */,
 				0A6115A22A89E6540065CFEC /* PaddingLabel.swift */,
+				0AAAD3CF2A8CF2A0006DF9FB /* BottomSheetUIView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -325,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AAAD3CA2A8CA768006DF9FB /* FindFriendTableViewCell.swift in Sources */,
 				0AEECC6C2A85E100003370A2 /* LoginViewController.swift in Sources */,
 				0AEECC6E2A85E880003370A2 /* PaddingtextField.swift in Sources */,
 				0AD19A632A88CF9800949315 /* APICaller.swift in Sources */,
@@ -334,9 +375,12 @@
 				0AEECC452A84740A003370A2 /* AppDelegate.swift in Sources */,
 				0AEA3BF82A8C59100002D70D /* MyFriendTableViewCell.swift in Sources */,
 				0A6115A32A89E6540065CFEC /* PaddingLabel.swift in Sources */,
+				0AAAD3D52A8D17EA006DF9FB /* ExtenStionUIColor.swift in Sources */,
 				0AD19A662A88D1B200949315 /* CourseTableViewCell.swift in Sources */,
 				0A6115A62A89F0500065CFEC /* Course.swift in Sources */,
+				0AAAD3D32A8D0A32006DF9FB /* SetTimeCategoryCollectionViewCell.swift in Sources */,
 				0AEECC5C2A847775003370A2 /* TapBarController.swift in Sources */,
+				0AAAD3C82A8C9517006DF9FB /* FriendTimeTableViewController.swift in Sources */,
 				0AEECC702A85E99D003370A2 /* registerViewController.swift in Sources */,
 				0AEECC682A85BB48003370A2 /* MyPageTabViewController.swift in Sources */,
 				0A0D05202A8B25DC00DC11D7 /* DetailCategoryCollectionViewCell.swift in Sources */,
@@ -348,12 +392,16 @@
 				0AB079762A8BB7380066968B /* FriendTableViewCell.swift in Sources */,
 				0A530FC42A8A2DC400B66D0E /* DetailCourseViewController.swift in Sources */,
 				0AEECC642A85BB24003370A2 /* CalendarTabViewController.swift in Sources */,
+				0AAAD3D02A8CF2A0006DF9FB /* BottomSheetUIView.swift in Sources */,
 				0AB0796D2A8B432E0066968B /* RegisterUserInfo.swift in Sources */,
 				0AB079782A8BC27D0066968B /* FriendRequestTableViewCell.swift in Sources */,
 				0AB079742A8B4DCC0066968B /* PostLoginInfo.swift in Sources */,
 				0A6115A82A89F87F0065CFEC /* CourseRegisterViewController.swift in Sources */,
+				0AAAD3C62A8C8ADF006DF9FB /* LogoView.swift in Sources */,
 				0AEECC472A84740A003370A2 /* SceneDelegate.swift in Sources */,
+				0AAAD3CC2A8CB0D8006DF9FB /* SettingCourseTimeViewController.swift in Sources */,
 				0AEECC6A2A85BF4E003370A2 /* UIImageExtension.swift in Sources */,
+				0AAAD3CE2A8CC1DE006DF9FB /* TimeComponentTableViewCell.swift in Sources */,
 				0A0D051E2A8B223E00DC11D7 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -33,8 +33,6 @@ class CalendarTabViewController: UIViewController, ElliotableDelegate, Elliotabl
     func setViewUI() {
         
         setTimeTable()
-        myTimeTableView.delegate = self
-        myTimeTableView.dataSource = self
         
         myFriendsTimeTableViewBorder.layer.borderWidth = 1
         myFriendsTimeTableViewBorder.layer.cornerRadius = 10
@@ -43,6 +41,9 @@ class CalendarTabViewController: UIViewController, ElliotableDelegate, Elliotabl
     }
     
     func setTimeTable() {
+        
+        myTimeTableView.delegate = self
+        myTimeTableView.dataSource = self
         
         myTimeTableView.elliotBackgroundColor = UIColor.white
         myTimeTableView.borderWidth = 1
@@ -57,6 +58,24 @@ class CalendarTabViewController: UIViewController, ElliotableDelegate, Elliotabl
         
         
     }
+    
+    
+    //MARK: - Segue function
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowFriendTimeTableSG",
+           let destinationVC = segue.destination as? FriendTimeTableViewController,
+           let indexPath = sender as? IndexPath {
+            let selectedFriend = friends[indexPath.row] // friends는 해당 아이템들의 배열이라고 가정합니다.
+               destinationVC.friendName = selectedFriend
+        }
+    }
+    
+    
+    
+    
+    
+    //MARK: - elliotable setting function
     
     func elliotable(elliotable: Elliotable, at textPerIndex: Int) -> String {
         return self.daySymbol[textPerIndex]
@@ -96,6 +115,14 @@ class CalendarTabViewController: UIViewController, ElliotableDelegate, Elliotabl
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowFriendTimeTableSG", sender: indexPath)
+    }
+    
+    
+    
+    
     
     
 }

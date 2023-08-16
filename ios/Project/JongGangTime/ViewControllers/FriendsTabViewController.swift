@@ -26,9 +26,19 @@ class FriendsTabViewController: UIViewController,UITableViewDelegate, UITableVie
     
 
     
+    
+    
     @IBOutlet weak var myFriendTableView: UITableView!
     
     @IBOutlet weak var myFriendTableViewHeight: NSLayoutConstraint!
+    
+    
+    
+    @IBOutlet weak var findFriendBaseView: UIView!
+    
+    @IBOutlet weak var findFriendTableView: UITableView!
+    
+    
     
     
     
@@ -44,11 +54,14 @@ class FriendsTabViewController: UIViewController,UITableViewDelegate, UITableVie
     
     var friends = ["임한결", "김태규", "남수아", "박재형"]
     
+    var nicknameMatchList = ["정재연", "재연", "정재", "정"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         friendRequests = [sendedRequests, receivedRequests]
         setViewUI()
+        setUpKeyboardSetting()
 
     }
     
@@ -102,12 +115,33 @@ class FriendsTabViewController: UIViewController,UITableViewDelegate, UITableVie
     }
     
     private func setupTextField() {
-        findByNicknameTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .touchDown)
+        findByNicknameTextField.addTarget(self, action: #selector(textFieldDidTouchedDown(_:)), for: .touchDown)
     }
     
-    @objc func textFieldDidBeginEditing(_ textField: PaddingtextField) {
+    func setUpKeyboardSetting() {
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    
+    
+    //MARK: - Segue function
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowFriendTimeTableSG2",
+           let destinationVC = segue.destination as? FriendTimeTableViewController,
+           let indexPath = sender as? IndexPath {
+            let selectedFriend = friends[indexPath.row] // friends는 해당 아이템들의 배열이라고 가정합니다.
+               destinationVC.friendName = selectedFriend
+        }
+    }
+    
+    
+    
+    
+    @objc func textFieldDidTouchedDown(_ textField: PaddingtextField) {
         UIView.animate(withDuration: 0.2) {
             self.backToRequestViewButton.isHidden = false
+            self.findFriendBaseView.isHidden = false
         }
     }
     
@@ -116,6 +150,7 @@ class FriendsTabViewController: UIViewController,UITableViewDelegate, UITableVie
     @IBAction func backToRequestViewButtonDidTap(_ sender: Any) {
         UIView.animate(withDuration: 0.2) {
             self.backToRequestViewButton.isHidden = true
+            self.findFriendBaseView.isHidden = true
         }
     }
 
@@ -143,7 +178,7 @@ class FriendsTabViewController: UIViewController,UITableViewDelegate, UITableVie
             headerView.addSubview(headerLabel)
 
             return headerView
-        }else {
+        }else if tableView == myFriendTableView{
             let headerView = UIView()
 
             let headerLabel = UILabel()
@@ -158,6 +193,12 @@ class FriendsTabViewController: UIViewController,UITableViewDelegate, UITableVie
             headerView.addSubview(headerLabel)
 
             return headerView
+        } else {
+            let headerView = UIView()
+            
+            headerView.isHidden = true
+
+            return headerView
         }
         
     }
@@ -167,12 +208,17 @@ class FriendsTabViewController: UIViewController,UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == findFriendTableView {
+            return 50
+        }
         return tableViewCellHeight
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == friendRequestTableView {
             return 2
+        } else if tableView == myFriendTableView{
+            return 1
         } else {
             return 1
         }
@@ -187,8 +233,10 @@ class FriendsTabViewController: UIViewController,UITableViewDelegate, UITableVie
                 return receivedRequests.count
             }
            
-        } else {
+        } else if tableView == myFriendTableView {
             return friends.count
+        } else {
+            return nicknameMatchList.count
         }
     }
     
@@ -204,13 +252,27 @@ class FriendsTabViewController: UIViewController,UITableViewDelegate, UITableVie
             }
             
             return cell
-        } else {
+        } else if tableView == myFriendTableView {
             
             let cell = myFriendTableView.dequeueReusableCell(withIdentifier: "MyFriendTableViewCell", for: indexPath) as! MyFriendTableViewCell
             
             cell.friendNameLabel.text = friends[indexPath.row]
             
             return cell
+        } else {
+            
+            let cell = findFriendTableView.dequeueReusableCell(withIdentifier: "FindFriendTableViewCell", for: indexPath) as! FindFriendTableViewCell
+            
+            cell.friendNameLabel.text = nicknameMatchList[indexPath.row]
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == myFriendTableView
+        {
+            performSegue(withIdentifier: "ShowFriendTimeTableSG2", sender: indexPath)
         }
     }
 
