@@ -23,7 +23,7 @@ class ContentRegistLectureFragment : BaseFragment<FragmentContentRegistLectureBi
             itemList.add(LectureCategoryData(i, nameList[i]))
         }
 
-        val categoryAdapter = CategoryAdapter(itemList, 1)
+        val categoryAdapter = CategoryAdapter(requireContext(), itemList, 1)
         categoryAdapter.setBottomSheetListener(this)
         binding.lectureCategoryRv.adapter = categoryAdapter
         binding.lectureCategoryRv.layoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
