@@ -16,7 +16,6 @@ public class CourseReadResponseDto {
     private String courseName;
     private String professor;
     private String categoryName;
-    private String courseDetail;
     private String courseSummary;
     private Long registerPeople;
 
@@ -25,7 +24,6 @@ public class CourseReadResponseDto {
         this.courseName = course.getName();
         this.professor = course.getUsers().getName();
         this.categoryName = course.getCourseCategories().get(0).getCategory().getName();
-        this.courseDetail = course.getDetail();
         this.courseSummary = course.getSummary();
         this.registerPeople = registerPeople;
     }
