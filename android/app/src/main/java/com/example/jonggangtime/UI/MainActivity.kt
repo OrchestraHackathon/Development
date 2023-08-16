@@ -73,7 +73,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         for (fragment in fragmentList) {
             if (fragment is onBackPressedListener) {
                 (fragment as onBackPressedListener).onBackPressed()
-                return
             }
         }
 
