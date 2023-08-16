@@ -34,23 +34,26 @@ public class Course extends BaseTimeEntity {
     @OneToMany(mappedBy = "course")
     private List<CourseDetail> courseDetails = new ArrayList<>();
 
-    @OneToMany(mappedBy = "course")
-    private List<Category> categories = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")
     private Users users;
 
+    @OneToMany(mappedBy = "course")
+    private List<CourseCategory> courseCategories = new ArrayList<>();
+
     @Builder
-    public Course(String detail, String summary, String name, Status status, List<Category> categories) {
+    public Course(String detail, String summary, String name, Status status) {
         this.detail = detail;
         this.summary = summary;
         this.name = name;
         this.status = status;
-        this.categories = categories;
     }
 
     public void addCourseDetail(CourseDetail courseDetail) {
         this.courseDetails.add(courseDetail);
+    }
+    public void addCourseCategory(CourseCategory courseCategory) {
+        this.courseCategories.add(courseCategory);
     }
 }

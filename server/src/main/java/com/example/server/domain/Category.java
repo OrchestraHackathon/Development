@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -24,7 +27,6 @@ public class Category extends BaseTimeEntity {
     private Status status;
 
     // 연관 관계 Mapping
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id")
-    private Course course;
+    @OneToMany(mappedBy = "category")
+    private List<CourseCategory> courseCategories = new ArrayList<>();
 }
