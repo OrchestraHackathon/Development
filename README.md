@@ -44,21 +44,31 @@
 ## 기능 소개
 
 ### `회원가입`
-+ 
++ `Android`
+  + Retrofit
+    + 네트워크 요청을 보다 간편하고 효과적으로 처리하기 위한 라이브러리로 REST API와 통신하여 데이터를 가져오거나 보내는 작업수행.
 
 ### `로그인`
-
++ 
 
 ### `시간표 설정`
++ `Android`
+  + 오픈소스 : MinTimeTable(https://github.com/islandparadise14/MinTimetable)
+    + 사용자 맞춤형으로 시간표 관리가 가능한 오픈소스를 이용.
 
 
 ### `수강 과목`
 📌 과목 둘러보기
++ `Android`
+  + 무한 스크롤
+    + 데이터를 나눠서 수신받아 페이지 로딩 시간이 감소하여 사용자 친화적인 인터페이스 제공.
 
 📌 과목 등록하기
 
 ### `인기 과목 및 카테고리`
-
++ `Android`
+  + BaseActivity, BaseFragment
+    + Activity와 Fragment에서 Data Binding을 선언하다보면 중복되는 보일러플레이트 코드를 제거하여, 구현시간을 단축시키고 코드 가독성을 높임.
 ### `마이페이지`
 
 ## 💡 기대효과
