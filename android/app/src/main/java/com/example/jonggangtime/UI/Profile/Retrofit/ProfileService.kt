@@ -22,7 +22,9 @@ class ProfileService {
                 call: Call<ResponseMyPage>,
                 response: Response<ResponseMyPage>
             ) {
+                Log.d("profileService", "onResponse 호출됨")
                 if (response.isSuccessful && response.code() == 200) {
+                    Log.d("profileService", "성공")
                     val resp: ResponseMyPage = response.body()!!
                     profileMyPageView.profileMyPageSuccess(resp.result!!)
                 }

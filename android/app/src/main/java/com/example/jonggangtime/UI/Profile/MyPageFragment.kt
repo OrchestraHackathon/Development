@@ -1,6 +1,7 @@
 package com.example.jonggangtime.UI.Profile
 
 import android.util.Log
+import com.bumptech.glide.Glide
 import com.example.jonggangtime.UI.Profile.Retrofit.ProfileMyPageView
 import com.example.jonggangtime.UI.Profile.Retrofit.ProfileService
 import com.example.jonggangtime.UI.Profile.Retrofit.ResultMyPage
@@ -21,7 +22,13 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(FragmentMyPageBinding
     }
 
     override fun profileMyPageSuccess(result: ResultMyPage) {
-
+        Glide.with(this)
+            .load(result.profileImageUrl)
+            .into(binding.myPageImgIv)
+        binding.myPageNameTv.text = result.userName
+        binding.myPageNicknameTv.text = result.userNickName
+        binding.myPageEmailTv.text = result.email
+        binding.myPageSentenceTv.text = result.aboutMe
     }
 
     override fun profileMyPageFailure(code: Int, message: String) {

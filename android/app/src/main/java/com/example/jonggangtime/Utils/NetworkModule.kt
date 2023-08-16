@@ -35,6 +35,6 @@ class NetworkModule {
         }
 
         const val Authorization_TOKEN: String = "Authorization"
-        const val BaseURL: String = "https://413a-121-130-156-219.ngrok-free.app/"
+        const val BaseURL: String = "https://ecc1-210-106-232-108.ngrok-free.app"
     }
 }

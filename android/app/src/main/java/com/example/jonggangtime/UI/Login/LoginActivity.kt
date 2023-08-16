@@ -25,7 +25,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         super.onCreate(savedInstanceState)
 
         binding.loginBtn.setOnClickListener {
-            /*val loginInfo = LoginInfo(binding.emailInputTf.text.toString(), binding.passwordInputTf.text.toString())
+            val loginInfo = LoginInfo(binding.emailInputTf.text.toString(), binding.passwordInputTf.text.toString())
             RetrofitClient.instance.login(loginInfo).enqueue(object: retrofit2.Callback<ResponseLogin>{
                 override fun onResponse(
                     call: Call<ResponseLogin>,
@@ -37,6 +37,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
                         MyApplication.prefs.setString("accessToken", response.body()!!.result.accessToken)
                         MyApplication.prefs.setString("refreshToken", response.body()!!.result.refreshToken)
+
+                        //준영
+                        MyApplication.prefs.saveJwt(response.body()!!.result.accessToken)
 
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     } else {
@@ -54,7 +57,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
             })
 
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))*/
+            //startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         }
 
         binding.signinTv.setOnClickListener {

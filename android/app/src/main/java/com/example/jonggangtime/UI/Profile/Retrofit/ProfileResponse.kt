@@ -24,7 +24,7 @@ data class ResponseMyPage(
 data class ResultMyPage(
     @SerializedName("email") val email: String,
     @SerializedName("userName") val userName: String,
-    @SerializedName("userNickname") val userNickname: String,
+    @SerializedName("userNickName") val userNickName: String,
     @SerializedName("aboutMe") val aboutMe: String,
     @SerializedName("profileImageUrl") val profileImageUrl: String,
 )
