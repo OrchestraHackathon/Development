@@ -154,78 +154,79 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    struct APIResponse: Codable {
+        let isSuccess: Bool
+        let responseCode: Int
+        let responseMessage: String
+        let result: Result
+        
+        struct Result: Codable {
+            let usersId: Int
+            let accessToken: String
+            let refreshToken: String
+        }
+    }
+    
     func postLoginInfo(email: String, password: String, completion: @escaping (Bool) -> Void) {
         guard let serverUrl = Bundle.main.object(forInfoDictionaryKey: "ServerUrl") as? String else {
             print("Error: serverUrl not found in Info.plist")
             completion(false)
             return
         }
-        
-        let postLoginInfo = PostLoginInfo(email: loginEmail, password: loginPassword)
-        
-        guard let uploadData = try? JSONEncoder().encode(postLoginInfo)
-        else {
+
+        let postLoginInfo = PostLoginInfo(email: email, password: password)
+
+        guard let uploadData = try? JSONEncoder().encode(postLoginInfo) else {
             completion(false)
             return
         }
-        
+
         let url = URL(string: "\(serverUrl)/users/login")
-        
+
         var request = URLRequest(url: url!)
-        
         request.httpMethod = "POST"
-        
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let task = URLSession.shared.uploadTask(with: request, from: uploadData) { (data, response, error) in
-            
             if let e = error {
-                NSLog("An error has occured: \(e.localizedDescription)")
-                completion(false)
+                NSLog("An error has occurred: \(e.localizedDescription)")
+                DispatchQueue.main.async {
+                    completion(false)
+                }
                 return
             }
             
-            //            guard let httpResponse = response as? HTTPURLResponse,
-            //                  (200...299).contains(httpResponse.statusCode) else {
-            //                print("Login failed")
-            //                completion(false)
-            //                return
-            //            }
-            
-            DispatchQueue.main.async {
-                guard let data = data else {
-                    print("Invalid data received from the server")
+            guard let data = data, let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                DispatchQueue.main.async {
                     completion(false)
-                    return
                 }
-                
-                do {
-                    if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                       let result = jsonObject["result"] as? [String: Any] {
-                        if let userId = result["userId"] as? Int,  // assuming userId is an Int
-                           let accessToken = result["accessToken"] as? String,
-                           let refreshToken = result["refreshToken"] as? String {
-                            UserDefaults.standard.set(userId, forKey: "userId")
-                            UserDefaults.standard.set(accessToken, forKey: "accessToken")
-                            UserDefaults.standard.set(refreshToken, forKey: "refreshToken")
-
-                            completion(true)
-                            return
-                        }
-                    }
-                } catch {
-                    print("Error parsing JSON: \(error)")
-                }
-                
-                completion(true)
+                return 
             }
 
+            do {
+                let apiResponse = try JSONDecoder().decode(APIResponse.self, from: data)
+                if apiResponse.isSuccess {
+                    UserDefaults.standard.set(apiResponse.result.accessToken, forKey: "accessToken")
+                    DispatchQueue.main.async {
+                        completion(true)
+                    }
+                    
+                } else {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                }
+            } catch {
+                NSLog("Error decoding: \(error)")
+                DispatchQueue.main.async {
+                    completion(false)
+                }
+            }
         }
-
         task.resume()
-        return
-        
     }
+
+    
     
     
     func shakeButton(_ button: UIButton, duration: TimeInterval = 0.5, originalTitle: String, newTitle: String) {

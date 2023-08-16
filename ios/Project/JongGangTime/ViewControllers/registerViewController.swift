@@ -143,41 +143,150 @@ class registerViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - API manegement function
     
+//    func postRegisterInfo(data: RegisterUserInfo) {
+//
+//        guard let serverUrl = Bundle.main.object(forInfoDictionaryKey: "ServerUrl") as? String else {
+//            print("Error: serverUrl not found in Info.plist")
+//            return
+//        }
+//
+//        let postData = PostRegisterInfo(email: data.userEmail, password: data.userPassword, name: data.userName
+//                                        , nickname: data.userNickname)
+//
+//        guard let uploadData = try? JSONEncoder().encode(postData)
+//        else {return}
+//
+//        let url = URL(string: "\(serverUrl)/users/sign-up")
+//
+//        var request = URLRequest(url: url!)
+//
+//        request.httpMethod = "POST"
+//
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//        let task = URLSession.shared.uploadTask(with: request, from: uploadData) { (data, response, error) in
+//
+//            if let e = error {
+//                NSLog("An error has occured: \(e.localizedDescription)")
+//                return
+//            }
+//
+//            print("userRegisterInfo Post success")
+//            print("\n\(postData)")
+//        }
+//
+//        task.resume()
+//
+//    }
+    
+    // 응답을 디코드하기 위한 구조체를 정의합니다.
+    struct RegisterResponse: Codable {
+        let isSuccess: Bool
+        let responseCode: Int
+        let responseMessage: String
+        let result: RegisteredUser
+    }
+
+    struct RegisteredUser: Codable {
+        let id: Int
+        let email: String
+        let username: String
+        let nickname: String
+    }
+
     func postRegisterInfo(data: RegisterUserInfo) {
-        
         guard let serverUrl = Bundle.main.object(forInfoDictionaryKey: "ServerUrl") as? String else {
             print("Error: serverUrl not found in Info.plist")
             return
         }
         
-        let postData = PostRegisterInfo(email: data.userEmail, password: data.userPassword, name: data.userName
-                                        , nickname: data.userNickname)
+        let postData = PostRegisterInfo(email: data.userEmail, password: data.userPassword, name: data.userName, nickname: data.userNickname)
         
-        guard let uploadData = try? JSONEncoder().encode(postData)
-        else {return}
-                
-        let url = URL(string: "\(serverUrl)/users/sign-up")
+        guard let uploadData = try? JSONEncoder().encode(postData) else {
+            return
+        }
         
-        var request = URLRequest(url: url!)
-        
+        let url = URL(string: "\(serverUrl)/users/sign-up")!
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.uploadTask(with: request, from: uploadData) { (data, response, error) in
-            
+               if let e = error {
+                   NSLog("An error has occured: \(e.localizedDescription)")
+                   return
+               }
+               
+               guard let data = data else {
+                   print("Data was not received from the server.")
+                   return
+               }
+
+               do {
+                   let apiResponse = try JSONDecoder().decode(RegisterResponse.self, from: data)
+                   if apiResponse.isSuccess {
+                       print("userRegisterInfo Post success")
+                       print("\n\(postData)")
+
+                       // 회원가입에 성공하면 postTimeTable()을 호출합니다.
+                       self.postTimeTable(completion: { success in
+                           if success {
+                               print("TimeTable post request succeeded.")
+                           } else {
+                               print("TimeTable post request failed.")
+                           }
+                       })
+                   } else {
+                       print("Registration failed with message: \(apiResponse.responseMessage)")
+                   }
+               } catch {
+                   print("Error decoding registration response: \(error)")
+               }
+           }
+           task.resume()
+    }
+
+    
+    func postTimeTable(completion: @escaping (Bool) -> Void) {
+        guard let serverUrl = Bundle.main.object(forInfoDictionaryKey: "ServerUrl") as? String else {
+            print("Error: serverUrl not found in Info.plist")
+            completion(false)
+            return
+        }
+        
+        guard let accessToken = UserDefaults.standard.string(forKey: "accessToken") else {
+            print("Error: accessToken not found in UserDefaults")
+            completion(false)
+            return
+        }
+        
+        let url = URL(string: "\(serverUrl)/time-table")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        // Add the access token to the request header
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let e = error {
-                NSLog("An error has occured: \(e.localizedDescription)")
+                print("An error occurred: \(e.localizedDescription)")
+                completion(false)
                 return
             }
             
-            print("userRegisterInfo Post success")
-            print("\n\(postData)")
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                completion(false)
+                return
+            }
+
+            // Handle response data as needed...
+            
+            completion(true)
         }
         
         task.resume()
-        
     }
+
     
     
     

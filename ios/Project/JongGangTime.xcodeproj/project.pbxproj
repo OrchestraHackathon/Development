@@ -24,6 +24,10 @@
 		0AAAD3D02A8CF2A0006DF9FB /* BottomSheetUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3CF2A8CF2A0006DF9FB /* BottomSheetUIView.swift */; };
 		0AAAD3D32A8D0A32006DF9FB /* SetTimeCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3D22A8D0A32006DF9FB /* SetTimeCategoryCollectionViewCell.swift */; };
 		0AAAD3D52A8D17EA006DF9FB /* ExtenStionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3D42A8D17EA006DF9FB /* ExtenStionUIColor.swift */; };
+		0AAAD3D72A8D3E35006DF9FB /* SelectDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3D62A8D3E35006DF9FB /* SelectDayViewController.swift */; };
+		0AAAD3DB2A8D43DA006DF9FB /* DataTransferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3DA2A8D43DA006DF9FB /* DataTransferDelegate.swift */; };
+		0AAAD3DD2A8D6A80006DF9FB /* CompleteCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3DC2A8D6A80006DF9FB /* CompleteCourseTableViewCell.swift */; };
+		0AAAD3DF2A8D701A006DF9FB /* CertificateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAAD3DE2A8D701A006DF9FB /* CertificateViewController.swift */; };
 		0AB0796D2A8B432E0066968B /* RegisterUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0796C2A8B432E0066968B /* RegisterUserInfo.swift */; };
 		0AB079702A8B44440066968B /* PostRegisterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0796F2A8B44440066968B /* PostRegisterInfo.swift */; };
 		0AB079722A8B4D210066968B /* LoginUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB079712A8B4D210066968B /* LoginUserInfo.swift */; };
@@ -69,6 +73,10 @@
 		0AAAD3CF2A8CF2A0006DF9FB /* BottomSheetUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetUIView.swift; sourceTree = "<group>"; };
 		0AAAD3D22A8D0A32006DF9FB /* SetTimeCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AAAD3D42A8D17EA006DF9FB /* ExtenStionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtenStionUIColor.swift; sourceTree = "<group>"; };
+		0AAAD3D62A8D3E35006DF9FB /* SelectDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDayViewController.swift; sourceTree = "<group>"; };
+		0AAAD3DA2A8D43DA006DF9FB /* DataTransferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferDelegate.swift; sourceTree = "<group>"; };
+		0AAAD3DC2A8D6A80006DF9FB /* CompleteCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteCourseTableViewCell.swift; sourceTree = "<group>"; };
+		0AAAD3DE2A8D701A006DF9FB /* CertificateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateViewController.swift; sourceTree = "<group>"; };
 		0AB0796C2A8B432E0066968B /* RegisterUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserInfo.swift; sourceTree = "<group>"; };
 		0AB0796F2A8B44440066968B /* PostRegisterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterInfo.swift; sourceTree = "<group>"; };
 		0AB079712A8B4D210066968B /* LoginUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserInfo.swift; sourceTree = "<group>"; };
@@ -168,6 +176,7 @@
 				0AEA3BF72A8C59100002D70D /* MyFriendTableViewCell.swift */,
 				0AAAD3C92A8CA768006DF9FB /* FindFriendTableViewCell.swift */,
 				0AAAD3CD2A8CC1DE006DF9FB /* TimeComponentTableViewCell.swift */,
+				0AAAD3DC2A8D6A80006DF9FB /* CompleteCourseTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -226,6 +235,8 @@
 				0A530FC32A8A2DC400B66D0E /* DetailCourseViewController.swift */,
 				0AAAD3C72A8C9517006DF9FB /* FriendTimeTableViewController.swift */,
 				0AAAD3CB2A8CB0D8006DF9FB /* SettingCourseTimeViewController.swift */,
+				0AAAD3D62A8D3E35006DF9FB /* SelectDayViewController.swift */,
+				0AAAD3DE2A8D701A006DF9FB /* CertificateViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -237,6 +248,7 @@
 				0A1EA7642A87659C0044CE89 /* ViewControllerExtension.swift */,
 				0AEA3BF92A8C5E100002D70D /* ScrollViewExtension.swift */,
 				0AAAD3D42A8D17EA006DF9FB /* ExtenStionUIColor.swift */,
+				0AAAD3DA2A8D43DA006DF9FB /* DataTransferDelegate.swift */,
 			);
 			path = ExtensionAndProtocols;
 			sourceTree = "<group>";
@@ -373,11 +385,14 @@
 				0A9130E12A8A0EEE003EDF6E /* CategoryCollectionViewCell.swift in Sources */,
 				0AEECC662A85BB38003370A2 /* CourseTableViewController.swift in Sources */,
 				0AEECC452A84740A003370A2 /* AppDelegate.swift in Sources */,
+				0AAAD3DF2A8D701A006DF9FB /* CertificateViewController.swift in Sources */,
+				0AAAD3DD2A8D6A80006DF9FB /* CompleteCourseTableViewCell.swift in Sources */,
 				0AEA3BF82A8C59100002D70D /* MyFriendTableViewCell.swift in Sources */,
 				0A6115A32A89E6540065CFEC /* PaddingLabel.swift in Sources */,
 				0AAAD3D52A8D17EA006DF9FB /* ExtenStionUIColor.swift in Sources */,
 				0AD19A662A88D1B200949315 /* CourseTableViewCell.swift in Sources */,
 				0A6115A62A89F0500065CFEC /* Course.swift in Sources */,
+				0AAAD3D72A8D3E35006DF9FB /* SelectDayViewController.swift in Sources */,
 				0AAAD3D32A8D0A32006DF9FB /* SetTimeCategoryCollectionViewCell.swift in Sources */,
 				0AEECC5C2A847775003370A2 /* TapBarController.swift in Sources */,
 				0AAAD3C82A8C9517006DF9FB /* FriendTimeTableViewController.swift in Sources */,
@@ -395,6 +410,7 @@
 				0AAAD3D02A8CF2A0006DF9FB /* BottomSheetUIView.swift in Sources */,
 				0AB0796D2A8B432E0066968B /* RegisterUserInfo.swift in Sources */,
 				0AB079782A8BC27D0066968B /* FriendRequestTableViewCell.swift in Sources */,
+				0AAAD3DB2A8D43DA006DF9FB /* DataTransferDelegate.swift in Sources */,
 				0AB079742A8B4DCC0066968B /* PostLoginInfo.swift in Sources */,
 				0A6115A82A89F87F0065CFEC /* CourseRegisterViewController.swift in Sources */,
 				0AAAD3C62A8C8ADF006DF9FB /* LogoView.swift in Sources */,

@@ -12,7 +12,7 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var registerCourseButton: UIButton!
     
-    private let apiCaller = APICaller()
+//    private let apiCaller = APICaller()
     
     
     
@@ -25,18 +25,47 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        apiCaller.fetchData(completion: {[weak self] result in
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.sync {
-                    self?.data.append(contentsOf: data)
-                    self?.courseTableView.reloadData()
+//        apiCaller.fetchData(completion: {[weak self] result in
+//            switch result {
+//            case .success(let data):
+//                DispatchQueue.main.sync {
+//                    self?.data.append(contentsOf: data)
+//                    self?.courseTableView.reloadData()
+//                }
+//
+//            case .failure(_):
+//                break
+//            }
+//        })
+        
+//        fetchCourses { (response) in
+//            if let response = response {
+//                // 데이터를 여기에서 처리하세요. 예를 들어, `response.result.content`를 사용하여 코스 목록에 접근할 수 있습니다.
+//                self.data.append(contentsOf: response.result.content)
+//                for course in response.result.content {
+//                    print(course.courseName)
+//                }
+//            } else {
+//                print("Failed to fetch courses from server")
+//            }
+        fetchCourses { (response) in
+            if let content = response?.result.content {
+                self.data.append(contentsOf: content)
+                for course in content {
+                    print(course.courseName)
                 }
-                
-            case .failure(_):
-                break
+            } else {
+                print("Failed to fetch courses from server")
             }
-        })
+            
+            DispatchQueue.main.sync {
+                self.courseTableView.reloadData()
+            }
+        }
+
+        
+        
+
         
         setViewUI()
         setKeyboard()
@@ -83,7 +112,7 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
         
         cell.courseTitleLabel?.text = data[indexPath.row].courseName
         cell.courseProfessorLabel?.text = data[indexPath.row].professor
-        cell.courseExplainationLabel?.text = data[indexPath.row].courseDetails
+        cell.courseExplainationLabel?.text = data[indexPath.row].courseSummary
         cell.courseRegisterPeopleLabel?.text = "수강: \(data[indexPath.row].registerPeople)명"
         cell.courseTypeLabel?.text = data[indexPath.row].categoryName
         
@@ -109,52 +138,117 @@ class CourseTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
 
-    
-    
-    
-    
-    
-    
-    
-    
-    private func createSpinnerFooter() -> UIView {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
-        
-        let spinner = UIActivityIndicatorView()
-        spinner.center = footerView.center
-        footerView.addSubview(spinner)
-        spinner.startAnimating()
-        
-        return footerView
+    struct ApiResponse: Codable {
+        let isSuccess: Bool
+        let responseCode: Int
+        let responseMessage: String
+        let result: ResultContent
+    }
+
+    struct ResultContent: Codable {
+        let content: [Course]
+        let page: Int
+        let last: Bool
+    }
+
+    struct Course: Codable {
+        let courseId: Int
+        let courseName: String
+        let professor: String
+        let categoryName: String
+        let courseSummary: String
+        let registerPeople: Int
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let position = scrollView.contentOffset.y
-        if position > (courseTableView.contentSize.height - 100 - scrollView.frame.size.height) {
-            //fetch more data
-            guard !apiCaller.isPaginating else {
-                //we are already fetching more data
+    func fetchCourses(completion: @escaping (ApiResponse?) -> Void) {
+        guard let serverUrl = Bundle.main.object(forInfoDictionaryKey: "ServerUrl") as? String else {
+            print("Error: serverUrl not found in Info.plist")
+            completion(nil)
+            return
+        }
+
+        guard let accessToken = UserDefaults.standard.string(forKey: "accessToken") else {
+            print("Error: accessToken not found in UserDefaults")
+            completion(nil)
+            return
+        }
+
+        let url = URL(string: "\(serverUrl)/courses")! // 여기에 실제 엔드포인트를 지정하세요.
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let e = error {
+                print("An error occurred: \(e.localizedDescription)")
+                completion(nil)
                 return
             }
             
-            self.courseTableView.tableFooterView = createSpinnerFooter()
-            
-            apiCaller.fetchData(pagination: true) { [weak self] result in
-                DispatchQueue.main.async {
-                    self?.courseTableView.tableFooterView = nil
-                }
-                switch result {
-                case .success(let moreData) :
-                    self?.data.append(contentsOf: moreData)
-                    DispatchQueue.main.async {
-                        self?.courseTableView.reloadData()
-                    }
-                case .failure(_):
-                    break
-                }
-                
+            guard let data = data else {
+                print("No data received from server")
+                completion(nil)
+                return
+            }
+
+            do {
+                let apiResponse = try JSONDecoder().decode(ApiResponse.self, from: data)
+                completion(apiResponse)
+            } catch {
+                print("Error decoding the response: \(error)")
+                completion(nil)
             }
         }
+        
+        task.resume()
     }
+
+
+    
+    
+    
+    
+    
+    
+    
+//    private func createSpinnerFooter() -> UIView {
+//        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+//
+//        let spinner = UIActivityIndicatorView()
+//        spinner.center = footerView.center
+//        footerView.addSubview(spinner)
+//        spinner.startAnimating()
+//
+//        return footerView
+//    }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let position = scrollView.contentOffset.y
+//        if position > (courseTableView.contentSize.height - 100 - scrollView.frame.size.height) {
+//            //fetch more data
+//            guard !apiCaller.isPaginating else {
+//                //we are already fetching more data
+//                return
+//            }
+//
+//            self.courseTableView.tableFooterView = createSpinnerFooter()
+//
+//            apiCaller.fetchData(pagination: true) { [weak self] result in
+//                DispatchQueue.main.async {
+//                    self?.courseTableView.tableFooterView = nil
+//                }
+//                switch result {
+//                case .success(let moreData) :
+//                    self?.data.append(contentsOf: moreData)
+//                    DispatchQueue.main.async {
+//                        self?.courseTableView.reloadData()
+//                    }
+//                case .failure(_):
+//                    break
+//                }
+//
+//            }
+//        }
+//    }
     
 }

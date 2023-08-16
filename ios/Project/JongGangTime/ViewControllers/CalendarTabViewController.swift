@@ -10,7 +10,7 @@ import Elliotable
 
 class CalendarTabViewController: UIViewController, ElliotableDelegate, ElliotableDataSource, UITableViewDelegate, UITableViewDataSource {
     
-    let courses = [ElliottEvent(courseId: "c0001", courseName: "알바", roomName: "", professor: "TEST", courseDay: .monday, startTime: "09:30", endTime: "11:00", backgroundColor: UIColor.red), ElliottEvent(courseId: "c0002", courseName: "소프트웨어공학", roomName: "", professor: "TEST", courseDay: .thursday, startTime: "12:00", endTime: "13:30", textColor: UIColor.white, backgroundColor: UIColor.blue)]
+    var courses : [ElliottEvent] = []
     
     private let daySymbol = ["월","화","수","목","금"]
     
@@ -55,7 +55,47 @@ class CalendarTabViewController: UIViewController, ElliotableDelegate, Elliotabl
         myTimeTableView.layer.cornerRadius = 10
         myTimeTableView.layer.borderColor = UIColor.systemGray5.cgColor
         
-        
+        fetchTimeTable { result in
+            guard let timeTableResult = result else {
+                print("Failed to fetch the timetable.")
+                return
+            }
+            
+            for courseInfo in timeTableResult.courseInfos {
+                
+                let courseId = courseInfo.courseId
+                let courseName = courseInfo.courseName
+                let roomName = courseInfo.courseProfessor
+                let professor = courseInfo.courseProfessor
+                let courseDay = courseInfo.day
+                let startTime = courseInfo.startTime
+                let endTime = courseInfo.endTime
+                
+                
+                // 아래의 textColor, backgroundColor는 상수로 사용되므로 별도로 옵셔널 바인딩을 하지 않아도 됩니다.
+                let newElliottEvent = ElliottEvent(courseId: String(courseId),
+                                                   courseName: courseName,
+                                                   roomName: roomName,
+                                                   professor: professor,
+                                                   courseDay: ElliotDay(rawValue: courseDay)!,
+                                                   startTime: startTime,
+                                                   endTime: endTime,
+                                                   textColor: UIColor.white,
+                                                   backgroundColor: UIColor.systemGray)
+                
+                // 새로운 이벤트를 courses 배열에 추가할 수 있습니다. (만약 courses가 var로 선언된 배열이라면)
+                self.courses.append(newElliottEvent)
+                
+                DispatchQueue.main.async {
+                    
+                    self.myTimeTableView.reloadData()
+                    
+                }
+                
+                
+                
+            }
+        }
         
     }
     
@@ -67,10 +107,83 @@ class CalendarTabViewController: UIViewController, ElliotableDelegate, Elliotabl
            let destinationVC = segue.destination as? FriendTimeTableViewController,
            let indexPath = sender as? IndexPath {
             let selectedFriend = friends[indexPath.row] // friends는 해당 아이템들의 배열이라고 가정합니다.
-               destinationVC.friendName = selectedFriend
+            destinationVC.friendName = selectedFriend
         }
     }
     
+    
+    
+    //MARK: - API Caller function
+    
+    struct TimeTableResponse: Codable {
+        let isSuccess: Bool
+        let responseCode: Int
+        let responseMessage: String
+        let result: TimeTableResult
+    }
+    
+    struct TimeTableResult: Codable {
+        let timeTableName: String
+        let courseInfos: [CourseInfo]
+    }
+    
+    struct CourseInfo: Codable {
+        let day: Int
+        let startTime: String
+        let endTime: String
+        let courseName: String
+        let courseProfessor: String
+        let courseId: Int
+    }
+    
+    func fetchTimeTable(completion: @escaping (TimeTableResult?) -> Void) {
+        guard let serverUrl = Bundle.main.object(forInfoDictionaryKey: "ServerUrl") as? String else {
+            print("Error: serverUrl not found in Info.plist")
+            completion(nil)
+            return
+        }
+        
+        guard let accessToken = UserDefaults.standard.string(forKey: "accessToken") else {
+            print("Error: accessToken not found in UserDefaults")
+            completion(nil)
+            return
+        }
+        
+        let url = URL(string: "\(serverUrl)/time-table")! // 여기서 yourEndpoint를 실제 엔드포인트로 변경해야 합니다.
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        // Add the access token to the request header
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let e = error {
+                print("An error occurred: \(e.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let data = data else {
+                print("Data was not received from the server.")
+                completion(nil)
+                return
+            }
+            
+            do {
+                let apiResponse = try JSONDecoder().decode(TimeTableResponse.self, from: data)
+                if apiResponse.isSuccess {
+                    completion(apiResponse.result)
+                } else {
+                    print("Failed with message: \(apiResponse.responseMessage)")
+                    completion(nil)
+                }
+            } catch {
+                print("Error decoding timetable response: \(error)")
+                completion(nil)
+            }
+        }
+        task.resume()
+    }
     
     
     
@@ -80,7 +193,7 @@ class CalendarTabViewController: UIViewController, ElliotableDelegate, Elliotabl
     func elliotable(elliotable: Elliotable, at textPerIndex: Int) -> String {
         return self.daySymbol[textPerIndex]
     }
-      
+    
     func numberOfDays(in elliotable: Elliotable) -> Int {
         return self.daySymbol.count
     }
@@ -102,7 +215,7 @@ class CalendarTabViewController: UIViewController, ElliotableDelegate, Elliotabl
     
     
     
-//MARK: - TableView functions
+    //MARK: - TableView functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count

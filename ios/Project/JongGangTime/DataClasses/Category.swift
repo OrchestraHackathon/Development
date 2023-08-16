@@ -27,14 +27,11 @@ class Category {
         Category(id: 6, name: "취미", color: UIColor(hexCode: "D6A2FF"))
     ]
     
+    static func id(forName name: String) -> Int? {
+        return allCategories.first { $0.name == name }?.id
+    }
+    
     static func category(forID id: Int) -> Category? {
         return allCategories.first { $0.id == id }
     }
 }
-
-// 사용 예제:
-//if let category = Category.category(forID: 3) {
-//    print(category.name) // 출력: 루틴
-//    print(category.color) // 출력: UIDeviceRGBColorSpace 1 1 0 1 (노란색을 나타내는 RGBA 값)
-//}
-

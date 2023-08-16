@@ -62,6 +62,37 @@ class CourseRegisterViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     
+    @IBAction func courseRegisterButtonDidTap(_ sender: Any) {
+        
+        guard let courseName = self.courseTitleTextField.text else { return }
+        let categoryIDs = [Category(categoryId: 1), Category(categoryId: 2)] //self.categoryItems.compactMap { Category.id(forName: $0) }
+
+        guard let courseSummary = self.courseIntroduceTextField.text else { return }
+        guard let courseDetail = self.courseDetsilsTextView.text else { return }
+        
+        let courseData = CoursePostRequest(courseName: courseName,
+                                           categories: categoryIDs,
+                                           courseSummary: courseSummary,
+                                           courseDetail: courseDetail)
+
+        sendCourseData(courseData: courseData) { (response) in
+            if let response = response {
+                if response.isSuccess {
+                    print(response.responseMessage)
+                } else {
+                    print("요청에 실패하였습니다.")
+                }
+            } else {
+                print("Failed to send course data to server")
+            }
+        }
+        
+        self.dismiss(animated: true)
+        
+    }
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryItems.count
     }
@@ -72,6 +103,86 @@ class CourseRegisterViewController: UIViewController, UICollectionViewDelegate, 
         cell.categoryItemLabel?.text = categoryItems[indexPath.row]
         return cell
     }
+    
+    
+    //MARK: - API Caller function
+    
+    struct CoursePostRequest: Codable {
+        let courseName: String
+        let categories: [Category]
+        let courseSummary: String
+        let courseDetail: String
+    }
+
+    struct Category: Codable {
+        let categoryId: Int
+    }
+
+    struct ApiResponse: Codable {
+        let isSuccess: Bool
+        let responseCode: Int
+        let responseMessage: String
+    }
+
+    
+    func sendCourseData(courseData: CoursePostRequest, completion: @escaping (ApiResponse?) -> Void) {
+        guard let serverUrl = Bundle.main.object(forInfoDictionaryKey: "ServerUrl") as? String else {
+            print("Error: serverUrl not found in Info.plist")
+            completion(nil)
+            return
+        }
+
+        guard let accessToken = UserDefaults.standard.string(forKey: "accessToken") else {
+            print("Error: accessToken not found in UserDefaults")
+            completion(nil)
+            return
+        }
+
+        guard let uploadData = try? JSONEncoder().encode(courseData) else {
+            print("Error encoding course data")
+            completion(nil)
+            return
+        }
+
+        let url = URL(string: "\(serverUrl)/courses")! 
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let task = URLSession.shared.uploadTask(with: request, from: uploadData) { (data, response, error) in
+            if let e = error {
+                print("An error occurred: \(e.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let data = data else {
+                print("No data received from server")
+                completion(nil)
+                return
+            }
+
+            do {
+                let apiResponse = try JSONDecoder().decode(ApiResponse.self, from: data)
+                completion(apiResponse)
+            } catch {
+                print("Error decoding the response: \(error)")
+                completion(nil)
+            }
+        }
+        
+        task.resume()
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
 
