@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Course extends BaseTimeEntity {
@@ -40,6 +41,7 @@ public class Course extends BaseTimeEntity {
     private Users users;
 
     @OneToMany(mappedBy = "course")
+    @Builder.Default
     private List<CourseCategory> courseCategories = new ArrayList<>();
 
     @Builder
