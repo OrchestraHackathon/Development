@@ -1,17 +1,23 @@
 package com.example.jonggangtime.UI.Lectures
 
+import android.content.Context
+import android.content.res.ColorStateList
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jonggangtime.Data.LectureData
+import com.example.jonggangtime.R
 import com.example.jonggangtime.Utils.TAG
 import com.example.jonggangtime.databinding.ItemLectureBinding
 import com.example.jonggangtime.databinding.ItemLoadingBinding
 
-class LectureAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class LectureAdapter(val context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 /*class LectureAdapter(private val itemList: ArrayList<LectureData>): RecyclerView.Adapter<LectureAdapter.ViewHolder>(){*/
 
+    val category = arrayListOf("스터디", "자격증", "루틴", "운동", "알바", "취미")
+    private val categoryColor = arrayListOf(R.color.category_study, R.color.category_certificate, R.color.category_routine, R.color.category_exercies, R.color.category_parttime, R.color.category_hobby)
     private var listener: OnItemClickListener? = null
 
     interface OnItemClickListener {
@@ -32,9 +38,12 @@ class LectureAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(item: LectureData) {
             binding.lectureTitleTv.text = item.lectureName
             binding.lectureProfessorTv.text = item.professorName
-            when (item.category) {
-//                TODO 정해진 카테고리의 숫자에 따라서 결정
-            }
+
+            val index = category.indexOf(item.category)
+//            binding.lectureCategoryCv.setCardBackgroundColor(context.getColor(categoryColor[index]))
+            binding.lectureCategoryCv.backgroundTintList = ColorStateList.valueOf(context.getColor(categoryColor[index]))
+            binding.categoryNameTv.text = item.category
+
             binding.lectureCountTv.text = "수강 : ${item.nums}명"
             binding.lectureContentTv.text = item.shortContent
         }
@@ -43,7 +52,6 @@ class LectureAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     // 아이템뷰에 프로그레스바가 들어가는 경우
     inner class LoadingViewHolder(val binding: ItemLoadingBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
     }
 
     // 뷰의 타입을 정해주는 곳이다.
@@ -89,7 +97,7 @@ class LectureAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 "itemList : $itemList\n" +
                 "items : $items")
         items.addAll(itemList)
-        items.add(LectureData(" ", " ", 0, 0, "")) // progress bar 넣을 자리
+        items.add(LectureData(0, " ", " ", "스터디", 0, "")) // progress bar 넣을 자리
         this.notifyDataSetChanged()
     }
 
