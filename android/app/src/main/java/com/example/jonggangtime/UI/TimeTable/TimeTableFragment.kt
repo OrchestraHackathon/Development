@@ -1,6 +1,7 @@
 package com.example.jonggangtime.UI.TimeTable
 
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jonggangtime.R
 import com.example.jonggangtime.UI.Friends.FriendTimeTableFragment
@@ -8,8 +9,11 @@ import com.example.jonggangtime.UI.Friends.FriendsRVAdapter
 import com.example.jonggangtime.UI.Friends.Retrofit.Friend
 import com.example.jonggangtime.Utils.BaseFragment
 import com.example.jonggangtime.databinding.FragmentTimeTableBinding
+import com.islandparadise14.mintable.MinTimeTableView
 import com.islandparadise14.mintable.model.ScheduleDay
 import com.islandparadise14.mintable.model.ScheduleEntity
+import com.islandparadise14.mintable.tableinterface.OnScheduleClickListener
+import com.islandparadise14.mintable.tableinterface.OnTimeCellClickListener
 
 class TimeTableFragment : BaseFragment<FragmentTimeTableBinding>(FragmentTimeTableBinding::inflate) {
 
@@ -90,6 +94,13 @@ class TimeTableFragment : BaseFragment<FragmentTimeTableBinding>(FragmentTimeTab
         //schedule2,3처럼 색 지정을 안해주면 동일 색상(배경:회색, 글씨:흰색)으로 들어간다.
 
         scheduleList.add(schedule)
+        schedule.setOnClickListener {
+            //do something
+            Log.d("schedule", "1")
+            requireActivity().supportFragmentManager.beginTransaction().addToBackStack(null)
+                .replace(R.id.main_fl, TtDetailLectureFragment())
+                .commitAllowingStateLoss()
+        }
         scheduleList.add(schedule2)
         scheduleList.add(schedule3)
 

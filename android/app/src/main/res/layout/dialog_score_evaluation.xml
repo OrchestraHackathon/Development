@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="7dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/score_evaluation_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/score_evaluation_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="성적 평가"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_marginHorizontal="115dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/score_evaluation_cancel_btn"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="20dp"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="10dp"
+                android:src="@drawable/icon_close"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <NumberPicker
+            android:elevation="3dp"
+            android:id="@+id/score_evaluation_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/score_evaluation_title"
+            android:selectionDividerHeight="0dp"
+            android:layout_marginVertical="20dp"
+            android:includeFontPadding="false"
+            />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            android:backgroundTint="@color/gray_0"
+            app:layout_constraintTop_toTopOf="@id/score_evaluation_picker"
+            app:layout_constraintBottom_toBottomOf="@id/score_evaluation_picker"
+            app:layout_constraintStart_toStartOf="@id/score_evaluation_picker"
+            app:layout_constraintEnd_toEndOf="@id/score_evaluation_picker"/>
+
+
+        <TextView
+            android:id="@+id/score_evaluation_ok_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.5"
+            android:text="등록"
+            android:textColor="@color/purple_700"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/score_evaluation_picker"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
