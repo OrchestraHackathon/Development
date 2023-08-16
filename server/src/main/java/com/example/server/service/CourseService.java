@@ -2,17 +2,19 @@ package com.example.server.service;
 
 import com.example.server.domain.*;
 import com.example.server.domain.users.Users;
+import com.example.server.dto.SliceResponse;
 import com.example.server.dto.course.CourseCreateRequestDto;
-import com.example.server.repository.CategoryRepository;
-import com.example.server.repository.CourseCategoryRepository;
-import com.example.server.repository.CourseRepository;
-import com.example.server.repository.UsersRepository;
+import com.example.server.dto.course.CourseReadResponseDto;
+import com.example.server.repository.*;
 import com.example.server.util.exception.UsersException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +30,7 @@ public class CourseService {
     private final CourseCategoryRepository courseCategoryRepository;
     private final UsersRepository usersRepository;
     private final CategoryRepository categoryRepository;
+    private final CourseDetailRepository courseDetailRepository;
 
     public void save(Long usersId, CourseCreateRequestDto requestDto) {
         Users users = usersRepository.findById(usersId)
@@ -52,4 +55,21 @@ public class CourseService {
 
         return;
     }
+
+    @Transactional(readOnly = true)
+    public SliceResponse<CourseReadResponseDto> searchByName(String keyword, Pageable pageable) {
+
+        Slice<Course> allCoursesSliceBy = courseRepository.findByNameContaining(keyword, pageable);
+        List<Course> courses = allCoursesSliceBy.getContent();
+        List<Long> registerPeopleList = courses.stream()
+                .map(c -> courseDetailRepository.countByCourseId(c.getId()))
+                .collect(Collectors.toList());
+        List<CourseReadResponseDto> responseDtos = new ArrayList<>();
+        for (int i=0; i<courses.size(); i++) {
+            responseDtos.add(new CourseReadResponseDto(courses.get(i), registerPeopleList.get(i)));
+        }
+
+        return new SliceResponse<>(responseDtos, allCoursesSliceBy.getPageable().getPageNumber(), allCoursesSliceBy.isLast());
+    }
+
 }
