@@ -22,7 +22,7 @@ public class Course extends BaseTimeEntity {
     @Column(nullable = false)
     private String summary;
 
-    //name(과목명) 추가
+    //  name(과목명) 추가
     @Column(nullable = false)
     private String name;
 
