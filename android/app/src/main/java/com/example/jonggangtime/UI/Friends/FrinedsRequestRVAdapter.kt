@@ -1,5 +1,6 @@
 package com.example.jonggangtime.UI.Friends
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,8 @@ class FriendsRequestRVAdapter(private val requestList : ArrayList<Friend>, val t
 
     // 클릭 리스너 구현 위한 인터페이스
     interface OnItemClickListener {
-        fun onItemClick(data: Friend)
+        fun onCheckClick(data: Friend, position: Int)
+        fun onCloseClick(data: Friend, position: Int)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -37,8 +39,12 @@ class FriendsRequestRVAdapter(private val requestList : ArrayList<Friend>, val t
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(requestList[position])
-        holder.itemView.setOnClickListener {
-            mItemClickListener.onItemClick(requestList[position])
+        holder.binding.friendRequestCheckIv.setOnClickListener {
+            mItemClickListener.onCheckClick(requestList[position], position)
+        }
+        holder.binding.friendRequestCloseIv.setOnClickListener {
+            Log.d("position", position.toString())
+            mItemClickListener.onCloseClick(requestList[position], position)
         }
     }
 

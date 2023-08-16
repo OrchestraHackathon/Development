@@ -66,8 +66,13 @@ class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>
         friendRecievedRVAdapter = FriendsRequestRVAdapter(friendsRecievedArray, 1)
         binding.friendsRecievedRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         friendRecievedRVAdapter.setOnItemClickListener(object : FriendsRequestRVAdapter.OnItemClickListener{
-            override fun onItemClick(data: Friend) {
-
+            override fun onCheckClick(data: Friend, position: Int) {
+                friendsRecievedArray.remove(data)
+                friendRecievedRVAdapter.notifyDataSetChanged()
+            }
+            override fun onCloseClick(data: Friend, position: Int) {
+                friendsRecievedArray.remove(data)
+                friendRecievedRVAdapter.notifyDataSetChanged()
             }
 
         })
@@ -77,8 +82,10 @@ class AlreadyListFiendsFragment : BaseFragment<FragmentAlreadyListFiendsBinding>
         friendSendRVAdapter = FriendsRequestRVAdapter(friendsSendArray, 2)
         binding.friendsSendRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         friendSendRVAdapter.setOnItemClickListener(object : FriendsRequestRVAdapter.OnItemClickListener{
-            override fun onItemClick(data: Friend) {
-
+            override fun onCheckClick(data: Friend, position: Int) { }
+            override fun onCloseClick(data: Friend, position: Int) {
+                friendsSendArray.remove(data)
+                friendSendRVAdapter.notifyDataSetChanged()
             }
         })
         binding.friendsSendRv.adapter = friendSendRVAdapter
