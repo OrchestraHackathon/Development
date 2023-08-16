@@ -30,4 +30,14 @@
     <color name= "blue_2">#29ABE2</color>
     <color name="red_0">#FFF3F3</color>
 
+    <color name="schedule_1">#FF7F6F</color>
+    <color name="schedule_2">#9DCA64</color>
+    <color name="schedule_3">#FFA456</color>
+    <color name="schedule_4">#F4C055</color>
+    <color name="schedule_5">#5BD3C1</color>
+    <color name="schedule_6">#70A5EE</color>
+    <color name="schedule_7">#9A87DB</color>
+
+
+
 </resources>
