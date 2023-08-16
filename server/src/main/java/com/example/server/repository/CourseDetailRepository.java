@@ -8,4 +8,6 @@ import java.util.List;
 public interface CourseDetailRepository extends JpaRepository<CourseDetail, Long> {
 
     List<CourseDetail> findByUsersIdAndCourseId(Long usersId, Long courseId);
+
+    Long countByCourseId(Long courseId);
 }
