@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.jonggangtime.Data.LoginInfo
 import com.example.jonggangtime.MyApplication
+import com.example.jonggangtime.Network.ResponseCreateDefaultTimeTable
 import com.example.jonggangtime.Network.ResponseLogin
 import com.example.jonggangtime.Network.RetrofitClient
 import com.example.jonggangtime.UI.MainActivity
@@ -13,6 +14,7 @@ import com.example.jonggangtime.Utils.BaseActivity
 import com.example.jonggangtime.Utils.TAG
 import com.example.jonggangtime.databinding.ActivityLoginBinding
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
@@ -25,7 +27,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         super.onCreate(savedInstanceState)
 
         binding.loginBtn.setOnClickListener {
-            /*val loginInfo = LoginInfo(binding.emailInputTf.text.toString(), binding.passwordInputTf.text.toString())
+            val loginInfo = LoginInfo(binding.emailInputTf.text.toString(), binding.passwordInputTf.text.toString())
             RetrofitClient.instance.login(loginInfo).enqueue(object: retrofit2.Callback<ResponseLogin>{
                 override fun onResponse(
                     call: Call<ResponseLogin>,
@@ -37,6 +39,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
                         MyApplication.prefs.setString("accessToken", response.body()!!.result.accessToken)
                         MyApplication.prefs.setString("refreshToken", response.body()!!.result.refreshToken)
+
+                        Log.d(TAG, "accessToken : ${response.body()!!.result.accessToken}")
 
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     } else {
@@ -54,7 +58,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
             })
 
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))*/
+//            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         }
 
         binding.signinTv.setOnClickListener {
