@@ -19,11 +19,9 @@ public class TimeTableController {
 
     private final TimeTableService timeTableService;
 
-    @PostMapping(value = "/time-table")
-    public BaseResponse<TimeTableResponseDto> createDefaultTimeTable(@AuthenticationPrincipal PrincipalDetails users) {
+    @PostMapping(value = "/time-table/{usersId}")
+    public BaseResponse<TimeTableResponseDto> createDefaultTimeTable(@PathVariable Long usersId) {
 
-        Long usersId = users.getId();
-        log.info("userId = {}", usersId);
         TimeTableResponseDto responseDto = timeTableService.save(usersId);
         return new BaseResponse<>(responseDto);
     }
