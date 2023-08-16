@@ -67,16 +67,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         fun onBackPressed()
     }
 
-    override fun onBackPressed(){
+    override fun onBackPressed() {
+
         Log.d("Stack-Log", "onBackPressed() - Activity")
         val fragmentList = supportFragmentManager.fragments
+        Log.d("frag", "onBackPressed()" + fragmentList.toString())
         for (fragment in fragmentList) {
             if (fragment is onBackPressedListener) {
                 (fragment as onBackPressedListener).onBackPressed()
+                Log.d("frag", "return됨")
+                return
             }
         }
 
-        //2초안에 뒤로가기 2번 누르면 종료
+          // 2초안에 뒤로가기 2번 누르면 종료
         if (backPressedTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed()
             finish()
@@ -85,6 +89,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
         backPressedTime = System.currentTimeMillis()
     }
+
 
 
 }
