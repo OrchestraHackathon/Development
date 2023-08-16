@@ -1,8 +1,10 @@
 package com.example.jonggangtime.UI.Lectures
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jonggangtime.Data.LectureCategoryData
 import com.example.jonggangtime.R
@@ -11,7 +13,7 @@ import com.example.jonggangtime.databinding.ItemCategoryBinding
 
 //TODO 색상변경이 안됨
 
-class CategoryAdapter(private val itemList: ArrayList<LectureCategoryData>, private val option: Int): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class CategoryAdapter(val context: Context, private val itemList: ArrayList<LectureCategoryData>, private val option: Int): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
 //    opton -> 0 - DetailLectureFragment, 1 - ContentRegistLectureFragment
     private val categoryState: ArrayList<Boolean> = arrayListOf(false, false, false, false, false, false)
@@ -33,10 +35,10 @@ class CategoryAdapter(private val itemList: ArrayList<LectureCategoryData>, priv
             binding.categoryNameTv.text = item.categoryName
             when (option) {
                 1 -> {
-//                    binding.lectureCategoryCv.setBackgroundColor(R.color.category_unactive)
+                    binding.lectureCategoryCv.setCardBackgroundColor(ContextCompat.getColor(context, R.color.category_unactive))
                 }
                 0 -> {
-//                    binding.lectureCategoryCv.setBackgroundColor(categoryColor[item.categoryId])
+                    binding.lectureCategoryCv.setCardBackgroundColor(ContextCompat.getColor(context, categoryColor[item.categoryId]))
                 }
             }
         }
@@ -54,11 +56,11 @@ class CategoryAdapter(private val itemList: ArrayList<LectureCategoryData>, priv
         if(option == 1){
             binding.lectureCategoryCv.setOnClickListener {
                 if(categoryState[position]){
-//                    binding.lectureCategoryCv.setBackgroundColor(R.color.category_unactive)
+                    binding.lectureCategoryCv.setCardBackgroundColor(ContextCompat.getColor(context, R.color.category_unactive))
                     binding.lectureCategoryCv
                     categoryState[position] = false
                 } else {
-//                    binding.lectureCategoryCv.setBackgroundColor(categoryColor[position])
+                    binding.lectureCategoryCv.setCardBackgroundColor(ContextCompat.getColor(context, categoryColor[position]))
                     binding.lectureCategoryCv
                     categoryState[position] = true
                 }

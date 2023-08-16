@@ -11,8 +11,9 @@
         android:id="@+id/title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:text="회원가입"
+        style="@style/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,12 +25,16 @@
         app:boxBackgroundMode="outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_tv">
+        app:layout_constraintTop_toBottomOf="@id/title_tv"
+        style="@style/textfieldLayout"
+        android:layout_marginTop="40dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_input_tf"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:hint="@string/email"
+            style="@style/textfieldEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -40,12 +45,16 @@
         app:boxBackgroundMode="outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_input_til">
+        app:layout_constraintTop_toBottomOf="@id/email_input_til"
+        style="@style/textfieldLayout"
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_input_tf"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:hint="@string/password"
+            style="@style/textfieldEditText" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,12 +65,16 @@
         app:boxBackgroundMode="outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_input_til">
+        app:layout_constraintTop_toBottomOf="@id/password_input_til"
+        style="@style/textfieldLayout"
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_check_tf"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:hint="@string/passowrd_check"
+            style="@style/textfieldEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,12 +85,16 @@
         app:boxBackgroundMode="outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_check_til">
+        app:layout_constraintTop_toBottomOf="@id/password_check_til"
+        style="@style/textfieldLayout"
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name_input_tf"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:hint="@string/name"
+            style="@style/textfieldEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,22 +105,29 @@
         app:boxBackgroundMode="outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name_input_til">
+        app:layout_constraintTop_toBottomOf="@id/name_input_til"
+        style="@style/textfieldLayout"
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nickname_input_tf"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:hint="@string/nickname"
+            style="@style/textfieldEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/button"
         android:id="@+id/complete_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="완료"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nickname_input_til" />
+        app:layout_constraintTop_toBottomOf="@id/nickname_input_til"
+        android:textAppearance="@style/button_text"
+        android:layout_marginTop="40dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
