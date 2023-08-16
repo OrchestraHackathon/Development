@@ -1,6 +1,7 @@
 package com.example.server.controller;
 
 import com.example.server.domain.users.PrincipalDetails;
+import com.example.server.dto.timetable.TimeTableReadResponseDto;
 import com.example.server.dto.timetable.TimeTableResponseDto;
 import com.example.server.service.TimeTableService;
 import com.example.server.util.BaseResponse;
@@ -33,6 +34,6 @@ public class TimeTableController {
         Long usersId = users.getId();
         log.info("userId = {}", usersId);
         TimeTableReadResponseDto responseDto = timeTableService.read(usersId);
-        return new BaseResponse<>(TimeTableReadResponseDto);
+        return new BaseResponse<>(responseDto);
     }
 }
