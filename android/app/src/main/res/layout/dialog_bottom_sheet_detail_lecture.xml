@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backgroun_bottom_sheet"
+    tools:context=".UI.Lectures.DetailLectureFragment">
+
+    <View
+        android:id="@+id/handler_view"
+        android:layout_width="61dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/title_tv"
+        style="@style/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="식단과 운동"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/handler_view" />
+
+    <TextView
+        android:id="@+id/lecture_professor_tv"
+        style="@style/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="교수 : 김영양"
+        app:layout_constraintStart_toStartOf="@id/title_tv"
+        app:layout_constraintTop_toBottomOf="@id/title_tv" />
+
+    <TextView
+        android:id="@+id/lecture_count_tv"
+        style="@style/hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="42명이 이 과목을 수강중입니다."
+        app:layout_constraintStart_toStartOf="@id/title_tv"
+        app:layout_constraintTop_toBottomOf="@id/lecture_professor_tv" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lecture_category_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@id/title_tv"
+        app:layout_constraintTop_toBottomOf="@id/lecture_count_tv" />
+
+    <TextView
+        android:id="@+id/lecture_mini_content_tv"
+        style="@style/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/lecture_mini_content"
+        app:layout_constraintStart_toStartOf="@id/title_tv"
+        app:layout_constraintTop_toBottomOf="@id/lecture_category_rv" />
+
+    <TextView
+        android:id="@+id/lecture_mini_content_input_tv"
+        style="@style/hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:text="하얗게 피어난 얼음 꽃 하나가달가운 바람에 얼굴"
+        app:boxBackgroundMode="outline"
+        app:layout_constraintStart_toStartOf="@id/title_tv"
+        app:layout_constraintTop_toBottomOf="@id/lecture_mini_content_tv" />
+
+    <TextView
+        android:id="@+id/lecture_content_tv"
+        style="@style/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/lecture_content"
+        app:layout_constraintStart_toStartOf="@id/title_tv"
+        app:layout_constraintTop_toBottomOf="@id/lecture_mini_content_input_tv" />
+
+    <TextView
+        android:id="@+id/lecture_content_input_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingHorizontal="20dp"
+        android:text="하얗게 피어난 얼음 꽃 하나가달가운 바람에 얼굴을 내밀어아무 말 못했던 이름도 몰랐던지나간 날들에 눈물이 흘러 차가운 바람에 숨어 있다한줄기 햇살에 몸 녹이다그렇게 너는 또 한번 내게 온다\n\n좋았던 기억만그리운 마음만니가 떠나간 그 길 위에이렇게 남아 서있다잊혀질 만큼만괜찮을 만큼만눈물 머금고 기다린 떨림 끝에다시 나를 피우리라"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lecture_content_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

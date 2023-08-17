@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.Profile.CertificateActivity">
+
+    <ImageView
+        android:id="@+id/certificate_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back_arrow"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="@id/certificate_tv"
+        app:layout_constraintBottom_toBottomOf="@id/certificate_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/certificate_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "수료증 화면"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="25dp"/>
+
+    <ImageView
+        android:id="@+id/certificate_frame_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/frame"
+        app:layout_constraintTop_toBottomOf="@id/certificate_tv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/certificate_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="수료증"
+        android:letterSpacing="0.3"
+        android:textColor="@color/black"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/certificate_frame_iv"
+        app:layout_constraintEnd_toEndOf="@id/certificate_frame_iv"
+        app:layout_constraintTop_toTopOf="@id/certificate_frame_iv"
+        android:layout_marginTop="55dp"/>
+
+    <TextView
+        android:id="@+id/certificate_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="성    명:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/certificate_title_tv"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:id="@+id/certificate_name_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이종강"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/certificate_name_tv"
+        app:layout_constraintTop_toBottomOf="@id/certificate_title_tv"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:id="@+id/certificate_lecture_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="과목명:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/certificate_name_tv"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="7dp"/>
+
+    <TextView
+        android:id="@+id/certificate_lecture_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="해커톤"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/certificate_lecture_tv"
+        app:layout_constraintTop_toBottomOf="@id/certificate_name_tv"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"/>
+
+    <TextView
+        android:id="@+id/certificate_score_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="성    적:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/certificate_lecture_tv"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="7dp"/>
+
+    <TextView
+        android:id="@+id/certificate_score_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A+"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/certificate_score_tv"
+        app:layout_constraintTop_toBottomOf="@id/certificate_lecture_tv"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"/>
+
+    <TextView
+        android:id="@+id/certificate_duration_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="기    간:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/certificate_score_tv"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="7dp"/>
+
+    <TextView
+        android:id="@+id/certificate_duration_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2023. 08.10. ~ 2023. 08.17"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/certificate_score_tv"
+        app:layout_constraintTop_toBottomOf="@id/certificate_score_tv"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"/>
+
+    <TextView
+        android:id="@+id/certificate_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="위 사람은 종강타임이 규정한  교육과정을\n성실히 이수하였기에 위 수료증을 수여합니다."
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/certificate_duration_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="70dp"/>
+
+    <TextView
+        android:id="@+id/certificate_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="2023년 8월 10일"
+        app:layout_constraintTop_toBottomOf="@id/certificate_content_tv"
+        app:layout_constraintStart_toStartOf="@id/certificate_frame_iv"
+        app:layout_constraintEnd_toEndOf="@id/certificate_frame_iv"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/certificate_authority_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="종강타임"
+        app:layout_constraintTop_toBottomOf="@id/certificate_date_tv"
+        app:layout_constraintStart_toStartOf="@id/certificate_frame_iv"
+        app:layout_constraintEnd_toEndOf="@id/certificate_frame_iv"
+        android:layout_marginTop="8dp"/>
+
+    <ImageView
+        android:id="@+id/certificate_stamp_tv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/stamp"
+        app:layout_constraintStart_toEndOf="@id/certificate_date_tv"
+        app:layout_constraintTop_toTopOf="@id/certificate_date_tv"
+        app:layout_constraintBottom_toBottomOf="@id/certificate_authority_tv"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

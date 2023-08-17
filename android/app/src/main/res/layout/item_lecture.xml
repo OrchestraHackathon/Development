@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lecture_item_cv">
+
+    <TextView
+        android:id="@+id/lecture_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="알바"
+        android:textColor="@color/black"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/lecture_professor_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이주언"
+        android:textColor="@color/black"
+        android:layout_marginTop="3dp"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="@id/lecture_title_tv"
+        app:layout_constraintTop_toBottomOf="@id/lecture_title_tv"/>
+
+    <TextView
+        android:id="@+id/lecture_content_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="아르바이트 시간 관리를 위한 과목 입니다 개인 알바 시간을 할당하여 과목을 수행하게 됩니다."
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="@id/lecture_title_tv"
+        app:layout_constraintTop_toBottomOf="@id/lecture_professor_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="10dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/lecture_category_cv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintTop_toTopOf="@id/lecture_title_tv"
+        app:layout_constraintBottom_toBottomOf="@id/lecture_professor_tv"
+        app:layout_constraintEnd_toStartOf="@id/lecture_count_tv"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/category_1"
+        app:cardCornerRadius="20dp">
+
+        <TextView
+            android:id="@+id/category_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아르바이트"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="6dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/lecture_count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="수강 : 104명"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@id/lecture_title_tv"
+        app:layout_constraintBottom_toBottomOf="@id/lecture_professor_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/gray_1"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toBottomOf="@id/lecture_content_tv" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
