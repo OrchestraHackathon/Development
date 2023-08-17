@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.jonggangtime.Data.LoginInfo
 import com.example.jonggangtime.MyApplication
+import com.example.jonggangtime.Network.ResponseCreateDefaultTimeTable
 import com.example.jonggangtime.Network.ResponseLogin
 import com.example.jonggangtime.Network.RetrofitClient
 import com.example.jonggangtime.UI.MainActivity
@@ -13,6 +14,7 @@ import com.example.jonggangtime.Utils.BaseActivity
 import com.example.jonggangtime.Utils.TAG
 import com.example.jonggangtime.databinding.ActivityLoginBinding
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
@@ -41,6 +43,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                         //준영
                         MyApplication.prefs.saveJwt(response.body()!!.result.accessToken)
 
+                        Log.d(TAG, "accessToken : ${response.body()!!.result.accessToken}")
+
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     } else {
                         Log.d(
@@ -57,7 +61,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
             })
 
-            //startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+//            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         }
 
         binding.signinTv.setOnClickListener {

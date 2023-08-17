@@ -96,10 +96,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:paddingHorizontal="20dp"
             android:text="하얗게 피어난 얼음 꽃 하나가달가운 바람에 얼굴을 내밀어아무 말 못했던 이름도 몰랐던지나간 날들에 눈물이 흘러 차가운 바람에 숨어 있다한줄기 햇살에 몸 녹이다그렇게 너는 또 한번 내게 온다\n\n좋았던 기억만그리운 마음만니가 떠나간 그 길 위에이렇게 남아 서있다잊혀질 만큼만괜찮을 만큼만눈물 머금고 기다린 떨림 끝에다시 나를 피우리라"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/title_tv"
             app:layout_constraintTop_toBottomOf="@id/lecture_content_tv" />
 
         <androidx.appcompat.widget.AppCompatButton

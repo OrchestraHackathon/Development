@@ -1,6 +1,7 @@
 package com.example.jonggangtime.Network
 
 import com.example.jonggangtime.Data.LoginInfo
+import com.example.jonggangtime.Data.RegistLectureData
 import com.example.jonggangtime.Data.SigninInfo
 import com.example.jonggangtime.UI.Profile.Retrofit.ResponseMyPage
 import retrofit2.Call
@@ -8,6 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.*
 
 interface RetrofitInterface {
     @POST("users/login")
@@ -19,4 +21,21 @@ interface RetrofitInterface {
     fun signin(
         @Body signinInfo: SigninInfo
     ): Call<ResponseSignin>
+
+    @GET("courses")
+    fun getLectures(
+        @Query("page") page: Int? = null,
+        @Query("size") size : Int? = null
+    ): Call<ResponseGetLectures>
+
+    @POST("time-table/{usersId}")
+    fun createDefaultTimeTable(
+        @Path("usersId") id: Long
+    ): Call<ResponseCreateDefaultTimeTable>
+
+    @POST("courses")
+    fun creatLecture(
+        @Header("Authorization") auth: String,
+        @Body content: RegistLectureData
+    ): Call<ResponseCreateLecture>
 }

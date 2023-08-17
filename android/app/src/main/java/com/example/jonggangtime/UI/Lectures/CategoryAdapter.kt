@@ -38,7 +38,7 @@ class CategoryAdapter(val context: Context, private val itemList: ArrayList<Lect
                     binding.lectureCategoryCv.setCardBackgroundColor(ContextCompat.getColor(context, R.color.category_unactive))
                 }
                 0 -> {
-                    binding.lectureCategoryCv.setCardBackgroundColor(ContextCompat.getColor(context, categoryColor[item.categoryId]))
+                    binding.lectureCategoryCv.setCardBackgroundColor(ContextCompat.getColor(context, categoryColor[if(item.categoryId-1<0) 5 else item.categoryId-1]))
                 }
             }
         }
