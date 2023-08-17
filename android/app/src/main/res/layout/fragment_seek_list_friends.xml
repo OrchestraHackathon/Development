@@ -7,6 +7,7 @@
     tools:context=".UI.Friends.SeekListFriendsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:overScrollMode="never"
         android:id="@+id/friends_list_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

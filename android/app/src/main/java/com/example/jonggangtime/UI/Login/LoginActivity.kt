@@ -40,6 +40,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                         MyApplication.prefs.setString("accessToken", response.body()!!.result.accessToken)
                         MyApplication.prefs.setString("refreshToken", response.body()!!.result.refreshToken)
 
+                        //준영
+                        MyApplication.prefs.saveJwt(response.body()!!.result.accessToken)
+
                         Log.d(TAG, "accessToken : ${response.body()!!.result.accessToken}")
 
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))

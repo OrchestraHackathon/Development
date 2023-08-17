@@ -5,25 +5,25 @@
     <item
         android:id="@+id/timeTable_menu"
         android:icon="@drawable/icon_timetable"
-        android:title=""
+        android:title="시간표"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/lecture_menu"
         android:icon="@drawable/icon_lecture"
-        android:title=""
+        android:title="과목"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/friend_menu"
         android:icon="@drawable/icon_friend"
-        android:title=""
+        android:title="친구"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/my_menu"
         android:icon="@drawable/icon_my"
-        android:title=""
+        android:title="마이페이지"
         app:showAsAction="always"/>
 
 </menu>

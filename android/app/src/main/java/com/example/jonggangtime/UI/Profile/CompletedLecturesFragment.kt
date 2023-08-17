@@ -17,15 +17,21 @@ class CompletedLecturesFragment : BaseFragment<FragmentCompletedLecturesBinding>
 
         //테스트용 임시 코드
         completedLectureArray.add(
-            CompletedLecture(1, "해커톤", "prof", "스터디", "위캔 두잇", "5명", false),
+            CompletedLecture(5, "아르바이트", "이주언", "아르바이트", "아르바이트 시간 관리를 위한 과목입니다. 개인 알바 시간입니다.", "5명", false),
         )
         completedLectureArray.add(
-            CompletedLecture(2, "해커톤2", "prof", "스터디", "위캔 두잇", "5명", true),
+            CompletedLecture(3, "문학감상 및 분석", "남보우", "루틴", "매일 세계 명작 소설들을 읽고 그 시대의 역사에 대해 알아보아요", "15명", true),
+        )
+        completedLectureArray.add(
+            CompletedLecture(4, "식단과 운동", "박지원", "운동", "같이 1시간 30분씩 모여서 한강을 뛰어요", "20명", true),
+        )
+        completedLectureArray.add(
+            CompletedLecture(3, "클라이밍", "남보우", "운동", "한강 공원 클라이밍장에서 모여 같이 클라이밍에 대해 알아보아요", "2명", true),
         )
     }
 
     private fun initAdapter() {
-        completedLecturesAdapter = CompletedLecturesRVAdapter(completedLectureArray)
+        completedLecturesAdapter = CompletedLecturesRVAdapter(requireContext(), completedLectureArray)
         binding.completedLecturesRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         completedLecturesAdapter.setOnItemClickListener(object : CompletedLecturesRVAdapter.OnItemClickListener{
             override fun onItemClick(

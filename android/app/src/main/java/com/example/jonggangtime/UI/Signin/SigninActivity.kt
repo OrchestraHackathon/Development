@@ -115,5 +115,25 @@ class SigninActivity : BaseActivity<ActivitySigninBinding>(ActivitySigninBinding
             }
 
         })
+
+        binding.passwordInputTf.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+            override fun afterTextChanged(p0: Editable?) {
+                if (binding.passwordCheckTf.text?.length == 0){
+                    binding.passwordCheckMsgTv.visibility = View.GONE
+                }
+                else if(binding.passwordInputTf.text.toString() != binding.passwordCheckTf.text.toString()){
+                    binding.passwordCheckMsgTv.setTextColor(ContextCompat.getColor(this@SigninActivity, R.color.negative_red))
+                    binding.passwordCheckMsgTv.text = "비밀번호를 다시 확인해주세요"
+                    binding.passwordCheckMsgTv.visibility = View.VISIBLE // 비밀번호 밑에 안내창 보이게하기
+                } else{
+                    binding.passwordCheckMsgTv.setTextColor(ContextCompat.getColor(this@SigninActivity, R.color.blue_2))
+                    binding.passwordCheckMsgTv.text = "비밀번호가 일치합니다"
+                    binding.passwordCheckMsgTv.visibility = View.VISIBLE // 비밀번호 밑에 안내창 보이게하기
+                }
+            }
+
+        })
     }
 }

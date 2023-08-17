@@ -3,7 +3,12 @@ package com.example.jonggangtime.Network
 import com.example.jonggangtime.Data.LoginInfo
 import com.example.jonggangtime.Data.RegistLectureData
 import com.example.jonggangtime.Data.SigninInfo
+import com.example.jonggangtime.UI.Profile.Retrofit.ResponseMyPage
 import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.POST
 import retrofit2.http.*
 
 interface RetrofitInterface {

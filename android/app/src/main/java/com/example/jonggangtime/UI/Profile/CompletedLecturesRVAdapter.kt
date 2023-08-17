@@ -1,17 +1,21 @@
 package com.example.jonggangtime.UI.Profile
 
+import android.content.Context
 import android.content.res.ColorStateList
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jonggangtime.R
 import com.example.jonggangtime.UI.Profile.Retrofit.CompletedLecture
 import com.example.jonggangtime.databinding.ItemCompletedLectureBinding
 
-class CompletedLecturesRVAdapter(private val completedLectureList : ArrayList<CompletedLecture>) : RecyclerView.Adapter<CompletedLecturesRVAdapter.ViewHolder>() {
+class CompletedLecturesRVAdapter(context: Context, private val completedLectureList : ArrayList<CompletedLecture>) : RecyclerView.Adapter<CompletedLecturesRVAdapter.ViewHolder>() {
 
     private lateinit var mItemClickListener: OnItemClickListener
+    private val context: Context
 
     // 클릭 리스너 구현 위한 인터페이스
     interface OnItemClickListener {
@@ -30,6 +34,23 @@ class CompletedLecturesRVAdapter(private val completedLectureList : ArrayList<Co
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(completedLectureList[position])
+        Log.d("completed", completedLectureList[position].courseId.toString())
+        if (completedLectureList[position].courseId == 1){
+            holder.binding.completedLectureCategoryCv.backgroundTintList = ColorStateList.valueOf(context.getColor(R.color.category_study))
+        }else if (completedLectureList[position].courseId == 2){
+            holder.binding.completedLectureCategoryCv.backgroundTintList = ColorStateList.valueOf(context.getColor(R.color.category_certificate))
+        }else if (completedLectureList[position].courseId == 3){
+            holder.binding.completedLectureCategoryCv.backgroundTintList = ColorStateList.valueOf(context.getColor(R.color.category_routine))
+        }else if (completedLectureList[position].courseId == 4){
+            holder.binding.completedLectureCategoryCv.backgroundTintList = ColorStateList.valueOf(context.getColor(R.color.category_exercies))
+        }else if (completedLectureList[position].courseId == 5){
+            Log.d("completed", "5 진입함")
+            holder.binding.completedLectureCategoryCv.backgroundTintList = ColorStateList.valueOf(context.getColor(R.color.category_parttime))
+        }else if (completedLectureList[position].courseId == 6){
+            holder.binding.completedLectureCategoryCv.backgroundTintList = ColorStateList.valueOf(context.getColor(R.color.category_hobby))
+        }else if (completedLectureList[position].courseId == 7){
+            holder.binding.completedLectureCategoryCv.backgroundTintList = ColorStateList.valueOf(context.getColor(R.color.category_unactive))
+        }
         holder.binding.completedLectureScoreCv.setOnClickListener {
             mItemClickListener.onItemClick(completedLectureList[position], holder)
         }
@@ -53,5 +74,9 @@ class CompletedLecturesRVAdapter(private val completedLectureList : ArrayList<Co
                 binding.completedLectureScoreCv.backgroundTintList = ColorStateList.valueOf(binding.root.context.getColor(R.color.gray_0))
             }
         }
+    }
+
+    init {
+        this.context = context
     }
 }
