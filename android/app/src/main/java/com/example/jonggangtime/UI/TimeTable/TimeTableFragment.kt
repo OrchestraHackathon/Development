@@ -74,7 +74,7 @@ class TimeTableFragment : BaseFragment<FragmentTimeTableBinding>(FragmentTimeTab
         timeTableService = TimeTableService() // 서비스 객체 생성
         timeTableService.setmyTimeTableiew(this)
         timeTableService.getMyTimeTable()
-
+        binding.timeTableView.initTable(day)
         /*// TEST용 더미 데이터
         val schedule = ScheduleEntity(
             32, //originId
